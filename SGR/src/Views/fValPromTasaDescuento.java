@@ -2,10 +2,11 @@ package Views;
 
 import javax.swing.*;
 
-public class vtnOperacionesAvaladasNombre {
+public class fValPromTasaDescuento {
+    private JButton cerrarButton;
+    private JTable table1;
     private JTextField textField1;
     private JTextField textField2;
-    private JTable table1;
-    private JButton button1;
     private JComboBox comboBox1;
+    private JButton button1;
 }
