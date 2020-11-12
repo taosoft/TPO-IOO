@@ -9,5 +9,7 @@ public class fListaSocios {
     private JButton agregarAporteButton;
     private JButton verLíneaDeCréditoButton;
     private JButton generarOperaciónButton;
+    private JTable table1;
+    private JButton cerrarButton;
     private JButton riesgoVivoButton;
 }
