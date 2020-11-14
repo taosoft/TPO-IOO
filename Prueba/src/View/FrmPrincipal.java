@@ -38,7 +38,7 @@ public class FrmPrincipal extends JFrame{
             //Que la pantalla inicie CENTRADA
             this.setLocationRelativeTo(null);
             this.asociarEventos();
-            this.self = this;
+            this.self=this;
 
 
     }
