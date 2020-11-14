@@ -15,7 +15,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog{
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
-        this.setSize(500, 400);
+        this.setSize(600, 400);
         //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Que la pantalla inicie CENTRADA
