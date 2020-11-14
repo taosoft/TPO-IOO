@@ -1,5 +1,9 @@
 package View;
 
+import controllers.ctrSocio;
+import controllers.ctrUsuario;
+import modelos.mdlUsuario;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,11 +17,29 @@ public class FrmPrincipal extends JFrame{
     private JButton valorPromedioDeTasaButton;
     private JButton consultaConsolidadaButton;
     private JButton porcentajeComisiónAUnButton;
+    private JTextField txtUsuario;
+    private JTextField txtPassword;
+    private JButton btnIngresar;
+    private JPanel pnlLogin;
+    private JPanel pnlSocios;
+    private JPanel pnlConsultasGenerales;
     private FrmPrincipal self;
+    private controllers.ctrSocio ctrSocio;
 
+    private controllers.ctrUsuario ctrUsuario;
 
     public FrmPrincipal(String titulo) {
             super(titulo);
+
+            ctrSocio = new ctrSocio();
+            ctrUsuario = new ctrUsuario();
+
+        pnlSocios.setVisible(false);
+        pnlConsultasGenerales.setVisible(false);
+        pnlLogin.setVisible(true);
+
+
+
             //Esto de abajo es para cambiar la forma en que se ven los botones y la ventana para que se parezca más al formato windows.
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -41,12 +63,34 @@ public class FrmPrincipal extends JFrame{
             this.self = this;
 
 
+        btnIngresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            mdlUsuario usuario = new mdlUsuario(txtUsuario.getText(),txtPassword.getText());
+
+                if(ctrUsuario.esUsuario(usuario)){
+                    pnlLogin.setVisible(false);
+                    pnlSocios.setVisible(true);
+                    pnlConsultasGenerales.setVisible(true);
+                }
+
+                else
+                {
+                    pnlSocios.setVisible(false);
+                    pnlConsultasGenerales.setVisible(false);
+                    pnlLogin.setVisible(true);
+                    JOptionPane.showMessageDialog(null,"El usuario/password es incorrecto");
+
+                }
+            }
+        });
     }
     private void asociarEventos(){
         altaNuevoSocioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmAltaNuevoSocio frame = new FrmAltaNuevoSocio(self);
+                FrmAltaNuevoSocio frame = new FrmAltaNuevoSocio(self,ctrSocio);
                 frame.setVisible(true);
             }
         });

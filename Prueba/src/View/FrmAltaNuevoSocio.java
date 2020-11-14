@@ -1,5 +1,7 @@
 package View;
 
+import controllers.ctrSocio;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,7 +17,7 @@ public class FrmAltaNuevoSocio extends JDialog {
     private JTextField textField6;
     private JTextField textField7;
 
-    public FrmAltaNuevoSocio(Window owner) {
+    public FrmAltaNuevoSocio(Window owner, ctrSocio ctrSocio) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
