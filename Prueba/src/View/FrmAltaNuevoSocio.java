@@ -4,6 +4,8 @@ import controllers.ctrSocio;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmAltaNuevoSocio extends JDialog {
     private JPanel pnlPrincipal;
@@ -16,6 +18,8 @@ public class FrmAltaNuevoSocio extends JDialog {
     private JTextField textField5;
     private JTextField textField6;
     private JTextField textField7;
+    private JButton aceptarButton;
+    private JButton cancelarButton;
 
     public FrmAltaNuevoSocio(Window owner, ctrSocio ctrSocio) {
         super(owner);
@@ -28,5 +32,12 @@ public class FrmAltaNuevoSocio extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        this.asociarEventos();
+    }
+    private void asociarEventos(){
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {dispose();}
+        });
     }
 }

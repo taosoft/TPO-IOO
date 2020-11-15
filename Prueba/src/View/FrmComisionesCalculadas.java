@@ -2,6 +2,8 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmComisionesCalculadas extends JDialog{
     private JButton salirButton;
@@ -21,5 +23,15 @@ public class FrmComisionesCalculadas extends JDialog{
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        this.asociarEventos();
+
+
+    }
+    private void asociarEventos(){
+        salirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { dispose(); }
+        });
+
     }
 }

@@ -2,8 +2,10 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class FrmOperacionesAvaladasNombre extends JDialog{
+public class FrmOperacionesAvaladasNombre extends JDialog {
     private JPanel pnlPrincipal;
     private JButton cerrarButton;
     private JTable table1;
@@ -22,5 +24,15 @@ public class FrmOperacionesAvaladasNombre extends JDialog{
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        this.asociarEventos();
+    }
+
+    private void asociarEventos()
+
+    {
+        cerrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {dispose();}
+        });
     }
 }

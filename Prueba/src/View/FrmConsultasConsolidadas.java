@@ -2,12 +2,15 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class FrmConsultasConsolidadas extends JDialog {
     private JPanel pnlPrincipal;
     private JTable table1;
     private JComboBox comboBox1;
     private JButton buscarButton;
+    private JButton salirButton;
 
     public FrmConsultasConsolidadas(Window owner) {
         super(owner);
@@ -20,5 +23,13 @@ public class FrmConsultasConsolidadas extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        this.asociarEventos();
+
+    }
+    private void asociarEventos(){
+        salirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { dispose(); }
+        });
     }
 }
