@@ -1,6 +1,6 @@
 workspace.xml
-SGR/.idea/**
-Prueba/.idea/**
-SGR/out/**
-Prueba/out/**
+/SGR/.idea/**
+/Prueba/.idea/**
+/SGR/out/**
+/Prueba/out/**
 /.idea/**
