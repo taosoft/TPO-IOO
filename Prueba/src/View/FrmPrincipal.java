@@ -23,6 +23,7 @@ public class FrmPrincipal extends JFrame{
     private JPanel pnlLogin;
     private JPanel pnlSocios;
     private JPanel pnlConsultasGenerales;
+    private JButton btnCerrar;
     private FrmPrincipal self;
     private controllers.ctrSocio ctrSocio;
 
@@ -85,7 +86,15 @@ public class FrmPrincipal extends JFrame{
                 }
             }
         });
+
+        btnCerrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //dispose();
+            }
+        });
     }
+
     private void asociarEventos(){
         altaNuevoSocioButton.addActionListener(new ActionListener() {
             @Override
