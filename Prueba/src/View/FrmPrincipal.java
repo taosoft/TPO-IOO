@@ -5,7 +5,6 @@ import controllers.ctrSGR;
 import controllers.ctrSocio;
 import controllers.ctrUsuario;
 import modelos.mdlUsuario;
-import modelos.mdlSocio;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +17,6 @@ public class FrmPrincipal extends JFrame{
     private JButton operacionesAvaladasANombreButton;
     private JButton valorPromedioDeTasaButton;
     private JButton consultaConsolidadaButton;
-    private JButton porcentajeComisiónAUnButton;
     private JTextField txtUsuario;
     private JTextField txtPassword;
     private JButton btnIngresar;
@@ -119,7 +117,7 @@ public class FrmPrincipal extends JFrame{
         totalComisionesCalculadasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmComisionesCalculadas frame = new FrmComisionesCalculadas(self);
+                FrmComisionesCalculadas frame = new FrmComisionesCalculadas(self, ctrSocio);
                 frame.setVisible(true);
             }
         });
@@ -149,17 +147,10 @@ public class FrmPrincipal extends JFrame{
 
             }
         });
-        porcentajeComisiónAUnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FrmPorcentajeComisionSocio frame = new FrmPorcentajeComisionSocio(self);
-                frame.setVisible(true);
-            }
-        });
     }
 
-        public static void main(String[] args) {
-            FrmPrincipal frame = new FrmPrincipal("Programa SGR");
-            frame.setVisible(true);
-        }
+    public static void main(String[] args) {
+        FrmPrincipal frame = new FrmPrincipal("Programa SGR");
+        frame.setVisible(true);
     }
+}

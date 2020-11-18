@@ -1,12 +1,6 @@
 package modelos;
 
-
-
-import java.util.ArrayList;
 import java.util.Date;
-
-
-
 
 public class mdlCheque extends mdlOperacion {
     private int importePagado;
@@ -35,4 +29,11 @@ public class mdlCheque extends mdlOperacion {
         return importePagado;
     }
 
+    public String getNumeroCheque() {
+        return numeroCheque;
+    }
+
+    public void setNumeroCheque(String numeroCheque) {
+        this.numeroCheque = numeroCheque;
+    }
 }
