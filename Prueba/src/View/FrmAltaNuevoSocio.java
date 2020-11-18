@@ -1,7 +1,9 @@
+
 package View;
 
 import controllers.ctrSocio;
 import modelos.mdlSocio;
+import modelos.tipoEmpresa;
 import modelos.tipoSocio;
 
 import javax.swing.*;
@@ -44,10 +46,9 @@ public class FrmAltaNuevoSocio extends JDialog {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 ctrSocio.AddSocio(mdlSocio.CrearSocio(nombreUsuario,txtCuit.getText(),txtRazonSocial.getText(),
-                        cmbTipoEmpresa.getSelectedItem().toString(),txtActividad.getText(),txtDireccion.getText(),
-                        txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), tipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString()),null));
+                tipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString()),txtActividad.getText(),txtDireccion.getText(),
+                txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), tipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString()),null));
                 dispose();
 
             }
