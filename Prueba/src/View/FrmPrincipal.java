@@ -1,10 +1,11 @@
+
 package View;
 
 import controllers.ctrSGR;
 import controllers.ctrSocio;
 import controllers.ctrUsuario;
 import modelos.mdlUsuario;
-
+import modelos.mdlSocio;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,8 @@ public class FrmPrincipal extends JFrame{
 
             ctrSocio = new ctrSocio();
             ctrUsuario = new ctrUsuario();
+
+            //ctrSocio.AddSocio(mdlSocio.CrearSocio ("nombre",));
 
         pnlSocios.setVisible(false);
         pnlConsultasGenerales.setVisible(false);
@@ -162,4 +165,3 @@ public class FrmPrincipal extends JFrame{
             frame.setVisible(true);
         }
     }
-

@@ -12,7 +12,7 @@ public class ctrLineaCredito {
         lineaCreditos = new ArrayList<mdlLineaCredito>();
     }
 
-    public  void AddLineaCredito(mdlLineaCredito lineaCredito){
+    public  void addLineaCredito(mdlLineaCredito lineaCredito){
         lineaCreditos.add(lineaCredito);
     }
 

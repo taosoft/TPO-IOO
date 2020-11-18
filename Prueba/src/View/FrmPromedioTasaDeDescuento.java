@@ -49,13 +49,13 @@ public class FrmPromedioTasaDeDescuento extends JDialog{
                 tipoEmpresa tipoEmpresa = modelos.tipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
                 Date fechaInicial = new Date(txtFechaInicial.getText());
                 Date fechaFinal = new Date(txtFechaFinal.getText());
-                var socios = ctrSocio.getSocios();
+                ArrayList<mdlSocio> socios = ctrSocio.getSocios();
                 var promedioTasaDescuento = new ArrayList<promedioTasaDeDescuento>();
                 for(mdlSocio socio:socios){
                     if (socio.getTipoEmpresa() == tipoEmpresa){
-                        var lineaCreditos = socio.getLineaCreditos();
+                        ArrayList<mdlLineaCredito> lineaCreditos = socio.getLineaCreditos();
                         for(mdlLineaCredito lineaCredito:lineaCreditos){
-                            var cheques = lineaCredito.getCheques();
+                            ArrayList<mdlCheque> cheques = lineaCredito.getCheques();
                             for(mdlCheque cheque:cheques){
                                 if(cheque.getFecha().after(fechaInicial)&& cheque.getFecha().before(fechaFinal)){
                                     var mdlPromeidoTasaDeDescuento = new promedioTasaDeDescuento();
