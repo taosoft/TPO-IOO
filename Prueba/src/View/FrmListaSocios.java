@@ -38,6 +38,14 @@ public class FrmListaSocios extends JDialog {
             cmbCuitSocio.addItem(socio.getCuit());
         };
 
+        if (cmbCuitSocio.getItemCount() <= 0){
+            convertirEnSocioPlenoButton.setEnabled(false);
+            agregarAporteButton.setEnabled(false);
+            verLíneaDeCréditoButton.setEnabled(false);
+            generarOperaciónButton.setEnabled(false);
+            riesgoVivoButton.setEnabled(false);
+        }
+
 
 
         generarOperaciónButton.addActionListener(new ActionListener() {
@@ -51,7 +59,7 @@ public class FrmListaSocios extends JDialog {
         verLíneaDeCréditoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmLineaCredito frame = new frmLineaCredito(self);
+                frmLineaCredito frame = new frmLineaCredito(self, ctrSocio);
                 frame.show();
             }
         });
