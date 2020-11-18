@@ -10,7 +10,7 @@ public class mdlLineaCredito {
     private ArrayList<mdlTipoOperacion> tipoOperaciones;
     private ArrayList<mdlCheque> cheques;
     private ArrayList<mdlCuentaCorriente> cuentaCorrientes;
-    private ArrayList<mdllPrestamo> prestamos;
+    private ArrayList<mdlPrestamo> prestamos;
 
     public mdlLineaCredito(){
         tipoOperaciones = new ArrayList<>();
@@ -20,12 +20,18 @@ public class mdlLineaCredito {
     }
 
 
-    public void CrearSocio(Date _fechaVigencia, long _monto, ArrayList<mdlTipoOperacion> _tipoOperaciones){
-        fechaVigencia = _fechaVigencia;
-        monto = _monto;
-        tipoOperaciones = _tipoOperaciones;
-    }
+    public static void crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<mdlTipoOperacion> _tipoOperaciones,
+                                         ArrayList<mdlCheque> _cheques, ArrayList<mdlPrestamo> _prestamos, ArrayList<mdlCuentaCorriente> _cuentaCorrientes){
 
+        var lineaCredito = new mdlLineaCredito();
+        lineaCredito.fechaVigencia = _fechaVigencia;
+        lineaCredito.monto = _monto;
+        lineaCredito.tipoOperaciones = _tipoOperaciones;
+        lineaCredito.tipoOperaciones = _tipoOperaciones;
+        lineaCredito.cheques = _cheques;
+        lineaCredito.cuentaCorrientes = _cuentaCorrientes;
+        lineaCredito.prestamos = _prestamos;
+    }
 
     public int getTotalOperacion(){
 
@@ -44,7 +50,7 @@ public class mdlLineaCredito {
             }
         }
 
-        for (mdllPrestamo prestamo: prestamos) {
+        for (mdlPrestamo prestamo: prestamos) {
             if(fechaVigencia.before(new Date()) && prestamo.getEstadoOperacion() == estadoOperacion.Monetizado) {
                 contadorOperaciones += prestamo.getImportePagado();
             }
@@ -71,7 +77,7 @@ public class mdlLineaCredito {
             }
         }
 
-        for (mdllPrestamo prestamo: prestamos) {
+        for (mdlPrestamo prestamo: prestamos) {
             if(prestamo.getEstadoOperacion() == estadoOperacion.ConCertificadoEmitido) {
                 contadorOperaciones += prestamo.getImportePagado();
             }
