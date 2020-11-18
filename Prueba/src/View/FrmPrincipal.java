@@ -27,6 +27,7 @@ public class FrmPrincipal extends JFrame{
     private JButton btnCerrar;
     private FrmPrincipal self;
     private controllers.ctrSocio ctrSocio;
+    private mdlUsuario usuarioLogueado;
 
     private controllers.ctrUsuario ctrUsuario;
 
@@ -75,6 +76,7 @@ public class FrmPrincipal extends JFrame{
                     pnlLogin.setVisible(false);
                     pnlSocios.setVisible(true);
                     pnlConsultasGenerales.setVisible(true);
+                    usuarioLogueado = usuario;
                 }
 
                 else
@@ -100,7 +102,7 @@ public class FrmPrincipal extends JFrame{
         altaNuevoSocioButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmAltaNuevoSocio frame = new FrmAltaNuevoSocio(self,ctrSocio);
+                FrmAltaNuevoSocio frame = new FrmAltaNuevoSocio(self,ctrSocio,usuarioLogueado.getNombre());
                 frame.setVisible(true);
             }
         });
@@ -108,7 +110,7 @@ public class FrmPrincipal extends JFrame{
         listarSociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmListaSocios frame = new FrmListaSocios(self);
+                FrmListaSocios frame = new FrmListaSocios(self, ctrSocio);
                 frame.setVisible(true);
             }
         });
@@ -124,7 +126,7 @@ public class FrmPrincipal extends JFrame{
         operacionesAvaladasANombreButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self);
+                FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self, ctrSocio);
                 frame.setVisible(true);
 
             }
@@ -140,7 +142,8 @@ public class FrmPrincipal extends JFrame{
         consultaConsolidadaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmConsultasConsolidadas frame = new FrmConsultasConsolidadas(self,new ctrSGR());
+
+                FrmConsultasConsolidadas frame = new FrmConsultasConsolidadas(self, ctrSocio,new ctrSGR());
                 frame.setVisible(true);
 
             }
