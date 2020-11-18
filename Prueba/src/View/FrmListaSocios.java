@@ -13,6 +13,7 @@ public class FrmListaSocios extends JDialog {
     private JButton convertirEnSocioPlenoButton;
     private JButton agregarAporteButton;
     private JButton verLíneaDeCréditoButton;
+    private JButton generarOperaciónButton;
     private JButton riesgoVivoButton;
     private JButton cerrarButton;
     private JPanel pnlListarSocios;
@@ -55,8 +56,7 @@ public class FrmListaSocios extends JDialog {
 
             }
         });*/
-
-
+        
         verLíneaDeCréditoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

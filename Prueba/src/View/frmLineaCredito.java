@@ -15,7 +15,7 @@ public class frmLineaCredito extends JDialog {
     private JTable table1;
     private JButton cerrarButton;
     private JPanel pnlLineaCredito;
-    private JButton generarOperacionButton;
+    private JButton operarButton;
     private frmLineaCredito self;
 
 
@@ -60,11 +60,11 @@ public class frmLineaCredito extends JDialog {
                 dispose();
             }
         });
-        generarOperacionButton.addActionListener(new ActionListener() {
+        operarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 FrmOperaciones frame = new FrmOperaciones(self);
-                frame.show();
+                frame.setVisible(true);
             }
         });
     }

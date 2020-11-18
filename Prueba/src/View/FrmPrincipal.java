@@ -38,8 +38,6 @@ public class FrmPrincipal extends JFrame{
             ctrSocio = new ctrSocio();
             ctrUsuario = new ctrUsuario();
 
-            //ctrSocio.AddSocio(mdlSocio.CrearSocio ("nombre",));
-
         pnlSocios.setVisible(false);
         pnlConsultasGenerales.setVisible(false);
         pnlLogin.setVisible(true);
