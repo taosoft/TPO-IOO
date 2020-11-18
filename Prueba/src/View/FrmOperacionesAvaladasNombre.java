@@ -13,6 +13,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
     private JTextField txtDesde;
     private JTextField txtHasta;
     private JComboBox comboBox1;
+    private JButton buscarButton;
 
     public FrmOperacionesAvaladasNombre(Window owner) {
         super(owner);

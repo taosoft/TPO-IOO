@@ -1,5 +1,8 @@
 package View;
 
+import controllers.ctrSocio;
+import modelos.mdlSocio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +10,6 @@ import java.awt.event.ActionListener;
 
 public class FrmListaSocios extends JDialog {
     private JPanel pnlPrincipal;
-    private JTextField textField1;
     private JButton convertirEnSocioPlenoButton;
     private JButton agregarAporteButton;
     private JButton verLíneaDeCréditoButton;
@@ -15,9 +17,10 @@ public class FrmListaSocios extends JDialog {
     private JButton riesgoVivoButton;
     private JButton cerrarButton;
     private JPanel pnlListarSocios;
+    private JComboBox cmbCuitSocio;
     private FrmListaSocios self;
 
-    public FrmListaSocios(Window owner) {
+    public FrmListaSocios(Window owner, ctrSocio ctrSocio) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlListarSocios);
@@ -30,6 +33,10 @@ public class FrmListaSocios extends JDialog {
         this.setModal(true);
         this.asociarEventos();
         this.self = this;
+
+        for (mdlSocio socio:ctrSocio.getSocios()) {
+            cmbCuitSocio.addItem(socio.getCuit());
+        };
 
 
 
