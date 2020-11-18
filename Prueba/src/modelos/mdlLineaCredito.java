@@ -39,15 +39,13 @@ public class mdlLineaCredito {
     public void addCheque(mdlCheque cheque){
         cheques.add(cheque);
     }
-<<<<<<< HEAD
-=======
+
     public void addCuentaCorriente(mdlCuentaCorriente cuentaCorriente){
         cuentaCorrientes.add(cuentaCorriente);
     }
     public void addPrestamo(mdlPrestamo prestamo){
         prestamos.add(prestamo);
     }
->>>>>>> e4e6f9cd0cf53983329a30fa479aabdfd43e6ab5
 
     public int getTotalOperacion(){
 
