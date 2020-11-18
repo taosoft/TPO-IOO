@@ -1,5 +1,6 @@
 package View;
 
+import controllers.ctrSGR;
 import controllers.ctrSocio;
 import modelos.estadoSocio;
 import modelos.mdlSocio;
@@ -25,7 +26,7 @@ public class FrmConsultasConsolidadas extends JDialog {
     private JButton salirButton;
     private FrmConsultasConsolidadas self;
 
-    public FrmConsultasConsolidadas(Window owner, ctrSocio ctrSocio) {
+    public FrmConsultasConsolidadas(Window owner, ctrSocio ctrSocio, ctrSGR ctrSgr) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -52,13 +53,14 @@ public class FrmConsultasConsolidadas extends JDialog {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int totalRiesgoVivo = ctrSgr.getConsolidadas("");
+
+
               /*  DefaultTableModel model = new DefaultTableModel();
 
                 model.addColumn("Socios");
                 model.addColumn("Riesgo Vivo");
                 model.addColumn("Total Reutilizado");
-                model.addColumn("Total");
-                model.addColumn("Detalles");
 
                 model.addRow(new Object[]{"1","Computadora","$ 5000"});
                 model.addRow(new Object[]{"2","Computadora","$ 7000"});

@@ -21,11 +21,13 @@ public class mdlSocio {
     private ArrayList<mdlLogEstadoSocio> logs;
     private tipoDocumento tipoDocumento;
     private ArrayList<mdlAporte> aportes;
+    private ArrayList<mdlLineaCredito> lineaCreditos;
 
     public mdlSocio(){
         aportes = new ArrayList<>();
         logs = new ArrayList<>();
         estado = estadoSocio.Postulante;
+        lineaCreditos = new ArrayList<>();
     }
 
     public static mdlSocio CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, String _tipoEmpresa,
@@ -103,6 +105,11 @@ public class mdlSocio {
 
     public String getCuit(){
         return cuit;
+    }
+
+
+    public ArrayList<mdlLineaCredito> getLineaCreditos(){
+        return lineaCreditos;
     }
 
     public void setNombreUsuario(String nombre){
