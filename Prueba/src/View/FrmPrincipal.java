@@ -1,5 +1,6 @@
 package View;
 
+import controllers.ctrSGR;
 import controllers.ctrSocio;
 import controllers.ctrUsuario;
 import modelos.mdlUsuario;
@@ -125,7 +126,7 @@ public class FrmPrincipal extends JFrame{
         operacionesAvaladasANombreButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self);
+                FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self, ctrSocio);
                 frame.setVisible(true);
 
             }
@@ -141,7 +142,8 @@ public class FrmPrincipal extends JFrame{
         consultaConsolidadaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmConsultasConsolidadas frame = new FrmConsultasConsolidadas(self, ctrSocio);
+
+                FrmConsultasConsolidadas frame = new FrmConsultasConsolidadas(self, ctrSocio,new ctrSGR());
                 frame.setVisible(true);
 
             }

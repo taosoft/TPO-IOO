@@ -1,5 +1,8 @@
 package View;
 
+import controllers.ctrSocio;
+import modelos.mdlSocio;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -15,7 +18,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
     private JComboBox comboBox1;
     private JButton buscarButton;
 
-    public FrmOperacionesAvaladasNombre(Window owner) {
+    public FrmOperacionesAvaladasNombre(Window owner, ctrSocio ctrSocio) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -27,6 +30,10 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
+
+        for (mdlSocio socio:ctrSocio.getSocios()) {
+            comboBox1.addItem(socio.getCuit());
+        };
 
 
         DefaultTableModel model = new DefaultTableModel();
