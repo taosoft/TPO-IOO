@@ -153,7 +153,7 @@
             </constraints>
             <properties>
               <model>
-                <item value="Pequeña"/>
+                <item value="Pequena"/>
                 <item value="Mediana"/>
                 <item value="Grande"/>
               </model>

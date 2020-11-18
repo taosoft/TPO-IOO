@@ -36,29 +36,34 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
         };
 
 
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Linea de credito");
-        model.addColumn("Fecha");
-        model.addColumn("Monto");
-        model.addColumn("Tipo operacion");
-
-        model.addRow(new Object[]{"N° 12542","03/02/2019","$50000.-","Respaldo"});
-        model.addRow(new Object[]{"N° 05236","12/03/2019","$30000.-","Inversion"});
-        model.addRow(new Object[]{"N° 87452","26/06/2019","$76000.-","Actualizacion"});
-        model.addRow(new Object[]{"N° 45123","16/09/2019","$10000.-","Respaldo"});
-        model.addRow(new Object[]{"N° 88542","25/11/2019","$23000.-","Respaldo"});
-        model.addRow(new Object[]{"N° 12543","03/01/2020","$46800.-","Respaldo"});
-        model.addRow(new Object[]{"N° 15469","16/06/2020","$12000.-","Respaldo"});
-
-        table1.setModel(model);
-
-
-
-
         cerrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+        buscarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                DefaultTableModel model = new DefaultTableModel();
+
+                model.addColumn("Cuit Socio");
+                model.addColumn("Razon Social");
+                model.addColumn("Tipo");
+
+
+                for(mdlSocio socio:ctrSocio.getSocios()){
+
+                    model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio()});
+
+                }
+
+                table1.setModel(model);
+
+
+
             }
         });
     }
