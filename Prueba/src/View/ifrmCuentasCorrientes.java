@@ -6,9 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ifrmCuentasCorrientes extends JDialog{
-    private JTextField txtEmpresa;
-    private JTextField txtImporteTotal;
-    private JTextField txtFechaVencimiento;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
     private JButton cerrarButton;
     private JButton confirmarButton;
     private JPanel pnlCuentasCorrientes;
@@ -34,16 +34,5 @@ public class ifrmCuentasCorrientes extends JDialog{
                 dispose();
             }
         });
-
-
-        confirmarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-
-            }
-        });
-
-
     }
 }
