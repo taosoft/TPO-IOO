@@ -40,6 +40,16 @@ public class mdlLineaCredito {
 
     }
 
+    public void addCheque(mdlCheque cheque){
+        cheques.add(cheque);
+    }
+    public void addCuentaCorriente(mdlCuentaCorriente cuentaCorriente){
+        cuentaCorrientes.add(cuentaCorriente);
+    }
+    public void addPrestamo(mdlPrestamo prestamo){
+        prestamos.add(prestamo);
+    }
+
     public int getTotalOperacion(){
 
         int contadorOperaciones = 0;
