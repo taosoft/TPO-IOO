@@ -47,7 +47,7 @@ public class FrmAltaNuevoSocio extends JDialog {
 
                 ctrSocio.AddSocio(mdlSocio.CrearSocio(nombreUsuario,txtCuit.getText(),txtRazonSocial.getText(),
                         cmbTipoEmpresa.getSelectedItem().toString(),txtActividad.getText(),txtDireccion.getText(),
-                        txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), tipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString())));
+                        txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), tipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString()),null));
                 dispose();
 
             }

@@ -15,13 +15,16 @@ public class mdlOperacion {
         fecha = new Date();
     }
 
-    public void crearOperacion(tipoOperacion _tipoOperacion, mdlCertificadoGarantia _certificadoGarantia, mdlSocio _socio, mdlComision _comision, estadoOperacion _estadoOperacion, Date _fecha){
-        tipo = _tipoOperacion.toString();
-        certificadoGarantia = _certificadoGarantia;
-        socio = _socio;
-        comision = _comision;
-        estadoOperacion = _estadoOperacion;
-        fecha = _fecha;
+    public static void crearOperacion(tipoOperacion _tipoOperacion, mdlCertificadoGarantia _certificadoGarantia, mdlSocio _socio, mdlComision _comision, estadoOperacion _estadoOperacion, Date _fecha){
+
+        var operacion = new mdlOperacion();
+
+        operacion.tipo = _tipoOperacion.toString();
+        operacion.certificadoGarantia = _certificadoGarantia;
+        operacion.socio = _socio;
+        operacion.comision = _comision;
+        operacion.estadoOperacion = _estadoOperacion;
+        operacion.fecha = _fecha;
     }
 
     public String getTipo(){

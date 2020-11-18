@@ -1,21 +1,16 @@
 package View;
 
+import controllers.ctrLineaCredito;
+import controllers.ctrOperacion;
 import controllers.ctrSGR;
 import controllers.ctrSocio;
-import modelos.estadoSocio;
-import modelos.mdlSocio;
-import modelos.tipoDocumento;
-import modelos.tipoSocio;
+import modelos.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class FrmConsultasConsolidadas extends JDialog {
@@ -25,6 +20,7 @@ public class FrmConsultasConsolidadas extends JDialog {
     private JButton buscarButton;
     private JButton salirButton;
     private FrmConsultasConsolidadas self;
+    private ctrSocio ctrSocio;
 
     public FrmConsultasConsolidadas(Window owner, ctrSocio ctrSocio, ctrSGR ctrSgr) {
         super(owner);
@@ -40,12 +36,11 @@ public class FrmConsultasConsolidadas extends JDialog {
         this.asociarEventos();
 
         this.self = this;
-        /*String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
-        comboBox1 = new JComboBox(petStrings);
-        comboBox1.setModel();*/
-        ArrayList<mdlSocio> socios = obtenerListaSoscios();
+        this.ctrSocio = ctrSocio;
 
-        for (mdlSocio socio:ctrSocio.getSocios()) {
+        cargarListaSocios();
+
+        for (mdlSocio socio:this.ctrSocio.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
@@ -53,46 +48,99 @@ public class FrmConsultasConsolidadas extends JDialog {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int totalRiesgoVivo = ctrSgr.getConsolidadas("");
+              var cuit = comboBox1.getSelectedItem();
 
+              int totalRiesgoVivo = ctrSgr.getConsolidadas(cuit.toString());
+              int totalUtilizadoLinea = totalRiesgoVivo + ctrSgr.getTotalUtilizado(cuit.toString());
 
-              /*  DefaultTableModel model = new DefaultTableModel();
+                DefaultTableModel model = new DefaultTableModel();
 
                 model.addColumn("Socios");
                 model.addColumn("Riesgo Vivo");
                 model.addColumn("Total Reutilizado");
 
-                model.addRow(new Object[]{"1","Computadora","$ 5000"});
-                model.addRow(new Object[]{"2","Computadora","$ 7000"});
-                model.addRow(new Object[]{"3","Computadora","$ 4000"});
-                model.addRow(new Object[]{"4","Computadora","$ 1000"});
-                model.addRow(new Object[]{"5","Computadora","$ 500"});
-                model.addRow(new Object[]{"6","Computadora","$ 2000"});
+                model.addRow(new Object[]{cuit,totalRiesgoVivo,totalUtilizadoLinea});
 
-                table1.setModel(model);*/
+                table1.setModel(model);
 
             }
         });
     }
 
-    private ArrayList<mdlSocio> obtenerListaSoscios(){
+    private void cargarListaSocios(){
+        ctrLineaCredito ctrLineaCredito = new ctrLineaCredito();
 
-        ctrSocio ctrSocio = new ctrSocio();
         var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.","Comunidad de bienes",
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
-                new Date(), tipoSocio.Participe);
+                new Date(), tipoSocio.Participe,null);
 
-        ctrSocio.AddSocio((socio));
+        this.ctrSocio.AddSocio((socio));
 
-        mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.","Comunidad de bienes",
+        ctrLineaCredito.addLineaCredito(cargarLineaCredito(socio));
+
+        socio = new mdlSocio();
+
+        socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.","Comunidad de bienes",
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
-                new Date(), tipoSocio.Participe);
+                new Date(), tipoSocio.Participe,ctrLineaCredito.getLineaCreditos());
 
-        ctrSocio.AddSocio((socio));
-
-        return ctrSocio.getSocios();
+        this.ctrSocio.AddSocio((socio));
     }
 
+    private mdlLineaCredito cargarLineaCredito(mdlSocio socio){
+        var lineaCredito = new mdlLineaCredito();
+        var operacion = new ctrOperacion();
+
+        operacion.addOperacion(cargarCheque(socio));
+        operacion.addOperacion(cargarCuentaCorriente(socio));
+        operacion.addOperacion(cargarPrestamo(socio));
+
+        lineaCredito.crearLineaCredito(new Date("23/12/2020"),250,null,operacion.getCheques(),operacion.getPrestamos(),
+                                        operacion.getCuentaCorrientes());
+
+        return lineaCredito;
+    }
+
+    private mdlCheque cargarCheque(mdlSocio socio){
+        var certificadoGarantia = new mdlCertificadoGarantia();
+        certificadoGarantia.crearCertificadoGarantia(2);
+
+        var comision = new mdlComision();
+        comision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+
+        var cheque = new mdlCheque();
+        cheque.crearOperacion(tipoOperacion.ChequePropio,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
+        cheque.crearOperacion(tipoOperacion.ChequeTerceros,certificadoGarantia,socio,comision,estadoOperacion.Ingresado,new Date("10/11/2020"));
+
+        return  cheque;
+    }
+
+
+    private mdlPrestamo cargarPrestamo(mdlSocio socio){
+        var certificadoGarantia = new mdlCertificadoGarantia();
+        certificadoGarantia.crearCertificadoGarantia(2);
+
+        var comision = new mdlComision();
+        comision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+
+        var prestamo = new mdlPrestamo();
+        prestamo.crearOperacion(tipoOperacion.Prestamo,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
+
+        return  prestamo;
+    }
+
+    private mdlCuentaCorriente cargarCuentaCorriente(mdlSocio socio){
+        var certificadoGarantia = new mdlCertificadoGarantia();
+        certificadoGarantia.crearCertificadoGarantia(2);
+
+        var comision = new mdlComision();
+        comision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+
+        var cuentaCorriente = new mdlCuentaCorriente();
+        cuentaCorriente.crearOperacion(tipoOperacion.CCComercial,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
+
+        return  cuentaCorriente;
+    }
 
     private void asociarEventos(){
         salirButton.addActionListener(new ActionListener() {
