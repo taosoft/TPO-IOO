@@ -2,10 +2,7 @@ package View;
 
 import controllers.ctrSGR;
 import controllers.ctrSocio;
-import modelos.estadoSocio;
-import modelos.mdlSocio;
-import modelos.tipoDocumento;
-import modelos.tipoSocio;
+import modelos.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -78,13 +75,13 @@ public class FrmConsultasConsolidadas extends JDialog {
     private ArrayList<mdlSocio> obtenerListaSoscios(){
 
         ctrSocio ctrSocio = new ctrSocio();
-        var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.","Comunidad de bienes",
+        var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.", tipoEmpresa.Grande,
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
                 new Date(), tipoSocio.Participe);
 
         ctrSocio.AddSocio((socio));
 
-        mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.","Comunidad de bienes",
+        mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.",tipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
                 new Date(), tipoSocio.Participe);
 

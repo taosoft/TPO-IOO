@@ -26,6 +26,9 @@ public class mdlLineaCredito {
         tipoOperaciones = _tipoOperaciones;
     }
 
+    public ArrayList<mdlCheque> getCheques() {
+        return cheques;
+    }
 
     public int getTotalOperacion(){
 

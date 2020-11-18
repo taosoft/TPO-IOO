@@ -9,7 +9,7 @@ public class mdlSocio {
     private String nombreUsuario;
     private String cuit;
     private String razonSocial;
-    private String tipoEmpresa;
+    private tipoEmpresa tipoEmpresa;
     private String actividadPrincipal;
     private String direccion;
     private String telefono;
@@ -30,7 +30,7 @@ public class mdlSocio {
         lineaCreditos = new ArrayList<>();
     }
 
-    public static mdlSocio CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, String _tipoEmpresa,
+    public static mdlSocio CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, tipoEmpresa _tipoEmpresa,
                                       String _actividadPrincipal, String _direccion, String _telefono, String _email,
                                       Date _fechaInicioActividades, tipoSocio _tipoSocio){
         var nuevoSocio = new mdlSocio();
@@ -59,7 +59,7 @@ public class mdlSocio {
         return razonSocial;
     }
 
-    public String getTipoEmpresa(){
+    public tipoEmpresa getTipoEmpresa(){
         return tipoEmpresa;
     }
 
@@ -120,7 +120,7 @@ public class mdlSocio {
         this.razonSocial = razonSocial;
     }
 
-    public void setTipoEmpresa(String tipoEmpresa){
+    public void setTipoEmpresa(tipoEmpresa tipoEmpresa){
         this.tipoEmpresa = tipoEmpresa;
     }
 

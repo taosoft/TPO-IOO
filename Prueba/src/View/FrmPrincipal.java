@@ -135,7 +135,7 @@ public class FrmPrincipal extends JFrame{
         valorPromedioDeTasaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmPromedioTasaDeDescuento frame = new FrmPromedioTasaDeDescuento(self);
+                FrmPromedioTasaDeDescuento frame = new FrmPromedioTasaDeDescuento(self,ctrSocio );
                 frame.setVisible(true);
             }
         });
