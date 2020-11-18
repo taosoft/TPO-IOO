@@ -1,10 +1,11 @@
+
 package View;
 
 import controllers.ctrSGR;
 import controllers.ctrSocio;
 import controllers.ctrUsuario;
 import modelos.mdlUsuario;
-
+import modelos.mdlSocio;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -135,7 +136,7 @@ public class FrmPrincipal extends JFrame{
         valorPromedioDeTasaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmPromedioTasaDeDescuento frame = new FrmPromedioTasaDeDescuento(self);
+                FrmPromedioTasaDeDescuento frame = new FrmPromedioTasaDeDescuento(self,ctrSocio );
                 frame.setVisible(true);
             }
         });
@@ -162,4 +163,3 @@ public class FrmPrincipal extends JFrame{
             frame.setVisible(true);
         }
     }
-

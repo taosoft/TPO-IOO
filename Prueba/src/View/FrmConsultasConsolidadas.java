@@ -70,7 +70,7 @@ public class FrmConsultasConsolidadas extends JDialog {
     private void cargarListaSocios(){
         ctrLineaCredito ctrLineaCredito = new ctrLineaCredito();
 
-        var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.","Comunidad de bienes",
+        var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.",tipoEmpresa.Mediana,
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
                 new Date(), tipoSocio.Participe,null);
 
@@ -80,7 +80,7 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         socio = new mdlSocio();
 
-        socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.","Comunidad de bienes",
+        socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.",tipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
                 new Date(), tipoSocio.Participe,ctrLineaCredito.getLineaCreditos());
 
