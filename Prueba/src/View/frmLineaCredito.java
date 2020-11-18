@@ -15,6 +15,8 @@ public class frmLineaCredito extends JDialog {
     private JTable table1;
     private JButton cerrarButton;
     private JPanel pnlLineaCredito;
+    private JButton operarButton;
+    private frmLineaCredito self;
 
 
     public frmLineaCredito(Window owner, ctrSocio ctrSocio) {
@@ -27,7 +29,7 @@ public class frmLineaCredito extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
-        //this.self = this;
+        this.self = this;
 
         for (mdlSocio socio:ctrSocio.getSocios()) {
             lblCliente.setText(socio.getCuit());
@@ -56,6 +58,13 @@ public class frmLineaCredito extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+        operarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmOperaciones frame = new FrmOperaciones(self);
+                frame.setVisible(true);
             }
         });
     }
