@@ -20,10 +20,11 @@ public class mdlLineaCredito {
     }
 
 
-    public static void crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<mdlTipoOperacion> _tipoOperaciones,
+    public static mdlLineaCredito crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<mdlTipoOperacion> _tipoOperaciones,
                                          ArrayList<mdlCheque> _cheques, ArrayList<mdlPrestamo> _prestamos, ArrayList<mdlCuentaCorriente> _cuentaCorrientes){
 
         var lineaCredito = new mdlLineaCredito();
+
         lineaCredito.fechaVigencia = _fechaVigencia;
         lineaCredito.monto = _monto;
         lineaCredito.tipoOperaciones = _tipoOperaciones;
@@ -31,6 +32,8 @@ public class mdlLineaCredito {
         lineaCredito.cheques = _cheques;
         lineaCredito.cuentaCorrientes = _cuentaCorrientes;
         lineaCredito.prestamos = _prestamos;
+
+        return lineaCredito;
     }
 
     public int getTotalOperacion(){

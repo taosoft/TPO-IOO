@@ -14,7 +14,7 @@ public class mdlComision {
         estadoComision = modelos.estadoComision.Calculada;
     }
 
-    public void crearComision(String _tipo, Date _fechaCambio,estadoComision _estadoComision, String _tipoCambioRealizado, String _nombreResponsable){
+    public static mdlComision crearComision(String _tipo, Date _fechaCambio,estadoComision _estadoComision, String _tipoCambioRealizado, String _nombreResponsable){
 
         var comision = new mdlComision();
 
@@ -23,6 +23,8 @@ public class mdlComision {
         comision.estadoComision = _estadoComision;
         comision.tipoCambioRealizado = _tipoCambioRealizado;
         comision.nombreResponsable = _nombreResponsable;
+
+        return comision;
     }
 
     public String getTipo(){
