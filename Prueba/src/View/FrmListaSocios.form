@@ -82,7 +82,7 @@
               </component>
             </children>
           </grid>
-          <component id="34a50" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+          <component id="34a50" class="javax.swing.JComboBox" binding="cmbCuitSocio">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>

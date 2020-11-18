@@ -41,8 +41,8 @@ public class FrmConsultasConsolidadas extends JDialog {
         this.self = this;
         /*String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
         comboBox1 = new JComboBox(petStrings);
-       comboBox1.setModel();*/
-     ArrayList<mdlSocio> socios = obtenerListaSoscios();
+        comboBox1.setModel();*/
+        ArrayList<mdlSocio> socios = obtenerListaSoscios();
 
         for (mdlSocio socio:ctrSocio.getSocios()) {
             comboBox1.addItem(socio.getCuit());

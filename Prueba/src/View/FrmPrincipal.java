@@ -109,7 +109,7 @@ public class FrmPrincipal extends JFrame{
         listarSociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmListaSocios frame = new FrmListaSocios(self);
+                FrmListaSocios frame = new FrmListaSocios(self, ctrSocio);
                 frame.setVisible(true);
             }
         });
