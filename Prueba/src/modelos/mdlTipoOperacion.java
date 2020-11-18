@@ -24,4 +24,5 @@ private mdlOperacion operacion;
     public modelos.numeracionTipoOperacion getNumeracionTipoOperacion() {
         return numeracionTipoOperacion;
     }
+
 }

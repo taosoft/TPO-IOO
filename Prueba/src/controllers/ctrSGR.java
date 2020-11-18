@@ -44,9 +44,32 @@ public class ctrSGR {
                     socio = socioLista;                
             }
 
-        /*int totalConsolidadas =socio.getLineaCredito().getTotalOperacion(socio);*/
+        int contadorRiesgoVivo = 0;
 
-        return 0;
+        for (mdlLineaCredito lineaCredito: socio.getLineaCreditos()) {
+            contadorRiesgoVivo += lineaCredito.getTotalOperacion();
+        }
+
+        return contadorRiesgoVivo;
+    }
+
+    public int getTotalUtilizado(String cuit){
+
+        mdlSocio socio = new mdlSocio();
+
+        // Obtengo el socio de la lista de socios
+        for(mdlSocio socioLista: socios){
+            if(socioLista.getCuit() == cuit)
+                socio = socioLista;
+        }
+
+        int contadorUtilizadoLinea = 0;
+
+        for (mdlLineaCredito lineaCredito: socio.getLineaCreditos()) {
+            contadorUtilizadoLinea += lineaCredito.getTotalOperacion();
+        }
+
+        return contadorUtilizadoLinea;
     }
 
 }

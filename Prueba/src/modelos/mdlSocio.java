@@ -27,6 +27,7 @@ public class mdlSocio {
         aportes = new ArrayList<>();
         logs = new ArrayList<>();
         estado = estadoSocio.Postulante;
+        lineaCreditos = new ArrayList<>();
     }
 
     public static mdlSocio CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, String _tipoEmpresa,
