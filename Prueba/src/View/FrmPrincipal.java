@@ -90,7 +90,7 @@ public class FrmPrincipal extends JFrame{
         btnCerrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //dispose();
+                dispose();
             }
         });
     }

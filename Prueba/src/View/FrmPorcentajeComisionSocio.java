@@ -28,6 +28,12 @@ public class FrmPorcentajeComisionSocio extends JDialog {
         this.setModal(true);
         this.asociarEventos();
 
+        buscarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     private void asociarEventos() {
@@ -35,5 +41,10 @@ public class FrmPorcentajeComisionSocio extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {dispose();}
         });
+
+        ButtonGroup group = new ButtonGroup();
+        group.add(tipo1RadioButton);
+        group.add(tipo2RadioButton);
+        group.add(tipo3RadioButton);
     }
 }
