@@ -20,6 +20,7 @@ public class mdlSocio {
     private ArrayList<mdlLogEstadoSocio> logs;
     private tipoDocumento tipoDocumento;
     private ArrayList<mdlAporte> aportes;
+    private ArrayList<mdlLineaCredito> lineaCreditos;
 
 
     public void obtenerSocio(String _cuit){
@@ -101,5 +102,9 @@ public class mdlSocio {
 
     public String getCuit(){
         return cuit;
+    }
+
+    public ArrayList<mdlLineaCredito> getLineaCreditos(){
+        return lineaCreditos;
     }
 }

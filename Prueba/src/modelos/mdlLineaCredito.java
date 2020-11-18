@@ -15,6 +15,25 @@ public class mdlLineaCredito {
         tipoOperaciones = _tipoOperaciones;
     }
 
+
+    public int getTotalOperacion(mdlSocio _socio){
+
+        int contadorOperaciones = 0;
+
+        // Recorro la lista del tipo de operaciones
+        for (mdlTipoOperacion tipoOperacionLista: tipoOperaciones) {
+            // Consulto si el tipo de operación es igual al que posee la línea de crédito
+            if(tipoOperacionLista.toString() == tipoOperacionLista.getOperacion().getTipo())
+            {
+                contadorOperaciones++;
+            }
+        }
+
+        return contadorOperaciones;
+    }
+
+
+
     public Date getFechaVigencia(){
         return fechaVigencia;
     }

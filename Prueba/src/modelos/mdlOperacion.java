@@ -10,8 +10,8 @@ public class mdlOperacion {
     private estadoOperacion estadoOperacion;
     private Date fecha;
 
-    public void crearOperacion(String _tipo, mdlCertificadoGarantia _certificadoGarantia, mdlSocio _socio, mdlComision _comision, estadoOperacion _estadoOperacion, Date _fecha){
-        tipo = _tipo;
+    public void crearOperacion(tipoOperacion _tipoOperacion, mdlCertificadoGarantia _certificadoGarantia, mdlSocio _socio, mdlComision _comision, estadoOperacion _estadoOperacion, Date _fecha){
+        tipo = _tipoOperacion.toString();
         certificadoGarantia = _certificadoGarantia;
         socio = _socio;
         comision = _comision;
@@ -42,4 +42,5 @@ public class mdlOperacion {
     public Date getFecha() {
         return fecha;
     }
+
 }
