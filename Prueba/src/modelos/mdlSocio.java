@@ -30,8 +30,7 @@ public class mdlSocio {
 
     public static mdlSocio CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, String _tipoEmpresa,
                                       String _actividadPrincipal, String _direccion, String _telefono, String _email,
-                                      Date _fechaRecepcion, Date _fechaInicioActividades, tipoSocio _tipoSocio,
-                                      tipoDocumento _tipoDocumento){
+                                      Date _fechaInicioActividades, tipoSocio _tipoSocio){
         var nuevoSocio = new mdlSocio();
 
         nuevoSocio.setNombreUsuario(_nombreUsuario);
@@ -42,10 +41,10 @@ public class mdlSocio {
         nuevoSocio.setDireccion(_direccion);
         nuevoSocio.setTelefono(_telefono);
         nuevoSocio.setEmail(_email);
-        nuevoSocio.setFechaRecepcion(_fechaRecepcion);
+
         nuevoSocio.setFechaInicioActividades(_fechaInicioActividades);
         nuevoSocio.setTipoSocio(_tipoSocio);
-        nuevoSocio.setTipoDocumento(_tipoDocumento);
+
 
         return nuevoSocio;
     }

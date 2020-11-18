@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 public class FrmListaSocios extends JDialog {
     private JPanel pnlPrincipal;
-    private JTextField textField1;
     private JButton convertirEnSocioPlenoButton;
     private JButton agregarAporteButton;
     private JButton verLíneaDeCréditoButton;
@@ -15,6 +14,7 @@ public class FrmListaSocios extends JDialog {
     private JButton riesgoVivoButton;
     private JButton cerrarButton;
     private JPanel pnlListarSocios;
+    private JComboBox comboBox1;
     private FrmListaSocios self;
 
     public FrmListaSocios(Window owner) {

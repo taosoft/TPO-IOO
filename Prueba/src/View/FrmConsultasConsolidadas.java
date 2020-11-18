@@ -25,7 +25,7 @@ public class FrmConsultasConsolidadas extends JDialog {
     private JButton salirButton;
     private FrmConsultasConsolidadas self;
 
-    public FrmConsultasConsolidadas(Window owner) {
+    public FrmConsultasConsolidadas(Window owner, ctrSocio ctrSocio) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -44,7 +44,7 @@ public class FrmConsultasConsolidadas extends JDialog {
        comboBox1.setModel();*/
      ArrayList<mdlSocio> socios = obtenerListaSoscios();
 
-        for (mdlSocio socio:socios) {
+        for (mdlSocio socio:ctrSocio.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
@@ -78,15 +78,13 @@ public class FrmConsultasConsolidadas extends JDialog {
         ctrSocio ctrSocio = new ctrSocio();
         var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.","Comunidad de bienes",
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
-                new Date(),new Date(), tipoSocio.Participe,
-                tipoDocumento.Estatuto);
+                new Date(), tipoSocio.Participe);
 
         ctrSocio.AddSocio((socio));
 
         mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.","Comunidad de bienes",
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
-                new Date(),new Date(), tipoSocio.Participe,
-                tipoDocumento.Estatuto);
+                new Date(), tipoSocio.Participe);
 
         ctrSocio.AddSocio((socio));
 
