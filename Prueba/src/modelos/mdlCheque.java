@@ -1,20 +1,34 @@
 package modelos;
 
-public class mdlCheque extends mdlOperacion{
+
+import java.util.ArrayList;
+import java.util.Date;
+
+
+
+
+public class mdlCheque extends mdlOperacion {
     private int importePagado;
     private int tasaDeDescuento;
-    public void setTasaDeDescuento(int tasaDeDescuento){
+    private String bancoEmisor;
+    private String numeroCheque;
+    private Date fechaVencimiento;
+    private String cuitFirmante;
+
+    public void setTasaDeDescuento(int tasaDeDescuento) {
         this.tasaDeDescuento = tasaDeDescuento;
     }
-    public int getTasaDeDescuento(){
+
+    public int getTasaDeDescuento() {
         return tasaDeDescuento;
     }
 
-    public void importeAPagar(int _importePagado){
+    public void importeAPagar(int _importePagado) {
         importePagado = _importePagado;
     }
 
-    public int getImportePagado(){
+    public int getImportePagado() {
         return importePagado;
     }
+
 }

@@ -1,5 +1,8 @@
 package View;
 
+import controllers.ctrSocio;
+import modelos.mdlSocio;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -8,13 +11,13 @@ import java.awt.event.ActionListener;
 
 public class frmLineaCredito extends JDialog {
 
-    private JLabel lblicon;
+    private JLabel lblCliente;
     private JTable table1;
     private JButton cerrarButton;
     private JPanel pnlLineaCredito;
 
 
-    public frmLineaCredito(Window owner) {
+    public frmLineaCredito(Window owner, ctrSocio ctrSocio) {
         super(owner);
         this.setContentPane(pnlLineaCredito);
         this.setSize(500, 400);
@@ -25,6 +28,10 @@ public class frmLineaCredito extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         //this.self = this;
+
+        for (mdlSocio socio:ctrSocio.getSocios()) {
+            lblCliente.setText(socio.getCuit());
+        };
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Linea de credito");
