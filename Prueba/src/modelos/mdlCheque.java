@@ -1,6 +1,7 @@
 package modelos;
 
 import java.util.Date;
+
 public class mdlCheque extends mdlOperacion {
     private int importePagado;
     private int tasaDeDescuento;
@@ -26,5 +27,13 @@ public class mdlCheque extends mdlOperacion {
 
     public int getImportePagado() {
         return importePagado;
+    }
+
+    public String getNumeroCheque() {
+        return numeroCheque;
+    }
+
+    public void setNumeroCheque(String numeroCheque) {
+        this.numeroCheque = numeroCheque;
     }
 }
