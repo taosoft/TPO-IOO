@@ -76,16 +76,17 @@ public class FrmConsultasConsolidadas extends JDialog {
     private ArrayList<mdlSocio> obtenerListaSoscios(){
 
         ctrSocio ctrSocio = new ctrSocio();
-        mdlSocio socio = new mdlSocio();
-
-        socio.CrearSocio("Mario","30715645579","Empresa S.A.","Comunidad de bienes","comercialización", "libertadores 123",
-                        "353535","dasd@sadas.com",new Date(),new Date(),estadoSocio.Socio, tipoSocio.Participe,null, tipoDocumento.Estatuto,null);
+        var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.","Comunidad de bienes",
+                "comercialización", "libertadores 123","353535","dasd@sadas.com",
+                new Date(),new Date(), tipoSocio.Participe,
+                tipoDocumento.Estatuto);
 
         ctrSocio.AddSocio((socio));
 
-        socio = new mdlSocio();
-        socio.CrearSocio("Juan","30801032158","Luz S.A.","Comunidad de bienes","comercialización", "Chacabuco 123",
-                "353535","dasd@sadas.com",new Date(),new Date(),estadoSocio.Socio, tipoSocio.Participe,null, tipoDocumento.Estatuto,null);
+        mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.","Comunidad de bienes",
+                "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
+                new Date(),new Date(), tipoSocio.Participe,
+                tipoDocumento.Estatuto);
 
         ctrSocio.AddSocio((socio));
 

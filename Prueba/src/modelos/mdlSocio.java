@@ -2,6 +2,7 @@ package modelos;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class mdlSocio {
 
@@ -21,30 +22,32 @@ public class mdlSocio {
     private tipoDocumento tipoDocumento;
     private ArrayList<mdlAporte> aportes;
 
-
-    public void obtenerSocio(String _cuit){
-        cuit = _cuit;
+    public mdlSocio(){
+        aportes = new ArrayList<>();
+        logs = new ArrayList<>();
+        estado = estadoSocio.Postulante;
     }
 
-    public void CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, String _tipoEmpresa, String _actividadPrincipal, String _direccion,
-                           String _telefono, String _email, Date _fechaRecepcion, Date _fechaInicioActividades, estadoSocio _estado, tipoSocio _tipoSocio,
-                           ArrayList<mdlLogEstadoSocio> _logs, tipoDocumento _tipoDocumento, ArrayList<mdlAporte> _aportes){
+    public static mdlSocio CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, String _tipoEmpresa,
+                                      String _actividadPrincipal, String _direccion, String _telefono, String _email,
+                                      Date _fechaRecepcion, Date _fechaInicioActividades, tipoSocio _tipoSocio,
+                                      tipoDocumento _tipoDocumento){
+        var nuevoSocio = new mdlSocio();
 
-        nombreUsuario = _nombreUsuario;
-        cuit = _cuit;
-        razonSocial = _razonSocial;
-        tipoEmpresa = _tipoEmpresa;
-        actividadPrincipal = _actividadPrincipal;
-        direccion = _direccion;
-        telefono = _telefono;
-        email = _email;
-        fechaRecepcion = _fechaRecepcion;
-        fechaInicioActividades = _fechaInicioActividades;
-        estado = _estado;
-        tipoSocio = _tipoSocio;
-        logs = _logs;
-        tipoDocumento = _tipoDocumento;
-        aportes = _aportes;
+        nuevoSocio.setNombreUsuario(_nombreUsuario);
+        nuevoSocio.setCuit(_cuit);
+        nuevoSocio.setRazonSocial(_razonSocial);
+        nuevoSocio.setTipoEmpresa(_tipoEmpresa);
+        nuevoSocio.setActividadPrincipal(_actividadPrincipal);
+        nuevoSocio.setDireccion(_direccion);
+        nuevoSocio.setTelefono(_telefono);
+        nuevoSocio.setEmail(_email);
+        nuevoSocio.setFechaRecepcion(_fechaRecepcion);
+        nuevoSocio.setFechaInicioActividades(_fechaInicioActividades);
+        nuevoSocio.setTipoSocio(_tipoSocio);
+        nuevoSocio.setTipoDocumento(_tipoDocumento);
+
+        return nuevoSocio;
     }
 
     public String getNombreUsuario(){
@@ -101,5 +104,57 @@ public class mdlSocio {
 
     public String getCuit(){
         return cuit;
+    }
+
+    public void setNombreUsuario(String nombre){
+        nombreUsuario = nombre;
+    }
+
+    public void setRazonSocial(String razonSocial){
+        this.razonSocial = razonSocial;
+    }
+
+    public void setTipoEmpresa(String tipoEmpresa){
+        this.tipoEmpresa = tipoEmpresa;
+    }
+
+    public void setDireccion(String direccion){
+        this.direccion = direccion;
+    }
+
+    public void setTelefono(String telefono){
+        this.telefono = telefono;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setFechaRecepcion(Date fechaRecepcion){
+        this.fechaRecepcion = fechaRecepcion;
+    }
+
+    public void setFechaInicioActividades(Date fechaInicioActividades){
+        this.fechaInicioActividades = fechaInicioActividades;
+    }
+
+    public void setEstadoSocio(estadoSocio estado){
+        this.estado = estado;
+    }
+
+    public void setTipoSocio(tipoSocio tipoSocio){
+        this.tipoSocio = tipoSocio;
+    }
+
+    public void setTipoDocumento(tipoDocumento tipoDocumento){
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public void setCuit(String cuit){
+        this.cuit = cuit;
+    }
+
+    public void setActividadPrincipal(String actividadPrincipal){
+        this.actividadPrincipal = actividadPrincipal;
     }
 }
