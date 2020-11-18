@@ -38,7 +38,7 @@ public class FrmAltaNuevoSocio extends JDialog {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ctrSocio.AddSocio(new mdlSocio()
+                ctrSocio.AddSocio(new mdlSocio());
             }
         });
     }
