@@ -1,15 +1,19 @@
 package View;
 
+import modelos.mdlSocio;
+import modelos.tipoSocio;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 public class ifrmCheque extends JDialog {
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
+    private JTextField txtBancoEmisor;
+    private JTextField txtNumeroCheque;
+    private JTextField txtFechaVencimiento;
+    private JTextField txtCuitFirmante;
     private JButton cerrarButton;
     private JButton confirmarButton;
     private JPanel pnlCheque;
@@ -38,5 +42,22 @@ public class ifrmCheque extends JDialog {
                 dispose();
             }
         });
+
+
+
+        confirmarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+
+            }
+        });
+
+
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }

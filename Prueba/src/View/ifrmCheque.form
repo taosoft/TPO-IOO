@@ -16,7 +16,7 @@
           <text value="Banco Emisor:"/>
         </properties>
       </component>
-      <component id="cbd05" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="cbd05" class="javax.swing.JTextField" binding="txtBancoEmisor">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -48,7 +48,7 @@
           <text value="Cuit Firmante:"/>
         </properties>
       </component>
-      <component id="354aa" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+      <component id="354aa" class="javax.swing.JTextField" binding="txtNumeroCheque">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -56,7 +56,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="51654" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+      <component id="51654" class="javax.swing.JTextField" binding="txtFechaVencimiento">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -64,7 +64,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="22cb6" class="javax.swing.JTextField" binding="textField4" default-binding="true">
+      <component id="22cb6" class="javax.swing.JTextField" binding="txtCuitFirmante" custom-create="true">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
