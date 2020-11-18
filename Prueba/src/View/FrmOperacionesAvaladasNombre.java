@@ -1,5 +1,6 @@
 package View;
 
+import controllers.ctrSGR;
 import controllers.ctrSocio;
 import modelos.mdlSocio;
 
@@ -17,6 +18,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
     private JTextField txtHasta;
     private JComboBox comboBox1;
     private JButton buscarButton;
+    private ctrSocio ctrSocio;
 
     public FrmOperacionesAvaladasNombre(Window owner, ctrSocio ctrSocio) {
         super(owner);
@@ -36,6 +38,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
         };
 
 
+        /*
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Linea de credito");
         model.addColumn("Fecha");
@@ -51,7 +54,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
         model.addRow(new Object[]{"N° 15469","16/06/2020","$12000.-","Respaldo"});
 
         table1.setModel(model);
-
+        */
 
 
 
@@ -61,6 +64,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
                 dispose();
             }
         });
+
     }
 
     private void asociarEventos()

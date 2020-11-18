@@ -56,7 +56,7 @@ public class FrmListaSocios extends JDialog {
 
             }
         });*/
-        
+
         verLíneaDeCréditoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
