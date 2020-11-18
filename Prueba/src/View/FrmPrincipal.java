@@ -125,7 +125,7 @@ public class FrmPrincipal extends JFrame{
         operacionesAvaladasANombreButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self);
+                FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self, ctrSocio);
                 frame.setVisible(true);
 
             }
