@@ -1,13 +1,14 @@
 package View;
-
-import modelos.mdlSocio;
-import modelos.tipoSocio;
+import controllers.ctrSocio;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
+import modelos.mdlCheque;
+import modelos.mdlLineaCredito;
 
 public class ifrmCheque extends JDialog {
     private JTextField txtBancoEmisor;
@@ -18,8 +19,9 @@ public class ifrmCheque extends JDialog {
     private JButton confirmarButton;
     private JPanel pnlCheque;
     private ifrmCheque self;
+    private ctrSocio ctrSocio;
 
-    public ifrmCheque(Window owner) {
+    public ifrmCheque(Window owner, mdlLineaCredito mdlLineaCredito) {
 
         super(owner);
         this.setContentPane(pnlCheque);
@@ -30,11 +32,6 @@ public class ifrmCheque extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
-        //this.self = this;
-
-
-
-
 
         cerrarButton.addActionListener(new ActionListener() {
             @Override
@@ -43,18 +40,15 @@ public class ifrmCheque extends JDialog {
             }
         });
 
-
-
         confirmarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mdlLineaCredito.addCheque(new mdlCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
+                        new Date(txtFechaVencimiento.getText()), txtCuitFirmante.getText()));
 
-
-
+                dispose();
             }
         });
-
-
     }
 
     private void createUIComponents() {

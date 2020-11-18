@@ -36,6 +36,10 @@ public class mdlLineaCredito {
         return cheques;
     }
 
+    public void addCheque(mdlCheque cheque){
+        cheques.add(cheque);
+    }
+
     public int getTotalOperacion(){
 
         int contadorOperaciones = 0;

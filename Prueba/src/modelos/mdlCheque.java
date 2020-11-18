@@ -11,6 +11,14 @@ public class mdlCheque extends mdlOperacion {
     private Date fechaVencimiento;
     private String cuitFirmante;
 
+    public mdlCheque(String bancoEmisor, String numeroCheque, Date fechaVencimiento, String cuitFirmante){
+        this.bancoEmisor = bancoEmisor;
+        this.numeroCheque = numeroCheque;
+        this.fechaVencimiento = fechaVencimiento;
+        this.cuitFirmante = cuitFirmante;
+    }
+
+    public mdlCheque(){}
 
     public void setTasaDeDescuento(int tasaDeDescuento) {
         this.tasaDeDescuento = tasaDeDescuento;
