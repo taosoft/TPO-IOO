@@ -1,6 +1,7 @@
 package View;
 
 import controllers.ctrSocio;
+import modelos.mdlSocio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,6 +34,13 @@ public class FrmAltaNuevoSocio extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
+
+        aceptarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ctrSocio.AddSocio(new mdlSocio());
+            }
+        });
     }
     private void asociarEventos(){
         cancelarButton.addActionListener(new ActionListener() {
