@@ -60,7 +60,7 @@ public class FrmListaSocios extends JDialog {
         verLíneaDeCréditoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmLineaCredito frame = new frmLineaCredito(self, ctrSocio);
+                frmLineaCredito frame = new frmLineaCredito(self, ctrSocio.getSociosByCuit(cmbCuitSocio.getSelectedItem().toString()));
                 frame.show();
             }
         });

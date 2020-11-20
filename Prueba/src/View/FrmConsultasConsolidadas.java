@@ -73,23 +73,17 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         this.ctrSocio.AddSocio((socio));
 
-        socio = new mdlSocio();
-
         socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.",tipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
                 new Date(), tipoSocio.Participe);
 
         this.ctrSocio.AddSocio((socio));
 
-        socio = new mdlSocio();
-
         socio = mdlSocio.CrearSocio("Martha","30715248547","La Risa SRL.",tipoEmpresa.Grande,
                 "Cotillon", "Rivadavia 4123","45484542","lalal@sadas.com",
                 new Date(), tipoSocio.Protector);
 
         this.ctrSocio.AddSocio((socio));
-
-        socio = new mdlSocio();
 
         socio = mdlSocio.CrearSocio("Ledesma","27542547852","Gandoriza SA",tipoEmpresa.Pequena,
                 "Turismo", "Larralde 4251","151254215","dasd@sadas.com",
@@ -98,12 +92,12 @@ public class FrmConsultasConsolidadas extends JDialog {
         this.ctrSocio.AddSocio((socio));
     }
 
-    private mdlLineaCredito cargarLineaCredito(mdlSocio socio){
+    /*private mdlLineaCredito cargarLineaCredito(mdlSocio socio){
         var lineaCredito = new mdlLineaCredito();
 
 
         return lineaCredito;
-    }
+    }*/
 
     private mdlCheque cargarCheque(mdlSocio socio){
         var certificadoGarantia = new mdlCertificadoGarantia();

@@ -7,33 +7,36 @@ public class mdlLineaCredito {
 
     private Date fechaVigencia;
     private long monto;
-    private ArrayList<mdlTipoOperacion> tipoOperaciones;
+    private int id;
+    private ArrayList<tipoOperacion> tipoOperaciones;
     private ArrayList<mdlCheque> cheques;
     private ArrayList<mdlCuentaCorriente> cuentaCorrientes;
     private ArrayList<mdlPrestamo> prestamos;
 
-    public mdlLineaCredito(){
+    public mdlLineaCredito(int id){
         tipoOperaciones = new ArrayList<>();
         cheques = new ArrayList<>();
         cuentaCorrientes = new ArrayList<>();
         prestamos = new ArrayList<>();
+        this.id = id;
     }
 
-    public static void crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<mdlTipoOperacion> _tipoOperaciones,
-                                         ArrayList<mdlCheque> _cheques, ArrayList<mdlPrestamo> _prestamos, ArrayList<mdlCuentaCorriente> _cuentaCorrientes){
+    public static mdlLineaCredito crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<tipoOperacion> _tipoOperaciones, int id){
 
-        var lineaCredito = new mdlLineaCredito();
+        var lineaCredito = new mdlLineaCredito(id);
         lineaCredito.fechaVigencia = _fechaVigencia;
         lineaCredito.monto = _monto;
         lineaCredito.tipoOperaciones = _tipoOperaciones;
-        lineaCredito.tipoOperaciones = _tipoOperaciones;
-        lineaCredito.cheques = _cheques;
-        lineaCredito.cuentaCorrientes = _cuentaCorrientes;
-        lineaCredito.prestamos = _prestamos;
+
+        return lineaCredito;
     }
 
     public ArrayList<mdlCheque> getCheques() {
         return cheques;
+    }
+
+    public ArrayList<mdlPrestamo> getPrestamos() {
+        return prestamos;
     }
 
     public void addCheque(mdlCheque cheque){
@@ -108,7 +111,15 @@ public class mdlLineaCredito {
         return monto;
     }
 
-    public ArrayList<mdlTipoOperacion> getTipoOperaciones(){
+    public ArrayList<tipoOperacion> getTipoOperaciones(){
         return tipoOperaciones;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

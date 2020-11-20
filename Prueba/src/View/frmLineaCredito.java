@@ -1,7 +1,10 @@
 package View;
 
 import controllers.ctrSocio;
+import modelos.mdlLineaCredito;
 import modelos.mdlSocio;
+import modelos.mdlTipoOperacion;
+import modelos.tipoOperacion;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +22,7 @@ public class frmLineaCredito extends JDialog {
     private frmLineaCredito self;
 
 
-    public frmLineaCredito(Window owner, ctrSocio ctrSocio) {
+    public frmLineaCredito(Window owner, mdlSocio socio) {
         super(owner);
         this.setContentPane(pnlLineaCredito);
         this.setSize(500, 400);
@@ -31,28 +34,23 @@ public class frmLineaCredito extends JDialog {
         this.setModal(true);
         this.self = this;
 
-        for (mdlSocio socio:ctrSocio.getSocios()) {
+
             lblCliente.setText(socio.getCuit());
-        };
 
         DefaultTableModel model = new DefaultTableModel();
 
-        model.addColumn("Socio");
-        model.addColumn("Linea de credito");
-        model.addColumn("Fecha");
+        model.addColumn("Tipo operaciones");
         model.addColumn("Monto");
-        model.addColumn("Tipo operacion");
+        model.addColumn("Fecha");
 
-        for(mdlSocio socio:ctrSocio.getSocios()){
-
-            model.addRow(new Object[]{socio.getRazonSocial(),socio.getLineaCreditos(),socio.getFechaInicioActividades(),socio.getAportes(),socio.getTipoSocio()});
-
+        for(mdlLineaCredito lineaCredito: socio.getLineaCreditos()){
+            String tipoOperacionesConcat = new String();
+            for(tipoOperacion tipoOperacion: lineaCredito.getTipoOperaciones()){
+                tipoOperacionesConcat += tipoOperacion.toString();
+            }
+            model.addRow(new Object[]{tipoOperacionesConcat,lineaCredito.getMonto(), lineaCredito.getFechaVigencia(), lineaCredito.getId()});
         }
-
         table1.setModel(model);
-
-
-
 
         cerrarButton.addActionListener(new ActionListener() {
             @Override
@@ -63,7 +61,9 @@ public class frmLineaCredito extends JDialog {
         operarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmOperaciones frame = new FrmOperaciones(self);
+                //Integer.parseInt(table1.getModel().getValueAt(table1.getSelectedRow(),4).toString()
+                var lineaCredito = socio.getLineaCreditosById(1);
+                FrmOperaciones frame = new FrmOperaciones(self, lineaCredito);
                 frame.setVisible(true);
             }
         });
