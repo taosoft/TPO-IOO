@@ -1,7 +1,5 @@
 package View;
 
-import controllers.ctrLineaCredito;
-import controllers.ctrOperacion;
 import controllers.ctrSGR;
 import controllers.ctrSocio;
 import modelos.*;
@@ -70,14 +68,10 @@ public class FrmConsultasConsolidadas extends JDialog {
     }
 
     private void cargarListaSocios(){
-        ctrLineaCredito ctrLineaCredito = new ctrLineaCredito();
 
         var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.",tipoEmpresa.Mediana,
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
-                new Date(), tipoSocio.Participe,null);
-
-        ctrLineaCredito.addLineaCredito(cargarLineaCredito(socio));
-        this.ctrSGR.addLineaCredio(cargarLineaCredito(socio));
+                new Date("13/10/2014"), tipoSocio.Participe);
 
         this.ctrSocio.AddSocio((socio));
 
@@ -85,19 +79,32 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.",tipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
-                new Date(), tipoSocio.Participe,ctrLineaCredito.getLineaCreditos());
+                new Date("26/09/2016"), tipoSocio.Participe);
+
+        this.ctrSocio.AddSocio((socio));
+
+        socio = new mdlSocio();
+
+        socio = mdlSocio.CrearSocio("Martha","30715248547","La Risa SRL.",tipoEmpresa.Grande,
+                "Cotillon", "Rivadavia 4123","45484542","lalal@sadas.com",
+                new Date("03/04/2008"), tipoSocio.Protector);
+
+        this.ctrSocio.AddSocio((socio));
+
+        socio = new mdlSocio();
+
+        socio = mdlSocio.CrearSocio("Ledesma","27542547852","Gandoriza SA",tipoEmpresa.Pequena,
+                "Turismo", "Larralde 4251","151254215","dasd@sadas.com",
+                new Date("12/10/2012"), tipoSocio.Participe);
 
         this.ctrSocio.AddSocio((socio));
     }
 
     private mdlLineaCredito cargarLineaCredito(mdlSocio socio){
         var lineaCredito = new mdlLineaCredito();
-        var operacion = new ctrOperacion();
 
-        operacion.addOperacion(cargarCheque(socio));
-        operacion.addOperacion(cargarCuentaCorriente(socio));
-        operacion.addOperacion(cargarPrestamo(socio));
 
+        // Cargar línea de crédito
         lineaCredito.crearLineaCredito(new Date("23/12/2020"),250,null,operacion.getCheques(),operacion.getPrestamos(),
                 operacion.getCuentaCorrientes());
 

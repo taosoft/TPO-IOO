@@ -27,4 +27,11 @@ public class mdlCheque extends mdlOperacion {
         return importePagado;
     }
 
+    public String getNumeroCheque() {
+        return numeroCheque;
+    }
+
+    public void setNumeroCheque(String numeroCheque) {
+        this.numeroCheque = numeroCheque;
+    }
 }
