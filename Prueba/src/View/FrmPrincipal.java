@@ -119,7 +119,7 @@ public class FrmPrincipal extends JFrame{
         totalComisionesCalculadasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmComisionesCalculadas frame = new FrmComisionesCalculadas(self);
+                FrmComisionesCalculadas frame = new FrmComisionesCalculadas(self,ctrSocio);
                 frame.setVisible(true);
             }
         });
@@ -149,13 +149,13 @@ public class FrmPrincipal extends JFrame{
 
             }
         });
-        porcentajeComisiónAUnButton.addActionListener(new ActionListener() {
+    /*    porcentajeComisiónAUnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FrmPorcentajeComisionSocio frame = new FrmPorcentajeComisionSocio(self);
-                frame.setVisible(true);
+                *//*FrmPorcentajeComisionSocio frame = new FrmPorcentajeComisionSocio(self);
+                frame.setVisible(true);*//*
             }
-        });
+        });*/
     }
 
         public static void main(String[] args) {

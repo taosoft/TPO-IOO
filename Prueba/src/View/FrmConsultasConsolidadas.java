@@ -105,8 +105,8 @@ public class FrmConsultasConsolidadas extends JDialog {
 
 
         // Cargar línea de crédito
-        lineaCredito.crearLineaCredito(new Date("23/12/2020"),250,null,operacion.getCheques(),operacion.getPrestamos(),
-                operacion.getCuentaCorrientes());
+      /*  lineaCredito.crearLineaCredito(new Date("23/12/2020"),250,null,operacion.getCheques(),operacion.getPrestamos(),
+                operacion.getCuentaCorrientes());*/
 
         return lineaCredito;
     }
