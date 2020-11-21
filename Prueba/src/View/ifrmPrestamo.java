@@ -1,6 +1,12 @@
 package View;
 
+
+
+
+import controllers.ctrSocio;
 import modelos.mdlPrestamo;
+import modelos.tipoSistema;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,17 +16,21 @@ import java.util.ArrayList;
 
 public class ifrmPrestamo extends JDialog {
     private JPanel ifrmPrestamo;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
+    private JTextField txtBanco;
+    private JTextField txtImporteTotal;
+    private JTextField txtTasa;
+    private JTextField txtFechaAcreditacion;
+    private JTextField txtCantidadCuotas;
     private JButton confirmarButton;
     private JButton cancelarButton;
+    private JComboBox cmbTipoSistema;
     private ifrmPrestamo self;
 
+//<<<<<<< Updated upstream
     public ifrmPrestamo(Window owner, ArrayList<mdlPrestamo> prestamos) {
+//=======
+   // public ifrmPrestamo(Window owner, ctrSocio ctrSocio, String nombreUsuario) {
+//>>>>>>> Stashed changes
 
         super(owner);
         this.setContentPane(ifrmPrestamo);
@@ -32,12 +42,15 @@ public class ifrmPrestamo extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         //this.self = this;
+        this.asociarEventos();
 
 
-        cancelarButton.addActionListener(new ActionListener() {
+        confirmarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                ctrSocio.AddPrestamo(mdlPrestamo.CrearPrestamo(nombreUsuario,txtBanco.getText(),txtImporteTotal.getText(),
+                        txtTasa.getText(),txtFechaAcreditacion.getText(),txtCantidadCuotas.getText(),
+                        tipoSistema.valueOf(cmbTipoSistema.getSelectedItem().toString(),dispose();)));
             }
         });
 
@@ -49,6 +62,12 @@ public class ifrmPrestamo extends JDialog {
                prestamos.add(prestamo);
                dispose();
             }
+        });
+    }
+    private void asociarEventos(){
+        cancelarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {dispose();}
         });
     }
 
