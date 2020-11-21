@@ -33,7 +33,6 @@ public class mdlLineaCredito {
         lineaCredito.cheques = _cheques;
         lineaCredito.cuentaCorrientes = _cuentaCorrientes;
         lineaCredito.prestamos = _prestamos;
-        lineaCredito
 
         return lineaCredito;
     }
