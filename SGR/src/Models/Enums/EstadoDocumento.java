@@ -1,6 +1,6 @@
 package Models.Enums;
 
-public enum EstadoDocumentacion {
+public enum EstadoDocumento {
     Ingresado,
     Controlado,
     Rechazado

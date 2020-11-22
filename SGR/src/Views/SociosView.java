@@ -1,9 +1,12 @@
 package Views;
 
-import Controllers.*;
-import Models.*;
-import Models.Enums.EstadoDocumentacion;
+import Controllers.SgrController;
+import Controllers.SocioController;
+import Controllers.UsuarioController;
+import Models.Enums.EstadoDocumento;
 import Models.Enums.EstadoSocio;
+import Models.LogEstadoSocioModel;
+import Models.SocioModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,6 +26,7 @@ public class SociosView extends JDialog {
     private JPanel pnlListarSocios;
     private JComboBox cmbCuitSocio;
     private JButton altaNuevoSocioButton;
+    private JButton documentacionButton;
     private SociosView self;
     private SocioController socioController;
     private SgrController sgrController;
@@ -52,8 +56,9 @@ public class SociosView extends JDialog {
     private void LoadSocios() {
         cmbCuitSocio.removeAllItems();
 
-        convertirEnSocioPlenoButton.setEnabled(false);
+        convertirEnSocioPlenoButton.setVisible(false);
         agregarAporteButton.setEnabled(false);
+        documentacionButton.setEnabled(false);
         verLíneaDeCréditoButton.setEnabled(false);
         riesgoVivoButton.setEnabled(false);
 
@@ -64,6 +69,12 @@ public class SociosView extends JDialog {
 
     private void asociarEventos() {
         cerrarButton.addActionListener(e -> dispose());
+
+        documentacionButton.addActionListener(e -> {
+            DocumentacionView frame = new DocumentacionView(self,
+                    Objects.requireNonNull(cmbCuitSocio.getSelectedItem()).toString());
+            frame.setVisible(true);
+        });
 
         verLíneaDeCréditoButton.addActionListener(e -> {
             LineasCreditoView frame = new LineasCreditoView(self,
@@ -85,15 +96,11 @@ public class SociosView extends JDialog {
         cmbCuitSocio.addActionListener(e -> {
             var socio = getSocio();
 
-            if(socio.getEstadoSocio() == EstadoSocio.Postulante &&
-                    socio.getEstadoDocumentacion() == EstadoDocumentacion.Controlado) {
-                convertirEnSocioPlenoButton.setEnabled(true);
-            }
-            else {
-                convertirEnSocioPlenoButton.setEnabled(false);
-            }
+            convertirEnSocioPlenoButton.setVisible(socio.getEstadoSocio() == EstadoSocio.Postulante &&
+                    socio.getEstadoDocumento() == EstadoDocumento.Controlado);
 
             agregarAporteButton.setEnabled(true);
+            documentacionButton.setEnabled(true);
             verLíneaDeCréditoButton.setEnabled(true);
             riesgoVivoButton.setEnabled(true);
         });

@@ -21,7 +21,7 @@ public class SocioModel {
     private TipoSocio tipoSocio;
     private ArrayList<LogEstadoSocioModel> logs;
     private TipoDocumento tipoDocumento;
-    private EstadoDocumentacion estadoDocumentacion;
+    private EstadoDocumento estadoDocumento;
     private ArrayList<mdlAporte> aportes;
     private ArrayList<LineaCreditoModel> lineaCreditos;
     private ArrayList<AccionistaModel> accionistas;
@@ -200,11 +200,11 @@ public class SocioModel {
         this.accionistas = accionistas;
     }
 
-    public EstadoDocumentacion getEstadoDocumentacion() {
-        return estadoDocumentacion;
+    public EstadoDocumento getEstadoDocumento() {
+        return estadoDocumento;
     }
 
-    public void setEstadoDocumentacion(EstadoDocumentacion estadoDocumentacion) {
-        this.estadoDocumentacion = estadoDocumentacion;
+    public void setEstadoDocumento(EstadoDocumento estadoDocumento) {
+        this.estadoDocumento = estadoDocumento;
     }
 }
