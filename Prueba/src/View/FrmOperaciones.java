@@ -21,7 +21,7 @@ public class FrmOperaciones extends JDialog {
     private ifrmPrestamo self;
 
 
-    public FrmOperaciones(Window owner) {
+    public FrmOperaciones(Window owner, mdlLineaCredito mdlLineaCredito) {
         super(owner);
         this.setContentPane(pnlOperaciones);
         this.setSize(500, 400);
@@ -34,14 +34,17 @@ public class FrmOperaciones extends JDialog {
         //this.self = this;
 
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Operaciones");
-        model.addColumn("Tipo");
-        model.addColumn("Fecha");
+        model.addColumn("Operacion");
+        model.addColumn("Importe");
+        model.addColumn("Tasa");
+        model.addColumn("Fecha Acreditada");
+        model.addColumn("Fecha vto");
         model.addColumn("Estado");
 
-        model.addRow(new Object[]{"Deposito","Inversion","05/04/2020","Imputada"});
-        model.addRow(new Object[]{"Deposito","Inversion","07/05/2020","Imputada"});
-        model.addRow(new Object[]{"Deposito","Inversion","04/06/2020","Imputada"});
+
+        model.addRow(new Object[]{"Préstamo","100.000","-","05/04/2020","05/06/2020","Con certificado emitido"});
+        model.addRow(new Object[]{"Cuenta corriente","Inversion","07/05/2020","Ingresado"});
+        model.addRow(new Object[]{"Deposito","Inversion","04/06/2020","Con certificado emitido"});
         model.addRow(new Object[]{"Deposito","Capitalizacion","25/08/2020","Pendiente"});
 
 
@@ -58,7 +61,7 @@ public class FrmOperaciones extends JDialog {
         chequesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ifrmCheque frame = new ifrmCheque(self, new mdlLineaCredito());
+                ifrmCheque frame = new ifrmCheque(self, new mdlLineaCredito(1));
                 frame.setVisible(true);
             }
         });
@@ -73,7 +76,7 @@ public class FrmOperaciones extends JDialog {
         prestamosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ifrmPrestamo frame = new ifrmPrestamo(self);
+                ifrmPrestamo frame = new ifrmPrestamo(self, mdlLineaCredito.getPrestamos());
                 frame.setVisible(true);
             }
         });

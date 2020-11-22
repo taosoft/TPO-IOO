@@ -46,6 +46,18 @@ public class mdlSocio {
 
         nuevoSocio.setFechaInicioActividades(_fechaInicioActividades);
         nuevoSocio.setTipoSocio(_tipoSocio);
+
+        var listaTipoOperaciones = new ArrayList<tipoOperacion>();
+        listaTipoOperaciones.add(tipoOperacion.CCComercial);
+        listaTipoOperaciones.add(tipoOperacion.Prestamo);
+        listaTipoOperaciones.add(tipoOperacion.ChequePropio);
+        listaTipoOperaciones.add(tipoOperacion.ChequeTerceros);
+
+
+        var lineaCredito = mdlLineaCredito.crearLineaCredito(new Date(),
+                112,
+                listaTipoOperaciones, 1);
+        nuevoSocio.addLineaCredito(lineaCredito);
         return nuevoSocio;
     }
 
@@ -109,6 +121,19 @@ public class mdlSocio {
 
     public ArrayList<mdlLineaCredito> getLineaCreditos(){
         return lineaCreditos;
+    }
+    public void addLineaCredito(mdlLineaCredito lineaCredito){
+        lineaCreditos.add(lineaCredito);
+    }
+
+    public mdlLineaCredito getLineaCreditosById(int id){
+        for(mdlLineaCredito lineaCredito: lineaCreditos){
+            if(lineaCredito.getId() == id){
+                return lineaCredito;
+            }
+        }
+
+        return null;
     }
 
     // Sets
