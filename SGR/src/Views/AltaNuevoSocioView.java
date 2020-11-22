@@ -24,7 +24,7 @@ public class FrmAltaNuevoSocio extends JDialog {
     private JButton cancelarButton;
     private String nombreUsuario;
 
-    public FrmAltaNuevoSocio(Window owner, ctrSocio ctrSocio, String nombreUsuario) {
+    public FrmAltaNuevoSocio(Window owner, SocioController SocioController, String nombreUsuario) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -43,7 +43,7 @@ public class FrmAltaNuevoSocio extends JDialog {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ctrSocio.AddSocio(mdlSocio.CrearSocio(nombreUsuario,txtCuit.getText(),txtRazonSocial.getText(),
+                SocioController.AddSocio(mdlSocio.CrearSocio(nombreUsuario,txtCuit.getText(),txtRazonSocial.getText(),
                 tipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString()),txtActividad.getText(),txtDireccion.getText(),
                 txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), tipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString())));
                 dispose();

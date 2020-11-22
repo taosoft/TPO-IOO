@@ -17,10 +17,10 @@ public class FrmConsultasConsolidadas extends JDialog {
     private JButton buscarButton;
     private JButton salirButton;
     private FrmConsultasConsolidadas self;
-    private ctrSocio ctrSocio;
-    private ctrSGR ctrSGR;
+    private SocioController SocioController;
+    private SgrController SgrController;
 
-    public FrmConsultasConsolidadas(Window owner, ctrSocio ctrSocio, ctrSGR ctrSgr) {
+    public FrmConsultasConsolidadas(Window owner, SocioController SocioController, SgrController sgrController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -34,12 +34,12 @@ public class FrmConsultasConsolidadas extends JDialog {
         this.asociarEventos();
 
         this.self = this;
-        this.ctrSocio = ctrSocio;
-        this.ctrSGR = ctrSgr;
+        this.SocioController = SocioController;
+        this.SgrController = sgrController;
 
         cargarListaSocios();
 
-        for (mdlSocio socio:this.ctrSocio.getSocios()) {
+        for (mdlSocio socio:this.SocioController.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
@@ -49,8 +49,8 @@ public class FrmConsultasConsolidadas extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 var cuit = comboBox1.getSelectedItem();
 
-                int totalRiesgoVivo = ctrSgr.getConsolidadas(cuit.toString());
-                int totalUtilizadoLinea = totalRiesgoVivo + ctrSgr.getTotalUtilizado(cuit.toString());
+                int totalRiesgoVivo = sgrController.getConsolidadas(cuit.toString());
+                int totalUtilizadoLinea = totalRiesgoVivo + sgrController.getTotalUtilizado(cuit.toString());
 
                 DefaultTableModel model = new DefaultTableModel();
 
@@ -72,25 +72,25 @@ public class FrmConsultasConsolidadas extends JDialog {
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
                 new Date("13/10/2014"), tipoSocio.Participe);
 
-        this.ctrSocio.AddSocio((socio));
+        this.SocioController.AddSocio((socio));
 
         socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.",tipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
                 new Date("26/09/2016"), tipoSocio.Participe);
 
-        this.ctrSocio.AddSocio((socio));
+        this.SocioController.AddSocio((socio));
 
         socio = mdlSocio.CrearSocio("Martha","30715248547","La Risa SRL.",tipoEmpresa.Grande,
                 "Cotillon", "Rivadavia 4123","45484542","lalal@sadas.com",
                 new Date("03/04/2008"), tipoSocio.Protector);
 
-        this.ctrSocio.AddSocio((socio));
+        this.SocioController.AddSocio((socio));
 
         socio = mdlSocio.CrearSocio("Ledesma","27542547852","Gandoriza SA",tipoEmpresa.Pequena,
                 "Turismo", "Larralde 4251","151254215","dasd@sadas.com",
                 new Date("12/10/2012"), tipoSocio.Participe);
 
-        this.ctrSocio.AddSocio((socio));
+        this.SocioController.AddSocio((socio));
     }
 
     private mdlCheque cargarCheque(mdlSocio socio){

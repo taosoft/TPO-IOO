@@ -18,9 +18,9 @@ public class FrmPromedioTasaDeDescuento extends JDialog{
     private JPanel pnlPrincipal;
     private JButton buscarButton;
     private JPanel pnlTabla;
-    private ctrSocio ctrSocio;
+    private SocioController SocioController;
 
-    public FrmPromedioTasaDeDescuento(Window owner, ctrSocio ctrSocio) {
+    public FrmPromedioTasaDeDescuento(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -32,7 +32,7 @@ public class FrmPromedioTasaDeDescuento extends JDialog{
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
-        this.ctrSocio = ctrSocio;
+        this.SocioController = SocioController;
     }
     private void asociarEventos(){
         salirButton.addActionListener(e -> dispose());
@@ -41,7 +41,7 @@ public class FrmPromedioTasaDeDescuento extends JDialog{
             var tipoEmpresa = Models.tipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
             Date fechaInicial = new Date(txtFechaInicial.getText());
             Date fechaFinal = new Date(txtFechaFinal.getText());
-            ArrayList<mdlSocio> socios = ctrSocio.getSocios();
+            ArrayList<mdlSocio> socios = SocioController.getSocios();
             var promedioTasaDescuento = new ArrayList<promedioTasaDeDescuento>();
             for(mdlSocio socio:socios){
                 if (socio.getTipoEmpresa() == tipoEmpresa){

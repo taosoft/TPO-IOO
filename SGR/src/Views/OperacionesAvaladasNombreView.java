@@ -17,7 +17,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
     private JComboBox comboBox1;
     private JButton buscarButton;
 
-    public FrmOperacionesAvaladasNombre(Window owner, ctrSocio ctrSocio) {
+    public FrmOperacionesAvaladasNombre(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -30,7 +30,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
         this.setModal(true);
         this.asociarEventos();
 
-        for (mdlSocio socio:ctrSocio.getSocios()) {
+        for (mdlSocio socio: SocioController.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
@@ -45,7 +45,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
             model.addColumn("Tipo");
             model.addColumn("Fecha");
 
-            for(mdlSocio socio:ctrSocio.getSocios()){
+            for(mdlSocio socio: SocioController.getSocios()){
 
                 if((new Date(txtDesde.getText()).before(socio.getFechaInicioActividades())) && (new Date(txtHasta.getText()).after(socio.getFechaInicioActividades()))){
                     model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio(),socio.getFechaInicioActividades()});

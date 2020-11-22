@@ -19,7 +19,7 @@ public class FrmComisionesCalculadas extends JDialog{
     private JButton buscarButton;
     private DefaultTableModel model;
 
-    public FrmComisionesCalculadas(Window owner, ctrSocio ctrSocio) {
+    public FrmComisionesCalculadas(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -42,7 +42,7 @@ public class FrmComisionesCalculadas extends JDialog{
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var socios = ctrSocio.getSocios();
+                var socios = SocioController.getSocios();
                 var comisionesCalculadas = new ArrayList<comisionesCalculadas>();
                 for(mdlSocio socio: socios){
                     var lineasCredito = socio.getLineaCreditos();

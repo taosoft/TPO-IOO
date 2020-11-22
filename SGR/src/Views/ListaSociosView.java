@@ -20,7 +20,7 @@ public class FrmListaSocios extends JDialog {
     private JComboBox cmbCuitSocio;
     private FrmListaSocios self;
 
-    public FrmListaSocios(Window owner, ctrSocio ctrSocio) {
+    public FrmListaSocios(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlListarSocios);
@@ -34,7 +34,7 @@ public class FrmListaSocios extends JDialog {
         this.asociarEventos();
         this.self = this;
 
-        for (mdlSocio socio:ctrSocio.getSocios()) {
+        for (mdlSocio socio: SocioController.getSocios()) {
             cmbCuitSocio.addItem(socio.getCuit());
         };
 
@@ -60,7 +60,7 @@ public class FrmListaSocios extends JDialog {
         verLíneaDeCréditoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmLineaCredito frame = new frmLineaCredito(self, ctrSocio.getSociosByCuit(cmbCuitSocio.getSelectedItem().toString()));
+                frmLineaCredito frame = new frmLineaCredito(self, SocioController.getSociosByCuit(cmbCuitSocio.getSelectedItem().toString()));
                 frame.show();
             }
         });

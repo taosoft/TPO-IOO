@@ -21,16 +21,16 @@ public class FrmPrincipal extends JFrame{
     private JPanel pnlConsultasGenerales;
     private JButton btnCerrar;
     private FrmPrincipal self;
-    private ctrSocio ctrSocio;
+    private SocioController SocioController;
     private mdlUsuario usuarioLogueado;
 
-    private ctrUsuario ctrUsuario;
+    private UsuarioController UsuarioController;
 
     public FrmPrincipal(String titulo) {
             super(titulo);
 
-            ctrSocio = new ctrSocio();
-            ctrUsuario = new ctrUsuario();
+            SocioController = new SocioController();
+            UsuarioController = new UsuarioController();
 
             pnlSocios.setVisible(false);
             pnlConsultasGenerales.setVisible(false);
@@ -63,7 +63,7 @@ public class FrmPrincipal extends JFrame{
 
         mdlUsuario usuario = new mdlUsuario(txtUsuario.getText(),txtPassword.getText());
 
-            if(ctrUsuario.esUsuario(usuario)) {
+            if(UsuarioController.esUsuario(usuario)) {
                 pnlLogin.setVisible(false);
                 pnlSocios.setVisible(true);
                 pnlConsultasGenerales.setVisible(true);
@@ -83,33 +83,33 @@ public class FrmPrincipal extends JFrame{
 
     private void asociarEventos(){
         altaNuevoSocioButton.addActionListener(e -> {
-            FrmAltaNuevoSocio frame = new FrmAltaNuevoSocio(self,ctrSocio,usuarioLogueado.getNombre());
+            AltaNuevoSocioView frame = new AltaNuevoSocioView(self, SocioController,usuarioLogueado.getNombre());
             frame.setVisible(true);
         });
 
         listarSociosButton.addActionListener(e -> {
-            FrmListaSocios frame = new FrmListaSocios(self, ctrSocio);
+            ListaSociosView frame = new ListaSociosView(self, SocioController);
             frame.setVisible(true);
         });
 
         totalComisionesCalculadasButton.addActionListener(e -> {
-            FrmComisionesCalculadas frame = new FrmComisionesCalculadas(self,ctrSocio);
+            ComisionesCalculadasView frame = new ComisionesCalculadasView(self, SocioController);
             frame.setVisible(true);
         });
 
         operacionesAvaladasANombreButton.addActionListener(e -> {
-            FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self, ctrSocio);
+            FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self, SocioController);
             frame.setVisible(true);
 
         });
 
         valorPromedioDeTasaButton.addActionListener(e -> {
-            FrmPromedioTasaDeDescuento frame = new FrmPromedioTasaDeDescuento(self,ctrSocio );
+            FrmPromedioTasaDeDescuento frame = new FrmPromedioTasaDeDescuento(self, SocioController);
             frame.setVisible(true);
         });
         consultaConsolidadaButton.addActionListener(e -> {
 
-            FrmConsultasConsolidadas frame = new FrmConsultasConsolidadas(self, ctrSocio,new ctrSGR());
+            ConsultasConsolidadasView frame = new ConsultasConsolidadasView(self, SocioController,new SgrController());
             frame.setVisible(true);
 
         });
