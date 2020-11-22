@@ -39,8 +39,6 @@ public class AltaNuevoSocioView extends JDialog {
         this.asociarEventos();
         this.nombreUsuario = nombreUsuario;
 
-
-
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
