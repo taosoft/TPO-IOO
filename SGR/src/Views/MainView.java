@@ -24,13 +24,13 @@ public class MainView extends JFrame{
     private SocioController SocioController;
     private UsuarioModel usuarioLogueado;
 
-    private UsuarioController UsuarioController;
+    private UsuarioController usuarioController;
 
     public MainView(String titulo) {
         super(titulo);
 
-        SocioController = new SocioController();
-        UsuarioController = new UsuarioController();
+        SocioController = SocioController.getInstance();
+        usuarioController = UsuarioController.getInstance();
 
         pnlSocios.setVisible(false);
         pnlConsultasGenerales.setVisible(false);
@@ -57,7 +57,7 @@ public class MainView extends JFrame{
 
             UsuarioModel usuario = new UsuarioModel(txtUsuario.getText(),txtPassword.getText());
 
-            if(UsuarioController.esUsuario(usuario)) {
+            if(usuarioController.esUsuario(usuario)) {
                 pnlLogin.setVisible(false);
                 pnlSocios.setVisible(true);
                 pnlConsultasGenerales.setVisible(true);
@@ -104,7 +104,7 @@ public class MainView extends JFrame{
 
         consultaConsolidadaButton.addActionListener(e -> {
 
-            ConsultasConsolidadasView frame = new ConsultasConsolidadasView(self, SocioController,new SgrController());
+            ConsultasConsolidadasView frame = new ConsultasConsolidadasView(self, SocioController, SgrController.getInstance());
             frame.setVisible(true);
 
         });

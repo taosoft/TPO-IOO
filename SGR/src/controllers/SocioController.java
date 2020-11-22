@@ -4,11 +4,16 @@ import Models.*;
 import java.util.ArrayList;
 
 public class SocioController {
+    private static final SocioController INSTANCE = new SocioController();
 
     private ArrayList<SocioModel> socios;
 
-    public SocioController(){
+    private SocioController(){
         socios = new ArrayList<>();
+    }
+
+    public static SocioController getInstance() {
+        return INSTANCE;
     }
 
     public  void AddSocio(SocioModel socio){

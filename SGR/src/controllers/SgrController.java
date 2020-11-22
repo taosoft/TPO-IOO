@@ -4,14 +4,20 @@ import Models.*;
 import java.util.ArrayList;
 
 public class SgrController {
+    private static final SgrController INSTANCE = new SgrController();
+
     private ArrayList<SocioModel> socios;
     private ArrayList<LineaCreditoModel> lineaCreditos;
     private ArrayList<mdlOperacion> operaciones;
     private ArrayList<mdlTipoOperacion> tipoOperaciones;
     
-    public SgrController(){
+    private SgrController() {
         socios = new ArrayList<>();
         lineaCreditos = new ArrayList<>();
+    }
+
+    public static SgrController getInstance() {
+        return INSTANCE;
     }
 
     public void addSocio(SocioModel socio){
