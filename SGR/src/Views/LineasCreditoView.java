@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class frmLineaCredito extends JDialog {
+public class LineasCreditoView extends JDialog {
 
     private JLabel lblCliente;
     private JTable table1;
@@ -15,9 +15,9 @@ public class frmLineaCredito extends JDialog {
     private JPanel pnlLineaCredito;
     private JButton operarButton;
     private JButton agregarButton;
-    private frmLineaCredito self;
+    private LineasCreditoView self;
 
-    public frmLineaCredito(Window owner, mdlSocio socio) {
+    public LineasCreditoView(Window owner, mdlSocio socio) {
         super(owner);
         this.setContentPane(pnlLineaCredito);
         this.setSize(500, 400);
@@ -50,7 +50,7 @@ public class frmLineaCredito extends JDialog {
         operarButton.addActionListener(e -> {
             //Integer.parseInt(table1.getModel().getValueAt(table1.getSelectedRow(),4).toString()
             var lineaCredito = socio.getLineaCreditosById(1);
-            FrmOperaciones frame = new FrmOperaciones(self, lineaCredito);
+            OperacionesView frame = new OperacionesView(self, lineaCredito);
             frame.setVisible(true);
         });
         agregarButton.addActionListener(new ActionListener() {

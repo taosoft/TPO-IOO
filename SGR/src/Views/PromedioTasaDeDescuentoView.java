@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class FrmPromedioTasaDeDescuento extends JDialog{
+public class PromedioTasaDeDescuentoView extends JDialog{
     private JComboBox cmbTipoEmpresa;
     private JTextField txtFechaFinal;
     private JTextField txtFechaInicial;
@@ -20,7 +20,7 @@ public class FrmPromedioTasaDeDescuento extends JDialog{
     private JPanel pnlTabla;
     private SocioController SocioController;
 
-    public FrmPromedioTasaDeDescuento(Window owner, SocioController SocioController) {
+    public PromedioTasaDeDescuentoView(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);

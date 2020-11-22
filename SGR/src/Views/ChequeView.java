@@ -6,7 +6,7 @@ import java.util.Date;
 
 import Models.*;
 
-public class ifrmCheque extends JDialog {
+public class ChequeView extends JDialog {
     private JTextField txtBancoEmisor;
     private JTextField txtNumeroCheque;
     private JTextField txtFechaVencimiento;
@@ -15,7 +15,7 @@ public class ifrmCheque extends JDialog {
     private JButton confirmarButton;
     private JPanel pnlCheque;
 
-    public ifrmCheque(Window owner, mdlLineaCredito mdlLineaCredito) {
+    public ChequeView(Window owner, mdlLineaCredito mdlLineaCredito) {
 
         super(owner);
         this.setContentPane(pnlCheque);

@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ifrmPrestamo extends JDialog {
+public class PrestamoView extends JDialog {
     private JPanel ifrmPrestamo;
     private JTextField textField1;
     private JTextField textField2;
@@ -15,9 +15,9 @@ public class ifrmPrestamo extends JDialog {
     private JTextField textField6;
     private JButton confirmarButton;
     private JButton cancelarButton;
-    private ifrmPrestamo self;
+    private PrestamoView self;
 
-    public ifrmPrestamo(Window owner, ArrayList<mdlPrestamo> prestamos) {
+    public PrestamoView(Window owner, ArrayList<mdlPrestamo> prestamos) {
 
         super(owner);
         this.setContentPane(ifrmPrestamo);

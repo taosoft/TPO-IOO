@@ -10,17 +10,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
-public class FrmConsultasConsolidadas extends JDialog {
+public class ConsultasConsolidadasView extends JDialog {
     private JPanel pnlPrincipal;
     private JTable table1;
     private JComboBox comboBox1;
     private JButton buscarButton;
     private JButton salirButton;
-    private FrmConsultasConsolidadas self;
+    private ConsultasConsolidadasView self;
     private SocioController SocioController;
     private SgrController SgrController;
 
-    public FrmConsultasConsolidadas(Window owner, SocioController SocioController, SgrController sgrController) {
+    public ConsultasConsolidadasView(Window owner, SocioController SocioController, SgrController sgrController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);

@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
-public class FrmAltaNuevoSocio extends JDialog {
+public class AltaNuevoSocioView extends JDialog {
     private JPanel pnlPrincipal;
     private JComboBox cmbTipoSocio;
     private JTextField txtCuit;
@@ -24,7 +24,7 @@ public class FrmAltaNuevoSocio extends JDialog {
     private JButton cancelarButton;
     private String nombreUsuario;
 
-    public FrmAltaNuevoSocio(Window owner, SocioController SocioController, String nombreUsuario) {
+    public AltaNuevoSocioView(Window owner, SocioController SocioController, String nombreUsuario) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);

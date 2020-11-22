@@ -3,13 +3,13 @@ package Controllers;
 import Models.*;
 import java.util.ArrayList;
 
-public class ctrSGR {
+public class SgrController {
     private ArrayList<mdlSocio> socios;
     private ArrayList<mdlLineaCredito> lineaCreditos;
     private ArrayList<mdlOperacion> operaciones;
     private ArrayList<mdlTipoOperacion> tipoOperaciones;
     
-    public ctrSGR(){
+    public SgrController(){
         socios = new ArrayList<>();
         lineaCreditos = new ArrayList<>();
     }

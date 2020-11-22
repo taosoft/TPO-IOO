@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class FrmComisionesCalculadas extends JDialog{
+public class ComisionesCalculadasView extends JDialog{
     private JButton salirButton;
     private JTable tablaComisiones;
     private JTextField txtFecha;
@@ -19,7 +19,7 @@ public class FrmComisionesCalculadas extends JDialog{
     private JButton buscarButton;
     private DefaultTableModel model;
 
-    public FrmComisionesCalculadas(Window owner, SocioController SocioController) {
+    public ComisionesCalculadasView(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);

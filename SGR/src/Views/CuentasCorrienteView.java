@@ -3,16 +3,16 @@ package Views;
 import javax.swing.*;
 import java.awt.*;
 
-public class ifrmCuentasCorrientes extends JDialog{
+public class CuentasCorrienteView extends JDialog{
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
     private JButton cerrarButton;
     private JButton confirmarButton;
     private JPanel pnlCuentasCorrientes;
-    private ifrmCuentasCorrientes self;
+    private CuentasCorrienteView self;
 
-    public ifrmCuentasCorrientes(Window owner) {
+    public CuentasCorrienteView(Window owner) {
 
         super(owner);
         this.setContentPane(pnlCuentasCorrientes);

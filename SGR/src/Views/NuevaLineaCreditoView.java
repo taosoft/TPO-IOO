@@ -3,12 +3,12 @@ package Views;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class NuevaLineaCredito extends JDialog {
+public class NuevaLineaCreditoView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
 
-    public NuevaLineaCredito() {
+    public NuevaLineaCreditoView() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -40,7 +40,7 @@ public class NuevaLineaCredito extends JDialog {
     }
 
     public static void main(String[] args) {
-        NuevaLineaCredito dialog = new NuevaLineaCredito();
+        NuevaLineaCreditoView dialog = new NuevaLineaCreditoView();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);

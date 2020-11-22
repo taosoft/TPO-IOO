@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FrmListaSocios extends JDialog {
+public class ListaSociosView extends JDialog {
     private JPanel pnlPrincipal;
     private JButton convertirEnSocioPlenoButton;
     private JButton agregarAporteButton;
@@ -18,9 +18,9 @@ public class FrmListaSocios extends JDialog {
     private JButton cerrarButton;
     private JPanel pnlListarSocios;
     private JComboBox cmbCuitSocio;
-    private FrmListaSocios self;
+    private ListaSociosView self;
 
-    public FrmListaSocios(Window owner, SocioController SocioController) {
+    public ListaSociosView(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlListarSocios);
@@ -60,7 +60,7 @@ public class FrmListaSocios extends JDialog {
         verLíneaDeCréditoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmLineaCredito frame = new frmLineaCredito(self, SocioController.getSociosByCuit(cmbCuitSocio.getSelectedItem().toString()));
+                LineasCreditoView frame = new LineasCreditoView(self, SocioController.getSociosByCuit(cmbCuitSocio.getSelectedItem().toString()));
                 frame.show();
             }
         });

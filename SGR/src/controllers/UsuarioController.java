@@ -3,10 +3,10 @@ package Controllers;
 import Models.*;
 import java.util.ArrayList;
 
-public class ctrUsuario {
+public class UsuarioController {
     private ArrayList<mdlUsuario> listaUsuarios;
 
-    public ctrUsuario(){
+    public UsuarioController(){
         listaUsuarios = new ArrayList<>();
         listaUsuarios.add(new mdlUsuario("admin", "admin"));
     }

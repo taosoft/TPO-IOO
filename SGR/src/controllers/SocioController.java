@@ -3,12 +3,12 @@ package Controllers;
 import Models.*;
 import java.util.ArrayList;
 
-public class ctrSocio {
+public class SocioController {
 
     private ArrayList<mdlSocio> socios;
 
-    public ctrSocio(){
-      socios = new ArrayList<>();
+    public SocioController(){
+        socios = new ArrayList<>();
     }
 
     public  void AddSocio(mdlSocio socio){
@@ -21,7 +21,9 @@ public class ctrSocio {
 
     public mdlSocio getSociosByCuit(String cuit){
         for (mdlSocio socio:socios) {
-            return socio;
+            if(socio.getCuit().matches(cuit)) {
+                return socio;
+            }
         };
 
         return null;

@@ -4,7 +4,7 @@ import Controllers.*;
 import Models.*;
 import javax.swing.*;
 
-public class FrmPrincipal extends JFrame{
+public class MainView extends JFrame{
     private JPanel pnlPrincipal;
     private JButton altaNuevoSocioButton;
     private JButton listarSociosButton;
@@ -20,48 +20,42 @@ public class FrmPrincipal extends JFrame{
     private JPanel pnlSocios;
     private JPanel pnlConsultasGenerales;
     private JButton btnCerrar;
-    private FrmPrincipal self;
+    private MainView self;
     private SocioController SocioController;
     private mdlUsuario usuarioLogueado;
 
     private UsuarioController UsuarioController;
 
-    public FrmPrincipal(String titulo) {
-            super(titulo);
+    public MainView(String titulo) {
+        super(titulo);
 
-            SocioController = new SocioController();
-            UsuarioController = new UsuarioController();
+        SocioController = new SocioController();
+        UsuarioController = new UsuarioController();
 
-            pnlSocios.setVisible(false);
-            pnlConsultasGenerales.setVisible(false);
-            pnlLogin.setVisible(true);
+        pnlSocios.setVisible(false);
+        pnlConsultasGenerales.setVisible(false);
+        pnlLogin.setVisible(true);
 
-            //Esto de abajo es para cambiar la forma en que se ven los botones y la ventana para que se parezca más al formato windows.
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (UnsupportedLookAndFeelException e) {
-                e.printStackTrace();
-            }
-            //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
-            this.setContentPane(pnlPrincipal);
-            this.setSize(500, 400);
-            //Establezco el comportamiento a la hora de cerrarse
-            this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            //Que la pantalla inicie CENTRADA
-            this.setLocationRelativeTo(null);
-            this.asociarEventos();
-            this.self = this;
+        //Esto de abajo es para cambiar la forma en que se ven los botones y la ventana para que se parezca más al formato windows.
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+        //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
+        this.setContentPane(pnlPrincipal);
+        this.setSize(500, 400);
+        //Establezco el comportamiento a la hora de cerrarse
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        //Que la pantalla inicie CENTRADA
+        this.setLocationRelativeTo(null);
+        this.asociarEventos();
+        this.self = this;
 
 
         btnIngresar.addActionListener(e -> {
 
-        mdlUsuario usuario = new mdlUsuario(txtUsuario.getText(),txtPassword.getText());
+            mdlUsuario usuario = new mdlUsuario(txtUsuario.getText(),txtPassword.getText());
 
             if(UsuarioController.esUsuario(usuario)) {
                 pnlLogin.setVisible(false);
@@ -98,15 +92,16 @@ public class FrmPrincipal extends JFrame{
         });
 
         operacionesAvaladasANombreButton.addActionListener(e -> {
-            FrmOperacionesAvaladasNombre frame = new FrmOperacionesAvaladasNombre(self, SocioController);
+            OperacionesAvaladasNombreView frame = new OperacionesAvaladasNombreView(self, SocioController);
             frame.setVisible(true);
 
         });
 
         valorPromedioDeTasaButton.addActionListener(e -> {
-            FrmPromedioTasaDeDescuento frame = new FrmPromedioTasaDeDescuento(self, SocioController);
+            PromedioTasaDeDescuentoView frame = new PromedioTasaDeDescuentoView(self, SocioController);
             frame.setVisible(true);
         });
+
         consultaConsolidadaButton.addActionListener(e -> {
 
             ConsultasConsolidadasView frame = new ConsultasConsolidadasView(self, SocioController,new SgrController());
@@ -122,8 +117,8 @@ public class FrmPrincipal extends JFrame{
         });*/
     }
 
-        public static void main(String[] args) {
-            FrmPrincipal frame = new FrmPrincipal("Programa SGR");
-            frame.setVisible(true);
-        }
+    public static void main(String[] args) {
+        MainView frame = new MainView("Sistema SGR");
+        frame.setVisible(true);
     }
+}

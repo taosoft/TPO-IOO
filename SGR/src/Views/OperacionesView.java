@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
-public class FrmOperaciones extends JDialog {
+public class OperacionesView extends JDialog {
     private JButton chequesButton;
     private JButton prestamosButton;
     private JButton CCComercialesButton;
@@ -14,9 +14,9 @@ public class FrmOperaciones extends JDialog {
     private JButton aceptarButton;
     private JPanel pnlOperaciones;
     private JPanel pnlOperac;
-    private ifrmPrestamo self;
+    private PrestamoView self;
 
-    public FrmOperaciones(Window owner, mdlLineaCredito mdlLineaCredito) {
+    public OperacionesView(Window owner, mdlLineaCredito mdlLineaCredito) {
         super(owner);
         this.setContentPane(pnlOperaciones);
         this.setSize(500, 400);
@@ -46,17 +46,17 @@ public class FrmOperaciones extends JDialog {
         cerrarButton.addActionListener(e -> dispose());
 
         chequesButton.addActionListener(e -> {
-            ifrmCheque frame = new ifrmCheque(self, new mdlLineaCredito(1));
+            ChequeView frame = new ChequeView(self, new mdlLineaCredito(1));
             frame.setVisible(true);
         });
 
         CCComercialesButton.addActionListener(e -> {
-            ifrmCuentasCorrientes frame = new ifrmCuentasCorrientes(self);
+            CuentasCorrienteView frame = new CuentasCorrienteView(self);
             frame.show();
         });
 
         prestamosButton.addActionListener(e -> {
-            ifrmPrestamo frame = new ifrmPrestamo(self, mdlLineaCredito.getPrestamos());
+            PrestamoView frame = new PrestamoView(self, mdlLineaCredito.getPrestamos());
             frame.setVisible(true);
         });
     }

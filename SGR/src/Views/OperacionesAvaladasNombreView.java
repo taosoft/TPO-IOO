@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Date;
 
-public class FrmOperacionesAvaladasNombre extends JDialog {
+public class OperacionesAvaladasNombreView extends JDialog {
     private JPanel pnlPrincipal;
     private JButton cerrarButton;
     private JTable table1;
@@ -17,7 +17,7 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
     private JComboBox comboBox1;
     private JButton buscarButton;
 
-    public FrmOperacionesAvaladasNombre(Window owner, SocioController SocioController) {
+    public OperacionesAvaladasNombreView(Window owner, SocioController SocioController) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
