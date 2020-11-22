@@ -19,6 +19,7 @@ public class FrmConsultasConsolidadas extends JDialog {
     private JButton salirButton;
     private FrmConsultasConsolidadas self;
     private ctrSocio ctrSocio;
+    private ctrSGR ctrSGR;
 
     public FrmConsultasConsolidadas(Window owner, ctrSocio ctrSocio, ctrSGR ctrSgr) {
         super(owner);
@@ -35,6 +36,7 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         this.self = this;
         this.ctrSocio = ctrSocio;
+        this.ctrSGR = ctrSgr;
 
         cargarListaSocios();
 
@@ -46,10 +48,10 @@ public class FrmConsultasConsolidadas extends JDialog {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              var cuit = comboBox1.getSelectedItem();
+                var cuit = comboBox1.getSelectedItem();
 
-              int totalRiesgoVivo = ctrSgr.getConsolidadas(cuit.toString());
-              int totalUtilizadoLinea = totalRiesgoVivo + ctrSgr.getTotalUtilizado(cuit.toString());
+                int totalRiesgoVivo = ctrSgr.getConsolidadas(cuit.toString());
+                int totalUtilizadoLinea = totalRiesgoVivo + ctrSgr.getTotalUtilizado(cuit.toString());
 
                 DefaultTableModel model = new DefaultTableModel();
 
@@ -69,7 +71,7 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.",tipoEmpresa.Mediana,
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
-                new Date(), tipoSocio.Participe);
+                new Date("13/10/2014"), tipoSocio.Participe);
 
         this.ctrSocio.AddSocio((socio));
 
@@ -77,7 +79,7 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.",tipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
-                new Date(), tipoSocio.Participe);
+                new Date("26/09/2016"), tipoSocio.Participe);
 
         this.ctrSocio.AddSocio((socio));
 
@@ -85,7 +87,7 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         socio = mdlSocio.CrearSocio("Martha","30715248547","La Risa SRL.",tipoEmpresa.Grande,
                 "Cotillon", "Rivadavia 4123","45484542","lalal@sadas.com",
-                new Date(), tipoSocio.Protector);
+                new Date("03/04/2008"), tipoSocio.Protector);
 
         this.ctrSocio.AddSocio((socio));
 
@@ -93,7 +95,7 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         socio = mdlSocio.CrearSocio("Ledesma","27542547852","Gandoriza SA",tipoEmpresa.Pequena,
                 "Turismo", "Larralde 4251","151254215","dasd@sadas.com",
-                new Date(), tipoSocio.Participe);
+                new Date("12/10/2012"), tipoSocio.Participe);
 
         this.ctrSocio.AddSocio((socio));
     }
@@ -102,30 +104,32 @@ public class FrmConsultasConsolidadas extends JDialog {
         var lineaCredito = new mdlLineaCredito();
 
 
+        // Cargar línea de crédito
+      /*  lineaCredito.crearLineaCredito(new Date("23/12/2020"),250,null,operacion.getCheques(),operacion.getPrestamos(),
+                operacion.getCuentaCorrientes());*/
+
         return lineaCredito;
     }
 
     private mdlCheque cargarCheque(mdlSocio socio){
-        var certificadoGarantia = new mdlCertificadoGarantia();
-        certificadoGarantia.crearCertificadoGarantia(2);
+        var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(2);
 
-        var comision = new mdlComision();
-        comision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+        var comision = mdlComision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
 
         var cheque = new mdlCheque();
+
         cheque.crearOperacion(tipoOperacion.ChequePropio,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
         cheque.crearOperacion(tipoOperacion.ChequeTerceros,certificadoGarantia,socio,comision,estadoOperacion.Ingresado,new Date("10/11/2020"));
+
 
         return  cheque;
     }
 
 
     private mdlPrestamo cargarPrestamo(mdlSocio socio){
-        var certificadoGarantia = new mdlCertificadoGarantia();
-        certificadoGarantia.crearCertificadoGarantia(2);
+        var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(3);
 
-        var comision = new mdlComision();
-        comision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+        var comision = mdlComision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
 
         var prestamo = new mdlPrestamo();
         prestamo.crearOperacion(tipoOperacion.Prestamo,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
@@ -134,11 +138,9 @@ public class FrmConsultasConsolidadas extends JDialog {
     }
 
     private mdlCuentaCorriente cargarCuentaCorriente(mdlSocio socio){
-        var certificadoGarantia = new mdlCertificadoGarantia();
-        certificadoGarantia.crearCertificadoGarantia(2);
+        var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(5);
 
-        var comision = new mdlComision();
-        comision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+        var comision = mdlComision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
 
         var cuentaCorriente = new mdlCuentaCorriente();
         cuentaCorriente.crearOperacion(tipoOperacion.CCComercial,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));

@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 public class FrmOperacionesAvaladasNombre extends JDialog {
     private JPanel pnlPrincipal;
@@ -52,11 +53,18 @@ public class FrmOperacionesAvaladasNombre extends JDialog {
                 model.addColumn("Cuit Socio");
                 model.addColumn("Razon Social");
                 model.addColumn("Tipo");
+                model.addColumn("Fecha");
 
 
                 for(mdlSocio socio:ctrSocio.getSocios()){
 
-                    model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio()});
+                    if((new Date(txtDesde.getText()).before(socio.getFechaInicioActividades())) && (new Date(txtHasta.getText()).after(socio.getFechaInicioActividades()))){
+                        model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio(),socio.getFechaInicioActividades()});
+                    }else{
+                        model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio(),new Date(socio.getFechaInicioActividades().getDate())});
+                    }
+
+
 
                 }
 

@@ -1,7 +1,5 @@
 package View;
 
-import modelos.mdlLineaCredito;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -58,7 +56,7 @@ public class FrmOperaciones extends JDialog {
         chequesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ifrmCheque frame = new ifrmCheque(self, new mdlLineaCredito());
+                ifrmCheque frame = new ifrmCheque(self);
                 frame.setVisible(true);
             }
         });
