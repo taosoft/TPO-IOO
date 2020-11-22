@@ -15,15 +15,6 @@
         <properties/>
         <border type="none" title="Socios"/>
         <children>
-          <component id="954e6" class="javax.swing.JButton" binding="altaNuevoSocioButton" default-binding="true">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <text value="Alta Nuevo Socio"/>
-            </properties>
-          </component>
           <hspacer id="cf01f">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -42,7 +33,7 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <text value="Listar Socios"/>
+              <text value="Socios"/>
             </properties>
           </component>
         </children>
@@ -141,7 +132,7 @@
       </grid>
       <component id="fec8c" class="javax.swing.JButton" binding="btnCerrar">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <text value="Salir"/>

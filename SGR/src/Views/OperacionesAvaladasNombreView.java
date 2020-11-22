@@ -16,8 +16,9 @@ public class OperacionesAvaladasNombreView extends JDialog {
     private JTextField txtHasta;
     private JComboBox comboBox1;
     private JButton buscarButton;
+    private SocioController socioController;
 
-    public OperacionesAvaladasNombreView(Window owner, SocioController SocioController) {
+    public OperacionesAvaladasNombreView(Window owner) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -30,7 +31,9 @@ public class OperacionesAvaladasNombreView extends JDialog {
         this.setModal(true);
         this.asociarEventos();
 
-        for (SocioModel socio: SocioController.getSocios()) {
+        socioController = SocioController.getInstance();
+
+        for (SocioModel socio: socioController.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
@@ -45,7 +48,7 @@ public class OperacionesAvaladasNombreView extends JDialog {
             model.addColumn("Tipo");
             model.addColumn("Fecha");
 
-            for(SocioModel socio: SocioController.getSocios()){
+            for(SocioModel socio: socioController.getSocios()){
 
                 if((new Date(txtDesde.getText()).before(socio.getFechaInicioActividades())) && (new Date(txtHasta.getText()).after(socio.getFechaInicioActividades()))){
                     model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio(),socio.getFechaInicioActividades()});

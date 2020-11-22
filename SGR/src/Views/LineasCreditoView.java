@@ -1,13 +1,12 @@
 package Views;
 
+import Controllers.SocioController;
 import Models.*;
 import Models.Enums.TipoOperacion;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class LineasCreditoView extends JDialog {
 
@@ -18,8 +17,9 @@ public class LineasCreditoView extends JDialog {
     private JButton operarButton;
     private JButton agregarButton;
     private LineasCreditoView self;
+    private SocioController socioController;
 
-    public LineasCreditoView(Window owner, SocioModel socio) {
+    public LineasCreditoView(Window owner, String cuit) {
         super(owner);
         this.setContentPane(pnlLineaCredito);
         this.setSize(500, 400);
@@ -31,7 +31,9 @@ public class LineasCreditoView extends JDialog {
         this.setModal(true);
         this.self = this;
 
-        lblCliente.setText(socio.getCuit());
+        socioController = SocioController.getInstance();
+
+        lblCliente.setText(cuit);
 
         DefaultTableModel model = new DefaultTableModel();
 
@@ -39,7 +41,7 @@ public class LineasCreditoView extends JDialog {
         model.addColumn("Monto");
         model.addColumn("Fecha");
 
-        for(LineaCreditoModel lineaCredito: socio.getLineaCreditos()){
+        for(LineaCreditoModel lineaCredito: socioController.getSociosByCuit(cuit).getLineaCreditos()){
             String tipoOperacionesConcat = new String();
             for(TipoOperacion tipoOperacion: lineaCredito.getTipoOperaciones()){
                 tipoOperacionesConcat += tipoOperacion.toString();
@@ -49,17 +51,16 @@ public class LineasCreditoView extends JDialog {
         table1.setModel(model);
 
         cerrarButton.addActionListener(e -> dispose());
+
         operarButton.addActionListener(e -> {
             //Integer.parseInt(table1.getModel().getValueAt(table1.getSelectedRow(),4).toString()
-            var lineaCredito = socio.getLineaCreditosById(1);
+            var lineaCredito = socioController.getSociosByCuit(cuit).getLineaCreditosById(1);
             OperacionesView frame = new OperacionesView(self, lineaCredito);
             frame.setVisible(true);
         });
-        agregarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
 
-            }
+        agregarButton.addActionListener(e -> {
+
         });
     }
 }

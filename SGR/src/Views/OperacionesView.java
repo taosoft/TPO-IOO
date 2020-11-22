@@ -14,7 +14,7 @@ public class OperacionesView extends JDialog {
     private JButton aceptarButton;
     private JPanel pnlOperaciones;
     private JPanel pnlOperac;
-    private PrestamoView self;
+    private OperacionesView self;
 
     public OperacionesView(Window owner, LineaCreditoModel LineaCreditoModel) {
         super(owner);
@@ -26,7 +26,7 @@ public class OperacionesView extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
-        //this.self = this;
+        this.self = this;
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Operacion");

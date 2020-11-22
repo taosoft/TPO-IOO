@@ -19,9 +19,9 @@ public class PromedioTasaDeDescuentoView extends JDialog{
     private JPanel pnlPrincipal;
     private JButton buscarButton;
     private JPanel pnlTabla;
-    private SocioController SocioController;
+    private SocioController socioController;
 
-    public PromedioTasaDeDescuentoView(Window owner, SocioController SocioController) {
+    public PromedioTasaDeDescuentoView(Window owner) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -33,8 +33,10 @@ public class PromedioTasaDeDescuentoView extends JDialog{
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
-        this.SocioController = SocioController;
+
+        this.socioController =  Controllers.SocioController.getInstance();
     }
+
     private void asociarEventos(){
         salirButton.addActionListener(e -> dispose());
 
@@ -42,7 +44,7 @@ public class PromedioTasaDeDescuentoView extends JDialog{
             var tipoEmpresa = TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
             Date fechaInicial = new Date(txtFechaInicial.getText());
             Date fechaFinal = new Date(txtFechaFinal.getText());
-            ArrayList<SocioModel> socios = SocioController.getSocios();
+            ArrayList<SocioModel> socios = socioController.getSocios();
             var promedioTasaDescuento = new ArrayList<promedioTasaDeDescuento>();
             for(SocioModel socio:socios){
                 if (socio.getTipoEmpresa() == tipoEmpresa){

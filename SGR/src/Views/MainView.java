@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class MainView extends JFrame{
     private JPanel pnlPrincipal;
-    private JButton altaNuevoSocioButton;
     private JButton listarSociosButton;
     private JButton totalComisionesCalculadasButton;
     private JButton operacionesAvaladasANombreButton;
@@ -22,7 +21,6 @@ public class MainView extends JFrame{
     private JButton btnCerrar;
     private MainView self;
     private SocioController SocioController;
-    private UsuarioModel usuarioLogueado;
 
     private UsuarioController usuarioController;
 
@@ -51,8 +49,9 @@ public class MainView extends JFrame{
         this.setLocationRelativeTo(null);
         this.asociarEventos();
         this.self = this;
+    }
 
-
+    private void asociarEventos(){
         btnIngresar.addActionListener(e -> {
 
             UsuarioModel usuario = new UsuarioModel(txtUsuario.getText(),txtPassword.getText());
@@ -61,7 +60,7 @@ public class MainView extends JFrame{
                 pnlLogin.setVisible(false);
                 pnlSocios.setVisible(true);
                 pnlConsultasGenerales.setVisible(true);
-                usuarioLogueado = usuario;
+                usuarioController.LoggearUsuario(usuario);
             }
 
             else {
@@ -69,42 +68,36 @@ public class MainView extends JFrame{
                 pnlConsultasGenerales.setVisible(false);
                 pnlLogin.setVisible(true);
                 JOptionPane.showMessageDialog(null,"El usuario/password es incorrecto");
+                usuarioController.DesloggearUsuario();
             }
         });
 
         btnCerrar.addActionListener(e -> dispose());
-    }
-
-    private void asociarEventos(){
-        altaNuevoSocioButton.addActionListener(e -> {
-            AltaNuevoSocioView frame = new AltaNuevoSocioView(self, SocioController,usuarioLogueado.getNombre());
-            frame.setVisible(true);
-        });
 
         listarSociosButton.addActionListener(e -> {
-            ListaSociosView frame = new ListaSociosView(self, SocioController);
+            ListaSociosView frame = new ListaSociosView(self);
             frame.setVisible(true);
         });
 
         totalComisionesCalculadasButton.addActionListener(e -> {
-            ComisionesCalculadasView frame = new ComisionesCalculadasView(self, SocioController);
+            ComisionesCalculadasView frame = new ComisionesCalculadasView(self);
             frame.setVisible(true);
         });
 
         operacionesAvaladasANombreButton.addActionListener(e -> {
-            OperacionesAvaladasNombreView frame = new OperacionesAvaladasNombreView(self, SocioController);
+            OperacionesAvaladasNombreView frame = new OperacionesAvaladasNombreView(self);
             frame.setVisible(true);
 
         });
 
         valorPromedioDeTasaButton.addActionListener(e -> {
-            PromedioTasaDeDescuentoView frame = new PromedioTasaDeDescuentoView(self, SocioController);
+            PromedioTasaDeDescuentoView frame = new PromedioTasaDeDescuentoView(self);
             frame.setVisible(true);
         });
 
         consultaConsolidadaButton.addActionListener(e -> {
 
-            ConsultasConsolidadasView frame = new ConsultasConsolidadasView(self, SocioController, SgrController.getInstance());
+            ConsultasConsolidadasView frame = new ConsultasConsolidadasView(self);
             frame.setVisible(true);
 
         });

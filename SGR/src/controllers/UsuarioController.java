@@ -7,6 +7,8 @@ public class UsuarioController {
     private static final UsuarioController INSTANCE = new UsuarioController();
 
     private ArrayList<UsuarioModel> listaUsuarios;
+    
+    private UsuarioModel usuarioLoggeado;
 
     public static UsuarioController getInstance() {
         return INSTANCE;
@@ -25,5 +27,17 @@ public class UsuarioController {
         };
 
         return false;
+    }
+    
+    public UsuarioModel GetUsuarioLoggueado(){
+        return usuarioLoggeado;
+    }
+
+    public void LoggearUsuario(UsuarioModel usuario) {
+        usuarioLoggeado = usuario;
+    }
+
+    public void DesloggearUsuario() {
+        usuarioLoggeado = null;
     }
 }

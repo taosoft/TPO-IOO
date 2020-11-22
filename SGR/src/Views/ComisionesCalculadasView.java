@@ -6,8 +6,6 @@ import Models.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,9 +15,9 @@ public class ComisionesCalculadasView extends JDialog{
     private JTextField txtFecha;
     private JPanel pnlPrincipal;
     private JButton buscarButton;
-    private DefaultTableModel model;
+    private SocioController socioController;
 
-    public ComisionesCalculadasView(Window owner, SocioController SocioController) {
+    public ComisionesCalculadasView(Window owner) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -32,49 +30,44 @@ public class ComisionesCalculadasView extends JDialog{
         this.setModal(true);
         this.asociarEventos();
 
+        socioController = SocioController.getInstance();
+
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Porcentaje comision");
         model.addColumn("Total comision");
         model.addColumn("Numero de cheque");
         tablaComisiones.setModel(model);
 
+        buscarButton.addActionListener(e -> {
+            var socios = socioController.getSocios();
+            var comisionesCalculadas = new ArrayList<comisionesCalculadas>();
+            for(SocioModel socio: socios){
+                var lineasCredito = socio.getLineaCreditos();
 
-        buscarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                var socios = SocioController.getSocios();
-                var comisionesCalculadas = new ArrayList<comisionesCalculadas>();
-                for(SocioModel socio: socios){
-                    var lineasCredito = socio.getLineaCreditos();
+                for(LineaCreditoModel lineaCredito:lineasCredito){
+                    var cheques = lineaCredito.getCheques();
 
-                    for(LineaCreditoModel lineaCredito:lineasCredito){
-                        var cheques = lineaCredito.getCheques();
-
-                        for (ChequeModel cheque: cheques) {
-                            if(cheque.getFecha().compareTo(new Date(txtFecha.getText())) == 0){
-                                comisionesCalculadas.add(new comisionesCalculadas(cheque.getTasaDeDescuento(),
-                                        cheque.getNumeroCheque(), cheque.getImportePagado()));
-                            }
+                    for (ChequeModel cheque: cheques) {
+                        if(cheque.getFecha().compareTo(new Date(txtFecha.getText())) == 0){
+                            comisionesCalculadas.add(new comisionesCalculadas(cheque.getTasaDeDescuento(),
+                                    cheque.getNumeroCheque(), cheque.getImportePagado()));
                         }
                     }
                 }
-
-                tablaComisiones.removeAll();
-                model.addColumn("Porcentaje comision");
-                model.addColumn("Total comision");
-                model.addColumn("Numero de cheque");
-                for(comisionesCalculadas comisionCalculada: comisionesCalculadas){
-                    model.addColumn(comisionCalculada);
-                }
-                tablaComisiones.setModel(model);
             }
+
+            tablaComisiones.removeAll();
+            model.addColumn("Porcentaje comision");
+            model.addColumn("Total comision");
+            model.addColumn("Numero de cheque");
+            for(comisionesCalculadas comisionCalculada: comisionesCalculadas){
+                model.addColumn(comisionCalculada);
+            }
+            tablaComisiones.setModel(model);
         });
     }
-    private void asociarEventos(){
-        salirButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { dispose(); }
-        });
 
+    private void asociarEventos(){
+        salirButton.addActionListener(e -> dispose());
     }
 }

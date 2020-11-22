@@ -25,7 +25,6 @@ public class CuentasCorrienteView extends JDialog{
         this.setModal(true);
         //this.self = this;
 
-
         cerrarButton.addActionListener(e -> dispose());
     }
 }

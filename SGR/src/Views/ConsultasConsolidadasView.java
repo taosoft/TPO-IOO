@@ -7,8 +7,6 @@ import Models.Enums.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class ConsultasConsolidadasView extends JDialog {
@@ -18,10 +16,10 @@ public class ConsultasConsolidadasView extends JDialog {
     private JButton buscarButton;
     private JButton salirButton;
     private ConsultasConsolidadasView self;
-    private SocioController SocioController;
-    private SgrController SgrController;
+    private SocioController socioController;
+    private SgrController sgrController;
 
-    public ConsultasConsolidadasView(Window owner, SocioController SocioController, SgrController sgrController) {
+    public ConsultasConsolidadasView(Window owner) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -33,37 +31,32 @@ public class ConsultasConsolidadasView extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
-
         this.self = this;
-        this.SocioController = SocioController;
-        this.SgrController = sgrController;
+
+        socioController = SocioController.getInstance();
+        sgrController = SgrController.getInstance();
 
         cargarListaSocios();
 
-        for (SocioModel socio:this.SocioController.getSocios()) {
+        for (SocioModel socio:socioController.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
+        buscarButton.addActionListener(e -> {
+            var cuit = comboBox1.getSelectedItem();
 
-        buscarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                var cuit = comboBox1.getSelectedItem();
+            int totalRiesgoVivo = sgrController.getConsolidadas(cuit.toString());
+            int totalUtilizadoLinea = totalRiesgoVivo + sgrController.getTotalUtilizado(cuit.toString());
 
-                int totalRiesgoVivo = sgrController.getConsolidadas(cuit.toString());
-                int totalUtilizadoLinea = totalRiesgoVivo + sgrController.getTotalUtilizado(cuit.toString());
+            DefaultTableModel model = new DefaultTableModel();
 
-                DefaultTableModel model = new DefaultTableModel();
+            model.addColumn("Socios");
+            model.addColumn("Riesgo Vivo");
+            model.addColumn("Total Reutilizado");
 
-                model.addColumn("Socios");
-                model.addColumn("Riesgo Vivo");
-                model.addColumn("Total Reutilizado");
+            model.addRow(new Object[]{cuit,totalRiesgoVivo,totalUtilizadoLinea});
 
-                model.addRow(new Object[]{cuit,totalRiesgoVivo,totalUtilizadoLinea});
-
-                table1.setModel(model);
-
-            }
+            table1.setModel(model);
         });
     }
 
@@ -73,25 +66,25 @@ public class ConsultasConsolidadasView extends JDialog {
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
                 new Date("13/10/2014"), TipoSocio.Participe);
 
-        this.SocioController.AddSocio((socio));
+        socioController.AddSocio((socio));
 
         socio = SocioModel.CrearSocio("Juan","30801032158","Luz S.A.", TipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
                 new Date("26/09/2016"), TipoSocio.Participe);
 
-        this.SocioController.AddSocio((socio));
+        socioController.AddSocio((socio));
 
         socio = SocioModel.CrearSocio("Martha","30715248547","La Risa SRL.", TipoEmpresa.Grande,
                 "Cotillon", "Rivadavia 4123","45484542","lalal@sadas.com",
                 new Date("03/04/2008"), TipoSocio.Protector);
 
-        this.SocioController.AddSocio((socio));
+        socioController.AddSocio((socio));
 
         socio = SocioModel.CrearSocio("Ledesma","27542547852","Gandoriza SA", TipoEmpresa.Pequena,
                 "Turismo", "Larralde 4251","151254215","dasd@sadas.com",
                 new Date("12/10/2012"), TipoSocio.Participe);
 
-        this.SocioController.AddSocio((socio));
+        socioController.AddSocio((socio));
     }
 
     private ChequeModel cargarCheque(SocioModel socio){
@@ -106,7 +99,6 @@ public class ConsultasConsolidadasView extends JDialog {
 
         return  cheque;
     }
-
 
     private mdlPrestamo cargarPrestamo(SocioModel socio){
         var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(3);
@@ -131,10 +123,6 @@ public class ConsultasConsolidadasView extends JDialog {
     }
 
     private void asociarEventos(){
-        salirButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { dispose(); }
-        });
+        salirButton.addActionListener(e -> dispose());
     }
-
 }

@@ -5,8 +5,6 @@ import Models.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ListaSociosView extends JDialog {
     private JPanel pnlPrincipal;
@@ -18,9 +16,11 @@ public class ListaSociosView extends JDialog {
     private JButton cerrarButton;
     private JPanel pnlListarSocios;
     private JComboBox cmbCuitSocio;
+    private JButton altaNuevoSocioButton;
     private ListaSociosView self;
+    private SocioController socioController;
 
-    public ListaSociosView(Window owner, SocioController SocioController) {
+    public ListaSociosView(Window owner) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlListarSocios);
@@ -34,7 +34,9 @@ public class ListaSociosView extends JDialog {
         this.asociarEventos();
         this.self = this;
 
-        for (SocioModel socio: SocioController.getSocios()) {
+        socioController = SocioController.getInstance();
+
+        for (SocioModel socio: socioController.getSocios()) {
             cmbCuitSocio.addItem(socio.getCuit());
         };
 
@@ -46,8 +48,6 @@ public class ListaSociosView extends JDialog {
             riesgoVivoButton.setEnabled(false);
         }
 
-
-
         /*generarOperaciónButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,20 +57,18 @@ public class ListaSociosView extends JDialog {
             }
         });*/
         
-        verLíneaDeCréditoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                LineasCreditoView frame = new LineasCreditoView(self, SocioController.getSociosByCuit(cmbCuitSocio.getSelectedItem().toString()));
-                frame.show();
-            }
+        verLíneaDeCréditoButton.addActionListener(e -> {
+            LineasCreditoView frame = new LineasCreditoView(self, cmbCuitSocio.getSelectedItem().toString());
+            frame.show();
+        });
+        altaNuevoSocioButton.addActionListener(e -> {
+            AltaNuevoSocioView frame = new AltaNuevoSocioView(self);
+            frame.show();
         });
     }
 
     private void asociarEventos() {
-        cerrarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {dispose();}
-        });
+        cerrarButton.addActionListener(e -> dispose());
     }
 
     private void createUIComponents() {

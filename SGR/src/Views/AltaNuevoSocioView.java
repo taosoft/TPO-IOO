@@ -6,8 +6,6 @@ import Models.Enums.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 
 public class AltaNuevoSocioView extends JDialog {
@@ -23,9 +21,10 @@ public class AltaNuevoSocioView extends JDialog {
     private JTextField txtCorreoElectronico;
     private JButton aceptarButton;
     private JButton cancelarButton;
-    private String nombreUsuario;
+    private SocioController socioController;
+    private UsuarioController usuarioController;
 
-    public AltaNuevoSocioView(Window owner, SocioController SocioController, String nombreUsuario) {
+    public AltaNuevoSocioView(Window owner) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlPrincipal);
@@ -37,26 +36,23 @@ public class AltaNuevoSocioView extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
-        this.nombreUsuario = nombreUsuario;
 
-        aceptarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SocioController.AddSocio(SocioModel.CrearSocio(nombreUsuario,txtCuit.getText(),txtRazonSocial.getText(),
-                TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString()),txtActividad.getText(),txtDireccion.getText(),
-                txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), TipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString())));
-                dispose();
+        socioController = SocioController.getInstance();
+        usuarioController = UsuarioController.getInstance();
 
-            }
+        aceptarButton.addActionListener(e -> {
+            socioController.AddSocio(SocioModel.CrearSocio(usuarioController.GetUsuarioLoggueado().getNombre(),
+                    txtCuit.getText(),txtRazonSocial.getText(),
+                    TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString()),
+                    txtActividad.getText(),txtDireccion.getText(),
+                    txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()),
+                    TipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString())));
+
+            dispose();
         });
-
-
-
     }
+
     private void asociarEventos(){
-        cancelarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {dispose();}
-        });
+        cancelarButton.addActionListener(e -> dispose());
     }
 }
