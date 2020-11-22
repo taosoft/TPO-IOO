@@ -1,10 +1,6 @@
-package controllers;
+package Controllers;
 
-import modelos.mdlLineaCredito;
-import modelos.mdlOperacion;
-import modelos.mdlSocio;
-import modelos.mdlTipoOperacion;
-
+import Models.*;
 import java.util.ArrayList;
 
 public class ctrSGR {
@@ -14,8 +10,8 @@ public class ctrSGR {
     private ArrayList<mdlTipoOperacion> tipoOperaciones;
     
     public ctrSGR(){
-        socios = new ArrayList<mdlSocio>();
-        lineaCreditos = new ArrayList<mdlLineaCredito>();
+        socios = new ArrayList<>();
+        lineaCreditos = new ArrayList<>();
     }
 
     public void addSocio(mdlSocio socio){

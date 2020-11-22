@@ -1,18 +1,14 @@
-package controllers;
+package Controllers;
 
-import modelos.mdlUsuario;
-
-import java.lang.reflect.Array;
+import Models.*;
 import java.util.ArrayList;
 
 public class ctrUsuario {
     private ArrayList<mdlUsuario> listaUsuarios;
 
     public ctrUsuario(){
-        listaUsuarios = new ArrayList<mdlUsuario>();
-       
+        listaUsuarios = new ArrayList<>();
         listaUsuarios.add(new mdlUsuario("admin", "admin"));
-        
     }
     
     public boolean esUsuario(mdlUsuario usuario){
@@ -23,7 +19,5 @@ public class ctrUsuario {
         };
 
         return false;
-
     }
-
 }

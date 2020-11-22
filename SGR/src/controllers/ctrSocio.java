@@ -1,18 +1,14 @@
-package controllers;
+package Controllers;
 
-import modelos.mdlSocio;
-
-import java.text.DateFormat;
+import Models.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ctrSocio {
 
     private ArrayList<mdlSocio> socios;
 
     public ctrSocio(){
-      socios = new ArrayList<mdlSocio>();
-
+      socios = new ArrayList<>();
     }
 
     public  void AddSocio(mdlSocio socio){
@@ -30,6 +26,4 @@ public class ctrSocio {
 
         return null;
     }
-
-
 }
