@@ -94,17 +94,6 @@ public class FrmConsultasConsolidadas extends JDialog {
         this.ctrSocio.AddSocio((socio));
     }
 
-    /*private mdlLineaCredito cargarLineaCredito(mdlSocio socio){
-        var lineaCredito = new mdlLineaCredito();
-
-
-        // Cargar línea de crédito
-      /*  lineaCredito.crearLineaCredito(new Date("23/12/2020"),250,null,operacion.getCheques(),operacion.getPrestamos(),
-                operacion.getCuentaCorrientes());*/
-
-        return lineaCredito;
-    }*/
-
     private mdlCheque cargarCheque(mdlSocio socio){
         var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(2);
 
@@ -114,7 +103,6 @@ public class FrmConsultasConsolidadas extends JDialog {
 
         cheque.crearOperacion(tipoOperacion.ChequePropio,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
         cheque.crearOperacion(tipoOperacion.ChequeTerceros,certificadoGarantia,socio,comision,estadoOperacion.Ingresado,new Date("10/11/2020"));
-
 
         return  cheque;
     }

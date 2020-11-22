@@ -22,12 +22,7 @@ public class frmLineaCredito extends JDialog {
     private JButton agregarButton;
     private frmLineaCredito self;
 
-<<<<<<< HEAD
-    public frmLineaCredito(Window owner, ctrSocio ctrSocio) {
-=======
-
     public frmLineaCredito(Window owner, mdlSocio socio) {
->>>>>>> 250206968b18e341e146595df89a6cd850b0c531
         super(owner);
         this.setContentPane(pnlLineaCredito);
         this.setSize(500, 400);
@@ -46,13 +41,6 @@ public class frmLineaCredito extends JDialog {
 
         model.addColumn("Tipo operaciones");
         model.addColumn("Monto");
-<<<<<<< HEAD
-        model.addColumn("Tipo operacion");
-
-        for(mdlSocio socio:ctrSocio.getSocios()){
-            model.addRow(new Object[]{socio.getRazonSocial(),socio.getLineaCreditos(),
-                    socio.getFechaInicioActividades(),socio.getAportes(),socio.getTipoSocio()});
-=======
         model.addColumn("Fecha");
 
         for(mdlLineaCredito lineaCredito: socio.getLineaCreditos()){
@@ -61,7 +49,6 @@ public class frmLineaCredito extends JDialog {
                 tipoOperacionesConcat += tipoOperacion.toString();
             }
             model.addRow(new Object[]{tipoOperacionesConcat,lineaCredito.getMonto(), lineaCredito.getFechaVigencia(), lineaCredito.getId()});
->>>>>>> 250206968b18e341e146595df89a6cd850b0c531
         }
         table1.setModel(model);
 

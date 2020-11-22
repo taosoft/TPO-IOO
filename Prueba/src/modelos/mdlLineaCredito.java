@@ -13,11 +13,7 @@ public class mdlLineaCredito {
     private ArrayList<mdlCuentaCorriente> cuentaCorrientes;
     private ArrayList<mdlPrestamo> prestamos;
 
-<<<<<<< HEAD
-    public mdlLineaCredito() {
-=======
     public mdlLineaCredito(int id){
->>>>>>> 250206968b18e341e146595df89a6cd850b0c531
         tipoOperaciones = new ArrayList<>();
         cheques = new ArrayList<>();
         cuentaCorrientes = new ArrayList<>();
@@ -25,26 +21,6 @@ public class mdlLineaCredito {
         this.id = id;
     }
 
-<<<<<<< HEAD
-
-    public static mdlLineaCredito crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<mdlTipoOperacion> _tipoOperaciones,
-                                                    ArrayList<mdlCheque> _cheques, ArrayList<mdlPrestamo> _prestamos, ArrayList<mdlCuentaCorriente> _cuentaCorrientes) {
-
-
-        var lineaCredito = new mdlLineaCredito();
-
-        lineaCredito.fechaVigencia = _fechaVigencia;
-        lineaCredito.monto = _monto;
-        lineaCredito.tipoOperaciones = _tipoOperaciones;
-        lineaCredito.tipoOperaciones = _tipoOperaciones;
-        lineaCredito.cheques = _cheques;
-        lineaCredito.cuentaCorrientes = _cuentaCorrientes;
-        lineaCredito.prestamos = _prestamos;
-
-        return lineaCredito;
-    }       
-    
-=======
     public static mdlLineaCredito crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<tipoOperacion> _tipoOperaciones, int id){
 
         var lineaCredito = new mdlLineaCredito(id);
@@ -54,7 +30,6 @@ public class mdlLineaCredito {
 
         return lineaCredito;
     }
->>>>>>> 250206968b18e341e146595df89a6cd850b0c531
 
     public ArrayList<mdlCheque> getCheques() {
         return cheques;
@@ -135,11 +110,7 @@ public class mdlLineaCredito {
         return monto;
     }
 
-<<<<<<< HEAD
-    public ArrayList<mdlTipoOperacion> getTipoOperaciones() {
-=======
     public ArrayList<tipoOperacion> getTipoOperaciones(){
->>>>>>> 250206968b18e341e146595df89a6cd850b0c531
         return tipoOperaciones;
     }
 
