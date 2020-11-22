@@ -16,15 +16,13 @@
           <text value="Banco:"/>
         </properties>
       </component>
-      <component id="3556d" class="javax.swing.JTextField" binding="txtBanco">
+      <component id="3556d" class="javax.swing.JTextField" binding="textField1" default-binding="true">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
+        <properties/>
       </component>
       <component id="8032c" class="javax.swing.JLabel">
         <constraints>
@@ -34,7 +32,7 @@
           <text value="Importe Total:"/>
         </properties>
       </component>
-      <component id="b3e77" class="javax.swing.JTextField" binding="txtImporteTotal">
+      <component id="b3e77" class="javax.swing.JTextField" binding="textField2" default-binding="true">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -50,15 +48,13 @@
           <text value="Tasa:"/>
         </properties>
       </component>
-      <component id="c7bf8" class="javax.swing.JTextField" binding="txtTasa">
+      <component id="c7bf8" class="javax.swing.JTextField" binding="textField3" default-binding="true">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
+        <properties/>
       </component>
       <component id="e81a8" class="javax.swing.JLabel">
         <constraints>
@@ -68,15 +64,13 @@
           <text value="Fecha Acreditacion:"/>
         </properties>
       </component>
-      <component id="212c6" class="javax.swing.JTextField" binding="txtFechaAcreditacion">
+      <component id="212c6" class="javax.swing.JTextField" binding="textField4" default-binding="true">
         <constraints>
           <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
+        <properties/>
       </component>
       <component id="711e9" class="javax.swing.JLabel">
         <constraints>
@@ -94,15 +88,21 @@
           <text value="Tipo Sistema:"/>
         </properties>
       </component>
-      <component id="5d149" class="javax.swing.JTextField" binding="txtCantidadCuotas">
+      <component id="5d149" class="javax.swing.JTextField" binding="textField5" default-binding="true">
         <constraints>
           <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
+        <properties/>
+      </component>
+      <component id="baed0" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
       </component>
       <component id="92d6" class="javax.swing.JButton" binding="confirmarButton" default-binding="true">
         <constraints>
@@ -118,18 +118,6 @@
         </constraints>
         <properties>
           <text value="Cancelar"/>
-        </properties>
-      </component>
-      <component id="f9ff6" class="javax.swing.JComboBox" binding="cmbTipoSistema">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <model>
-            <item value="Frances"/>
-            <item value="Aleman"/>
-            <item value="Americano"/>
-          </model>
         </properties>
       </component>
     </children>
