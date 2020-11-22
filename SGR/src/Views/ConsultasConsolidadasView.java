@@ -12,7 +12,7 @@ import java.util.Date;
 public class ConsultasConsolidadasView extends JDialog {
     private JPanel pnlPrincipal;
     private JTable table1;
-    private JComboBox comboBox1;
+    private JComboBox cmbSocios;
     private JButton buscarButton;
     private JButton salirButton;
     private ConsultasConsolidadasView self;
@@ -36,14 +36,12 @@ public class ConsultasConsolidadasView extends JDialog {
         socioController = SocioController.getInstance();
         sgrController = SgrController.getInstance();
 
-        cargarListaSocios();
-
         for (SocioModel socio:socioController.getSocios()) {
-            comboBox1.addItem(socio.getCuit());
+            cmbSocios.addItem(socio.getCuit());
         };
 
         buscarButton.addActionListener(e -> {
-            var cuit = comboBox1.getSelectedItem();
+            var cuit = cmbSocios.getSelectedItem();
 
             int totalRiesgoVivo = sgrController.getConsolidadas(cuit.toString());
             int totalUtilizadoLinea = totalRiesgoVivo + sgrController.getTotalUtilizado(cuit.toString());
@@ -58,33 +56,6 @@ public class ConsultasConsolidadasView extends JDialog {
 
             table1.setModel(model);
         });
-    }
-
-    private void cargarListaSocios(){
-
-        var socio = SocioModel.CrearSocio("Mario","30715645579","Empresa S.A.", TipoEmpresa.Mediana,
-                "comercialización", "libertadores 123","353535","dasd@sadas.com",
-                new Date("13/10/2014"), TipoSocio.Participe);
-
-        socioController.AddSocio((socio));
-
-        socio = SocioModel.CrearSocio("Juan","30801032158","Luz S.A.", TipoEmpresa.Mediana,
-                "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
-                new Date("26/09/2016"), TipoSocio.Participe);
-
-        socioController.AddSocio((socio));
-
-        socio = SocioModel.CrearSocio("Martha","30715248547","La Risa SRL.", TipoEmpresa.Grande,
-                "Cotillon", "Rivadavia 4123","45484542","lalal@sadas.com",
-                new Date("03/04/2008"), TipoSocio.Protector);
-
-        socioController.AddSocio((socio));
-
-        socio = SocioModel.CrearSocio("Ledesma","27542547852","Gandoriza SA", TipoEmpresa.Pequena,
-                "Turismo", "Larralde 4251","151254215","dasd@sadas.com",
-                new Date("12/10/2012"), TipoSocio.Participe);
-
-        socioController.AddSocio((socio));
     }
 
     private ChequeModel cargarCheque(SocioModel socio){

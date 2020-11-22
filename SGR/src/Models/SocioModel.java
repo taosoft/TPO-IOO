@@ -19,10 +19,12 @@ public class SocioModel {
     private Date fechaInicioActividades;
     private EstadoSocio estado;
     private TipoSocio tipoSocio;
-    private ArrayList<mdlLogEstadoSocio> logs;
+    private ArrayList<LogEstadoSocioModel> logs;
     private TipoDocumento tipoDocumento;
+    private EstadoDocumentacion estadoDocumentacion;
     private ArrayList<mdlAporte> aportes;
     private ArrayList<LineaCreditoModel> lineaCreditos;
+    private ArrayList<AccionistaModel> accionistas;
 
     public SocioModel(){
         aportes = new ArrayList<>();
@@ -103,7 +105,7 @@ public class SocioModel {
         return tipoSocio;
     }
 
-    public ArrayList<mdlLogEstadoSocio> getLogEstadoSocio(){
+    public ArrayList<LogEstadoSocioModel> getLogEstadoSocio(){
         return logs;
     }
 
@@ -188,5 +190,21 @@ public class SocioModel {
 
     public void setActividadPrincipal(String actividadPrincipal){
         this.actividadPrincipal = actividadPrincipal;
+    }
+
+    public ArrayList<AccionistaModel> getAccionistas() {
+        return accionistas;
+    }
+
+    public void setAccionistas(ArrayList<AccionistaModel> accionistas) {
+        this.accionistas = accionistas;
+    }
+
+    public EstadoDocumentacion getEstadoDocumentacion() {
+        return estadoDocumentacion;
+    }
+
+    public void setEstadoDocumentacion(EstadoDocumentacion estadoDocumentacion) {
+        this.estadoDocumentacion = estadoDocumentacion;
     }
 }
