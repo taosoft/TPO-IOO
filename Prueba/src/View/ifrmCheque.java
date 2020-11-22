@@ -18,8 +18,6 @@ public class ifrmCheque extends JDialog {
     private JButton cerrarButton;
     private JButton confirmarButton;
     private JPanel pnlCheque;
-    private ifrmCheque self;
-    private ctrSocio ctrSocio;
 
     public ifrmCheque(Window owner, mdlLineaCredito mdlLineaCredito) {
 

@@ -16,8 +16,8 @@ public class frmLineaCredito extends JDialog {
     private JButton cerrarButton;
     private JPanel pnlLineaCredito;
     private JButton operarButton;
+    private JButton agregarButton;
     private frmLineaCredito self;
-
 
     public frmLineaCredito(Window owner, ctrSocio ctrSocio) {
         super(owner);
@@ -44,15 +44,11 @@ public class frmLineaCredito extends JDialog {
         model.addColumn("Tipo operacion");
 
         for(mdlSocio socio:ctrSocio.getSocios()){
-
-            model.addRow(new Object[]{socio.getRazonSocial(),socio.getLineaCreditos(),socio.getFechaInicioActividades(),socio.getAportes(),socio.getTipoSocio()});
-
+            model.addRow(new Object[]{socio.getRazonSocial(),socio.getLineaCreditos(),
+                    socio.getFechaInicioActividades(),socio.getAportes(),socio.getTipoSocio()});
         }
 
         table1.setModel(model);
-
-
-
 
         cerrarButton.addActionListener(new ActionListener() {
             @Override
@@ -65,6 +61,12 @@ public class frmLineaCredito extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 FrmOperaciones frame = new FrmOperaciones(self);
                 frame.setVisible(true);
+            }
+        });
+        agregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }
