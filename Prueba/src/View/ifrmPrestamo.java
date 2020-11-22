@@ -1,9 +1,12 @@
 package View;
 
+import modelos.mdlPrestamo;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ifrmPrestamo extends JDialog {
     private JPanel ifrmPrestamo;
@@ -17,7 +20,7 @@ public class ifrmPrestamo extends JDialog {
     private JButton cancelarButton;
     private ifrmPrestamo self;
 
-    public ifrmPrestamo(Window owner) {
+    public ifrmPrestamo(Window owner, ArrayList<mdlPrestamo> prestamos) {
 
         super(owner);
         this.setContentPane(ifrmPrestamo);
@@ -35,6 +38,16 @@ public class ifrmPrestamo extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
+            }
+        });
+
+        confirmarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // aca agrego los datos
+               mdlPrestamo prestamo = new mdlPrestamo();
+               prestamos.add(prestamo);
+               dispose();
             }
         });
     }
