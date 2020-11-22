@@ -41,7 +41,7 @@ public class ifrmCheque extends JDialog {
         confirmarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mdlLineaCredito.addCheque(new mdlCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
+                mdlLineaCredito.addCheque(mdlCheque.crearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
                         new Date(txtFechaVencimiento.getText()), txtCuitFirmante.getText()));
 
                 dispose();
