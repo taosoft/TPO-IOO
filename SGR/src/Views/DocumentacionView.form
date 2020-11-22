@@ -80,7 +80,7 @@
             <properties>
               <model>
                 <item value="Estatuto"/>
-                <item value="Contrato Social"/>
+                <item value="ContratoSocial"/>
                 <item value="CopiaUltimosBalances"/>
                 <item value="ManifestacionBienes"/>
               </model>

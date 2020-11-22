@@ -1,12 +1,8 @@
 package Views;
 
-import Controllers.SgrController;
-import Controllers.SocioController;
-import Controllers.UsuarioController;
-import Models.Enums.EstadoDocumento;
-import Models.Enums.EstadoSocio;
-import Models.LogEstadoSocioModel;
-import Models.SocioModel;
+import Controllers.*;
+import Models.Enums.*;
+import Models.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,20 +13,20 @@ import java.util.Objects;
 
 public class SociosView extends JDialog {
     private JPanel pnlPrincipal;
+    private JPanel pnlBotones;
     private JButton convertirEnSocioPlenoButton;
     private JButton agregarAporteButton;
-    private JButton verLíneaDeCréditoButton;
-    private JButton generarOperaciónButton;
+    private JButton verLineaDeCreditoButton;
     private JButton riesgoVivoButton;
     private JButton cerrarButton;
     private JPanel pnlListarSocios;
     private JComboBox cmbCuitSocio;
     private JButton altaNuevoSocioButton;
     private JButton documentacionButton;
-    private SociosView self;
-    private SocioController socioController;
-    private SgrController sgrController;
-    private UsuarioController usuarioController;
+    private final SociosView self;
+    private final SocioController socioController;
+    private final SgrController sgrController;
+    private final UsuarioController usuarioController;
 
     public SociosView(Window owner) {
         super(owner);
@@ -59,7 +55,7 @@ public class SociosView extends JDialog {
         convertirEnSocioPlenoButton.setVisible(false);
         agregarAporteButton.setEnabled(false);
         documentacionButton.setEnabled(false);
-        verLíneaDeCréditoButton.setEnabled(false);
+        verLineaDeCreditoButton.setEnabled(false);
         riesgoVivoButton.setEnabled(false);
 
         for (SocioModel socio: socioController.getSocios()) {
@@ -74,9 +70,15 @@ public class SociosView extends JDialog {
             DocumentacionView frame = new DocumentacionView(self,
                     Objects.requireNonNull(cmbCuitSocio.getSelectedItem()).toString());
             frame.setVisible(true);
+
+            frame.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    LoadSocios();
+                }
+            });
         });
 
-        verLíneaDeCréditoButton.addActionListener(e -> {
+        verLineaDeCreditoButton.addActionListener(e -> {
             LineasCreditoView frame = new LineasCreditoView(self,
                     Objects.requireNonNull(cmbCuitSocio.getSelectedItem()).toString());
             frame.setVisible(true);
@@ -101,7 +103,7 @@ public class SociosView extends JDialog {
 
             agregarAporteButton.setEnabled(true);
             documentacionButton.setEnabled(true);
-            verLíneaDeCréditoButton.setEnabled(true);
+            verLineaDeCreditoButton.setEnabled(true);
             riesgoVivoButton.setEnabled(true);
         });
 

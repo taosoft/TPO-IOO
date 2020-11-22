@@ -1,11 +1,8 @@
 package Views;
 
 import Controllers.*;
-import Models.Enums.EstadoDocumento;
-import Models.Enums.TipoDocumento;
-import Models.LogDocumentoSocioModel;
-import Models.LogEstadoDocumentoSocioModel;
-import Models.SocioModel;
+import Models.Enums.*;
+import Models.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,11 +15,9 @@ public class DocumentacionView extends JDialog {
     private JButton buttonCancel;
     private JComboBox cmbTipoDocumento;
     private JComboBox cmbEstadoDocumento;
-    private DocumentacionView self;
-    private SocioController socioController;
-    private SgrController sgrController;
-    private UsuarioController usuarioController;
-    private SocioModel socio;
+    private final SgrController sgrController;
+    private final UsuarioController usuarioController;
+    private final SocioModel socio;
 
     public DocumentacionView(Window owner, String cuit) {
         super(owner);
@@ -36,44 +31,59 @@ public class DocumentacionView extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
-        this.self = this;
+        DocumentacionView self = this;
 
-        socioController = SocioController.getInstance();
+        SocioController socioController = SocioController.getInstance();
         sgrController = SgrController.getInstance();
         usuarioController = UsuarioController.getInstance();
 
         socio = socioController.getSociosByCuit(cuit);
-        cmbEstadoDocumento.setSelectedItem(socio.getEstadoDocumento().toString());
-        cmbTipoDocumento.setSelectedItem(socio.getTipoDocumento().toString());
+        var estadoDocumento = socio.getEstadoDocumento();
+        if(estadoDocumento != null) {
+            cmbEstadoDocumento.setSelectedItem(estadoDocumento.toString());
+        }
+        var tipoDocumento = socio.getTipoDocumento();
+        if(tipoDocumento != null){
+            cmbTipoDocumento.setSelectedItem(tipoDocumento.toString());
+        }
     }
 
     private void asociarEventos() {
         buttonCancel.addActionListener(e -> dispose());
 
         buttonOK.addActionListener(e -> {
+            try{
 
-            var tipoDocumentoView =
-                    TipoDocumento.valueOf(Objects.requireNonNull(cmbTipoDocumento.getSelectedItem().toString()));
+                var tipoDocumentoView =
+                        TipoDocumento.valueOf(Objects.requireNonNull(Objects.requireNonNull(cmbTipoDocumento.getSelectedItem()).toString()));
 
-            var estadoDocumentoView =
-                    EstadoDocumento.valueOf(Objects.requireNonNull(cmbEstadoDocumento.getSelectedItem().toString()));
+                var estadoDocumentoView =
+                        EstadoDocumento.valueOf(Objects.requireNonNull(Objects.requireNonNull(cmbEstadoDocumento.getSelectedItem()).toString()));
 
-            if(tipoDocumentoView != socio.getTipoDocumento()){
-                sgrController.addLogDocumentoSocioModel(LogDocumentoSocioModel.CrearLogDocumentoSocioModel(new Date(),
-                        socio.getTipoDocumento(),
-                        tipoDocumentoView,
-                        usuarioController.GetUsuarioLoggueado().getNombre()));
-            }
-
-            if(estadoDocumentoView != socio.getEstadoDocumento()){
-                sgrController.addLogEstadoDocumentoSocioModel(
-                        LogEstadoDocumentoSocioModel.CrearLogEstadoDocumentoSocioModel(new Date(),
-                            socio.getEstadoDocumento(),
-                            estadoDocumentoView,
+                if(tipoDocumentoView != socio.getTipoDocumento()){
+                    sgrController.addLogDocumentoSocioModel(LogDocumentoSocioModel.CrearLogDocumentoSocioModel(new Date(),
+                            socio.getTipoDocumento(),
+                            tipoDocumentoView,
                             usuarioController.GetUsuarioLoggueado().getNombre()));
-            }
 
-            dispose();
+                    socio.setTipoDocumento(tipoDocumentoView);
+                }
+
+                if(estadoDocumentoView != socio.getEstadoDocumento()){
+                    sgrController.addLogEstadoDocumentoSocioModel(
+                            LogEstadoDocumentoSocioModel.CrearLogEstadoDocumentoSocioModel(new Date(),
+                                    socio.getEstadoDocumento(),
+                                    estadoDocumentoView,
+                                    usuarioController.GetUsuarioLoggueado().getNombre()));
+
+                    socio.setEstadoDocumento(estadoDocumentoView);
+                }
+
+                dispose();
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
         });
     }
 }
