@@ -2,6 +2,7 @@ package Views;
 
 import Controllers.*;
 import Models.*;
+import Models.Enums.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -38,17 +39,17 @@ public class PromedioTasaDeDescuentoView extends JDialog{
         salirButton.addActionListener(e -> dispose());
 
         buscarButton.addActionListener(e -> {
-            var tipoEmpresa = Models.tipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
+            var tipoEmpresa = TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
             Date fechaInicial = new Date(txtFechaInicial.getText());
             Date fechaFinal = new Date(txtFechaFinal.getText());
-            ArrayList<mdlSocio> socios = SocioController.getSocios();
+            ArrayList<SocioModel> socios = SocioController.getSocios();
             var promedioTasaDescuento = new ArrayList<promedioTasaDeDescuento>();
-            for(mdlSocio socio:socios){
+            for(SocioModel socio:socios){
                 if (socio.getTipoEmpresa() == tipoEmpresa){
-                    ArrayList<mdlLineaCredito> lineaCreditos = socio.getLineaCreditos();
-                    for(mdlLineaCredito lineaCredito:lineaCreditos){
-                        ArrayList<mdlCheque> cheques = lineaCredito.getCheques();
-                        for(mdlCheque cheque:cheques){
+                    ArrayList<LineaCreditoModel> lineaCreditos = socio.getLineaCreditos();
+                    for(LineaCreditoModel lineaCredito:lineaCreditos){
+                        ArrayList<ChequeModel> cheques = lineaCredito.getCheques();
+                        for(ChequeModel cheque:cheques){
                             if(cheque.getFecha().after(fechaInicial)&& cheque.getFecha().before(fechaFinal)){
                                 var mdlPromeidoTasaDeDescuento = new promedioTasaDeDescuento();
                                 mdlPromeidoTasaDeDescuento.setNombreSocio(socio.getCuit());

@@ -1,6 +1,6 @@
-package Models;
+package Models.Enums;
 
-public enum tipoDocumento {
+public enum TipoDocumento {
     Estatuto,
     ContratoSocial,
     CopiaUltimosBalances,

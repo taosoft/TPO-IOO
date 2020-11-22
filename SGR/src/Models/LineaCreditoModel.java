@@ -1,19 +1,22 @@
 package Models;
 
+import Models.Enums.TipoOperacion;
+import Models.Enums.EstadoOperacion;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class mdlLineaCredito {
+public class LineaCreditoModel {
 
     private Date fechaVigencia;
     private long monto;
     private int id;
-    private ArrayList<tipoOperacion> tipoOperaciones;
-    private ArrayList<mdlCheque> cheques;
+    private ArrayList<TipoOperacion> tipoOperaciones;
+    private ArrayList<ChequeModel> cheques;
     private ArrayList<mdlCuentaCorriente> cuentaCorrientes;
     private ArrayList<mdlPrestamo> prestamos;
 
-    public mdlLineaCredito(int id){
+    public LineaCreditoModel(int id){
         tipoOperaciones = new ArrayList<>();
         cheques = new ArrayList<>();
         cuentaCorrientes = new ArrayList<>();
@@ -21,9 +24,9 @@ public class mdlLineaCredito {
         this.id = id;
     }
 
-    public static mdlLineaCredito crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<tipoOperacion> _tipoOperaciones, int id){
+    public static LineaCreditoModel crearLineaCredito(Date _fechaVigencia, long _monto, ArrayList<TipoOperacion> _tipoOperaciones, int id){
 
-        var lineaCredito = new mdlLineaCredito(id);
+        var lineaCredito = new LineaCreditoModel(id);
         lineaCredito.fechaVigencia = _fechaVigencia;
         lineaCredito.monto = _monto;
         lineaCredito.tipoOperaciones = _tipoOperaciones;
@@ -31,7 +34,7 @@ public class mdlLineaCredito {
         return lineaCredito;
     }
 
-    public ArrayList<mdlCheque> getCheques() {
+    public ArrayList<ChequeModel> getCheques() {
         return cheques;
     }
 
@@ -39,7 +42,7 @@ public class mdlLineaCredito {
         return prestamos;
     }
 
-    public void addCheque(mdlCheque cheque){
+    public void addCheque(ChequeModel cheque){
         cheques.add(cheque);
     }
     public void addCuentaCorriente(mdlCuentaCorriente cuentaCorriente){
@@ -54,20 +57,20 @@ public class mdlLineaCredito {
         int contadorOperaciones = 0;
 
         // Recorro la lista del tipo de operaciones
-        for (mdlCheque cheque : cheques) {
-            if (fechaVigencia.before(new Date()) && cheque.getEstadoOperacion() == estadoOperacion.Monetizado) {
+        for (ChequeModel cheque : cheques) {
+            if (fechaVigencia.before(new Date()) && cheque.getEstadoOperacion() == EstadoOperacion.Monetizado) {
                 contadorOperaciones += cheque.getImportePagado();
             }
         }
 
         for (mdlCuentaCorriente cuentaCorriente : cuentaCorrientes) {
-            if (fechaVigencia.before(new Date()) && cuentaCorriente.getEstadoOperacion() == estadoOperacion.Monetizado) {
+            if (fechaVigencia.before(new Date()) && cuentaCorriente.getEstadoOperacion() == EstadoOperacion.Monetizado) {
                 contadorOperaciones += cuentaCorriente.getImportePagado();
             }
         }
 
         for (mdlPrestamo prestamo : prestamos) {
-            if (fechaVigencia.before(new Date()) && prestamo.getEstadoOperacion() == estadoOperacion.Monetizado) {
+            if (fechaVigencia.before(new Date()) && prestamo.getEstadoOperacion() == EstadoOperacion.Monetizado) {
                 contadorOperaciones += prestamo.getImportePagado();
             }
         }
@@ -80,21 +83,21 @@ public class mdlLineaCredito {
         int contadorOperaciones = 0;
 
         // Recorro la lista del tipo de operaciones
-        for (mdlCheque cheque : cheques) {
+        for (ChequeModel cheque : cheques) {
             //
-            if (cheque.getEstadoOperacion() == estadoOperacion.ConCertificadoEmitido) {
+            if (cheque.getEstadoOperacion() == EstadoOperacion.ConCertificadoEmitido) {
                 contadorOperaciones += cheque.getImportePagado();
             }
         }
 
         for (mdlCuentaCorriente cuentaCorriente : cuentaCorrientes) {
-            if (cuentaCorriente.getEstadoOperacion() == estadoOperacion.ConCertificadoEmitido) {
+            if (cuentaCorriente.getEstadoOperacion() == EstadoOperacion.ConCertificadoEmitido) {
                 contadorOperaciones += cuentaCorriente.getImportePagado();
             }
         }
 
         for (mdlPrestamo prestamo : prestamos) {
-            if (prestamo.getEstadoOperacion() == estadoOperacion.ConCertificadoEmitido) {
+            if (prestamo.getEstadoOperacion() == EstadoOperacion.ConCertificadoEmitido) {
                 contadorOperaciones += prestamo.getImportePagado();
             }
         }
@@ -110,7 +113,7 @@ public class mdlLineaCredito {
         return monto;
     }
 
-    public ArrayList<tipoOperacion> getTipoOperaciones(){
+    public ArrayList<TipoOperacion> getTipoOperaciones(){
         return tipoOperaciones;
     }
 

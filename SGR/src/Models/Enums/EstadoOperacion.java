@@ -1,6 +1,6 @@
-package Models;
+package Models.Enums;
 
-public enum estadoOperacion {
+public enum EstadoOperacion {
     Ingresado,
     ConCertificadoEmitido,
     Monetizado

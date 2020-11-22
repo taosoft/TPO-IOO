@@ -34,7 +34,7 @@ public class ListaSociosView extends JDialog {
         this.asociarEventos();
         this.self = this;
 
-        for (mdlSocio socio: SocioController.getSocios()) {
+        for (SocioModel socio: SocioController.getSocios()) {
             cmbCuitSocio.addItem(socio.getCuit());
         };
 

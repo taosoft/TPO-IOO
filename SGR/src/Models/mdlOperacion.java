@@ -1,13 +1,16 @@
 package Models;
 
+import Models.Enums.TipoOperacion;
+import Models.Enums.EstadoOperacion;
+
 import java.util.Date;
 
 public class mdlOperacion {
     private String tipo;
     private mdlCertificadoGarantia certificadoGarantia;
-    private mdlSocio socio;
+    private SocioModel socio;
     private mdlComision comision;
-    private estadoOperacion estadoOperacion;
+    private EstadoOperacion estadoOperacion;
     private Date fecha;
 
     public mdlOperacion(){
@@ -15,7 +18,7 @@ public class mdlOperacion {
         fecha = new Date();
     }
 
-    public static mdlOperacion crearOperacion(tipoOperacion _tipoOperacion, mdlCertificadoGarantia _certificadoGarantia, mdlSocio _socio, mdlComision _comision, estadoOperacion _estadoOperacion, Date _fecha){
+    public static mdlOperacion crearOperacion(TipoOperacion _tipoOperacion, mdlCertificadoGarantia _certificadoGarantia, SocioModel _socio, mdlComision _comision, EstadoOperacion _estadoOperacion, Date _fecha){
 
         var operacion = new mdlOperacion();
 
@@ -34,7 +37,7 @@ public class mdlOperacion {
         return  certificadoGarantia;
     }
 
-    public mdlSocio getSocio(){
+    public SocioModel getSocio(){
         return socio;
     }
 
@@ -42,7 +45,7 @@ public class mdlOperacion {
         return comision;
     }
 
-    public estadoOperacion getEstadoOperacion(){
+    public EstadoOperacion getEstadoOperacion(){
         return  estadoOperacion;
     }
 

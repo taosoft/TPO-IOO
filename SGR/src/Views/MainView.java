@@ -22,7 +22,7 @@ public class MainView extends JFrame{
     private JButton btnCerrar;
     private MainView self;
     private SocioController SocioController;
-    private mdlUsuario usuarioLogueado;
+    private UsuarioModel usuarioLogueado;
 
     private UsuarioController UsuarioController;
 
@@ -55,7 +55,7 @@ public class MainView extends JFrame{
 
         btnIngresar.addActionListener(e -> {
 
-            mdlUsuario usuario = new mdlUsuario(txtUsuario.getText(),txtPassword.getText());
+            UsuarioModel usuario = new UsuarioModel(txtUsuario.getText(),txtPassword.getText());
 
             if(UsuarioController.esUsuario(usuario)) {
                 pnlLogin.setVisible(false);

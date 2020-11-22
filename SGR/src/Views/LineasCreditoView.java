@@ -1,6 +1,8 @@
 package Views;
 
 import Models.*;
+import Models.Enums.TipoOperacion;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -17,7 +19,7 @@ public class LineasCreditoView extends JDialog {
     private JButton agregarButton;
     private LineasCreditoView self;
 
-    public LineasCreditoView(Window owner, mdlSocio socio) {
+    public LineasCreditoView(Window owner, SocioModel socio) {
         super(owner);
         this.setContentPane(pnlLineaCredito);
         this.setSize(500, 400);
@@ -37,9 +39,9 @@ public class LineasCreditoView extends JDialog {
         model.addColumn("Monto");
         model.addColumn("Fecha");
 
-        for(mdlLineaCredito lineaCredito: socio.getLineaCreditos()){
+        for(LineaCreditoModel lineaCredito: socio.getLineaCreditos()){
             String tipoOperacionesConcat = new String();
-            for(tipoOperacion tipoOperacion: lineaCredito.getTipoOperaciones()){
+            for(TipoOperacion tipoOperacion: lineaCredito.getTipoOperaciones()){
                 tipoOperacionesConcat += tipoOperacion.toString();
             }
             model.addRow(new Object[]{tipoOperacionesConcat,lineaCredito.getMonto(), lineaCredito.getFechaVigencia(), lineaCredito.getId()});

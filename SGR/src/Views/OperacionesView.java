@@ -16,7 +16,7 @@ public class OperacionesView extends JDialog {
     private JPanel pnlOperac;
     private PrestamoView self;
 
-    public OperacionesView(Window owner, mdlLineaCredito mdlLineaCredito) {
+    public OperacionesView(Window owner, LineaCreditoModel LineaCreditoModel) {
         super(owner);
         this.setContentPane(pnlOperaciones);
         this.setSize(500, 400);
@@ -46,7 +46,7 @@ public class OperacionesView extends JDialog {
         cerrarButton.addActionListener(e -> dispose());
 
         chequesButton.addActionListener(e -> {
-            ChequeView frame = new ChequeView(self, new mdlLineaCredito(1));
+            ChequeView frame = new ChequeView(self, new LineaCreditoModel(1));
             frame.setVisible(true);
         });
 
@@ -56,7 +56,7 @@ public class OperacionesView extends JDialog {
         });
 
         prestamosButton.addActionListener(e -> {
-            PrestamoView frame = new PrestamoView(self, mdlLineaCredito.getPrestamos());
+            PrestamoView frame = new PrestamoView(self, LineaCreditoModel.getPrestamos());
             frame.setVisible(true);
         });
     }

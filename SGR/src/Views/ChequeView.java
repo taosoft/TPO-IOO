@@ -15,7 +15,7 @@ public class ChequeView extends JDialog {
     private JButton confirmarButton;
     private JPanel pnlCheque;
 
-    public ChequeView(Window owner, mdlLineaCredito mdlLineaCredito) {
+    public ChequeView(Window owner, LineaCreditoModel LineaCreditoModel) {
 
         super(owner);
         this.setContentPane(pnlCheque);
@@ -30,7 +30,7 @@ public class ChequeView extends JDialog {
         cerrarButton.addActionListener(e -> dispose());
 
         confirmarButton.addActionListener(e -> {
-            mdlLineaCredito.addCheque(mdlCheque.crearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
+            LineaCreditoModel.addCheque(ChequeModel.crearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
                     new Date(txtFechaVencimiento.getText()), txtCuitFirmante.getText()));
 
             dispose();

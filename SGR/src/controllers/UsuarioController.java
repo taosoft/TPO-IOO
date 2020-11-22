@@ -4,15 +4,15 @@ import Models.*;
 import java.util.ArrayList;
 
 public class UsuarioController {
-    private ArrayList<mdlUsuario> listaUsuarios;
+    private ArrayList<UsuarioModel> listaUsuarios;
 
     public UsuarioController(){
         listaUsuarios = new ArrayList<>();
-        listaUsuarios.add(new mdlUsuario("admin", "admin"));
+        listaUsuarios.add(new UsuarioModel("admin", "admin"));
     }
     
-    public boolean esUsuario(mdlUsuario usuario){
-        for (mdlUsuario user : listaUsuarios) {
+    public boolean esUsuario(UsuarioModel usuario){
+        for (UsuarioModel user : listaUsuarios) {
             if(user.getNombre().equals(usuario.getNombre()) && user.getPassword().equals(usuario.getPassword())){
                 return true;
             }

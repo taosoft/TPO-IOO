@@ -44,13 +44,13 @@ public class ComisionesCalculadasView extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 var socios = SocioController.getSocios();
                 var comisionesCalculadas = new ArrayList<comisionesCalculadas>();
-                for(mdlSocio socio: socios){
+                for(SocioModel socio: socios){
                     var lineasCredito = socio.getLineaCreditos();
 
-                    for(mdlLineaCredito lineaCredito:lineasCredito){
+                    for(LineaCreditoModel lineaCredito:lineasCredito){
                         var cheques = lineaCredito.getCheques();
 
-                        for (mdlCheque cheque: cheques) {
+                        for (ChequeModel cheque: cheques) {
                             if(cheque.getFecha().compareTo(new Date(txtFecha.getText())) == 0){
                                 comisionesCalculadas.add(new comisionesCalculadas(cheque.getTasaDeDescuento(),
                                         cheque.getNumeroCheque(), cheque.getImportePagado()));

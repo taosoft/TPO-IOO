@@ -2,7 +2,7 @@ package Models;
 
 import java.util.Date;
 
-public class mdlCheque extends mdlOperacion {
+public class ChequeModel extends mdlOperacion {
     private int importePagado;
     private int tasaDeDescuento;
     private String bancoEmisor;
@@ -10,8 +10,8 @@ public class mdlCheque extends mdlOperacion {
     private Date fechaVencimiento;
     private String cuitFirmante;
 
-    public static mdlCheque crearNuevoCheque(String bancoEmisor, String numeroCheque, Date fechaVencimiento, String cuitFirmante){
-        var cheque = new mdlCheque();
+    public static ChequeModel crearNuevoCheque(String bancoEmisor, String numeroCheque, Date fechaVencimiento, String cuitFirmante){
+        var cheque = new ChequeModel();
         cheque.setCuitFirmante(cuitFirmante);
         cheque.setNumeroCheque(numeroCheque);
         cheque.setFechaVencimiento(fechaVencimiento);

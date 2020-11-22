@@ -1,6 +1,6 @@
-package Models;
+package Models.Enums;
 
-public enum tipoOperacion {
+public enum TipoOperacion {
     ChequePropio,
     ChequeTerceros,
     PagareBursatil,

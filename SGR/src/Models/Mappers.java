@@ -1,15 +1,17 @@
 package Models;
 
+import Models.Enums.NumeracionTipoOperacion;
+
 import java.util.EnumMap;
 
 public class Mappers {
-    public static EnumMap<numeracionTipoOperacion, Integer> GetMapEnumOperacionComision() {
+    public static EnumMap<NumeracionTipoOperacion, Integer> GetMapEnumOperacionComision() {
 
-        EnumMap<numeracionTipoOperacion, Integer> mapper = new EnumMap<>(numeracionTipoOperacion.class);
+        EnumMap<NumeracionTipoOperacion, Integer> mapper = new EnumMap<>(NumeracionTipoOperacion.class);
 
-        mapper.put(numeracionTipoOperacion.uno, 3);
-        mapper.put(numeracionTipoOperacion.dos, 3);
-        mapper.put(numeracionTipoOperacion.tres, 4);
+        mapper.put(NumeracionTipoOperacion.uno, 3);
+        mapper.put(NumeracionTipoOperacion.dos, 3);
+        mapper.put(NumeracionTipoOperacion.tres, 4);
 
         return mapper;
     }

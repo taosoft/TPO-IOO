@@ -1,39 +1,40 @@
 package Models;
 
+import Models.Enums.*;
+
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class mdlSocio {
+public class SocioModel {
 
     private String nombreUsuario;
     private String cuit;
     private String razonSocial;
-    private tipoEmpresa tipoEmpresa;
+    private TipoEmpresa tipoEmpresa;
     private String actividadPrincipal;
     private String direccion;
     private String telefono;
     private String email;
     private Date fechaRecepcion;
     private Date fechaInicioActividades;
-    private estadoSocio estado;
-    private tipoSocio tipoSocio;
+    private EstadoSocio estado;
+    private TipoSocio tipoSocio;
     private ArrayList<mdlLogEstadoSocio> logs;
-    private tipoDocumento tipoDocumento;
+    private TipoDocumento tipoDocumento;
     private ArrayList<mdlAporte> aportes;
-    private ArrayList<mdlLineaCredito> lineaCreditos;
+    private ArrayList<LineaCreditoModel> lineaCreditos;
 
-    public mdlSocio(){
+    public SocioModel(){
         aportes = new ArrayList<>();
         logs = new ArrayList<>();
-        estado = estadoSocio.Postulante;
+        estado = EstadoSocio.Postulante;
         lineaCreditos = new ArrayList<>();
     }
 
-    public static mdlSocio CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, tipoEmpresa _tipoEmpresa,
-                                      String _actividadPrincipal, String _direccion, String _telefono, String _email,
-                                      Date _fechaInicioActividades, tipoSocio _tipoSocio){
-        var nuevoSocio = new mdlSocio();
+    public static SocioModel CrearSocio(String _nombreUsuario, String _cuit, String _razonSocial, TipoEmpresa _tipoEmpresa,
+                                        String _actividadPrincipal, String _direccion, String _telefono, String _email,
+                                        Date _fechaInicioActividades, TipoSocio _tipoSocio){
+        var nuevoSocio = new SocioModel();
 
         nuevoSocio.setNombreUsuario(_nombreUsuario);
         nuevoSocio.setCuit(_cuit);
@@ -47,14 +48,14 @@ public class mdlSocio {
         nuevoSocio.setFechaInicioActividades(_fechaInicioActividades);
         nuevoSocio.setTipoSocio(_tipoSocio);
 
-        var listaTipoOperaciones = new ArrayList<tipoOperacion>();
-        listaTipoOperaciones.add(tipoOperacion.CCComercial);
-        listaTipoOperaciones.add(tipoOperacion.Prestamo);
-        listaTipoOperaciones.add(tipoOperacion.ChequePropio);
-        listaTipoOperaciones.add(tipoOperacion.ChequeTerceros);
+        var listaTipoOperaciones = new ArrayList<TipoOperacion>();
+        listaTipoOperaciones.add(TipoOperacion.CCComercial);
+        listaTipoOperaciones.add(TipoOperacion.Prestamo);
+        listaTipoOperaciones.add(TipoOperacion.ChequePropio);
+        listaTipoOperaciones.add(TipoOperacion.ChequeTerceros);
 
 
-        var lineaCredito = mdlLineaCredito.crearLineaCredito(new Date(),
+        var lineaCredito = LineaCreditoModel.crearLineaCredito(new Date(),
                 112,
                 listaTipoOperaciones, 1);
         nuevoSocio.addLineaCredito(lineaCredito);
@@ -70,7 +71,7 @@ public class mdlSocio {
         return razonSocial;
     }
 
-    public tipoEmpresa getTipoEmpresa(){
+    public TipoEmpresa getTipoEmpresa(){
         return tipoEmpresa;
     }
 
@@ -94,11 +95,11 @@ public class mdlSocio {
         return fechaInicioActividades;
     }
 
-    public estadoSocio getEstadoSocio(){
+    public EstadoSocio getEstadoSocio(){
         return estado;
     }
 
-    public tipoSocio getTipoSocio(){
+    public TipoSocio getTipoSocio(){
         return tipoSocio;
     }
 
@@ -106,7 +107,7 @@ public class mdlSocio {
         return logs;
     }
 
-    public tipoDocumento getTipoDocumento(){
+    public TipoDocumento getTipoDocumento(){
         return tipoDocumento;
     }
 
@@ -119,15 +120,15 @@ public class mdlSocio {
     }
 
 
-    public ArrayList<mdlLineaCredito> getLineaCreditos(){
+    public ArrayList<LineaCreditoModel> getLineaCreditos(){
         return lineaCreditos;
     }
-    public void addLineaCredito(mdlLineaCredito lineaCredito){
+    public void addLineaCredito(LineaCreditoModel lineaCredito){
         lineaCreditos.add(lineaCredito);
     }
 
-    public mdlLineaCredito getLineaCreditosById(int id){
-        for(mdlLineaCredito lineaCredito: lineaCreditos){
+    public LineaCreditoModel getLineaCreditosById(int id){
+        for(LineaCreditoModel lineaCredito: lineaCreditos){
             if(lineaCredito.getId() == id){
                 return lineaCredito;
             }
@@ -145,7 +146,7 @@ public class mdlSocio {
         this.razonSocial = razonSocial;
     }
 
-    public void setTipoEmpresa(tipoEmpresa tipoEmpresa){
+    public void setTipoEmpresa(TipoEmpresa tipoEmpresa){
         this.tipoEmpresa = tipoEmpresa;
     }
 
@@ -169,15 +170,15 @@ public class mdlSocio {
         this.fechaInicioActividades = fechaInicioActividades;
     }
 
-    public void setEstadoSocio(estadoSocio estado){
+    public void setEstadoSocio(EstadoSocio estado){
         this.estado = estado;
     }
 
-    public void setTipoSocio(tipoSocio tipoSocio){
+    public void setTipoSocio(TipoSocio tipoSocio){
         this.tipoSocio = tipoSocio;
     }
 
-    public void setTipoDocumento(tipoDocumento tipoDocumento){
+    public void setTipoDocumento(TipoDocumento tipoDocumento){
         this.tipoDocumento = tipoDocumento;
     }
 

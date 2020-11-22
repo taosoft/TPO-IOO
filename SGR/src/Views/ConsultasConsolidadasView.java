@@ -2,6 +2,7 @@ package Views;
 
 import Controllers.*;
 import Models.*;
+import Models.Enums.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -39,7 +40,7 @@ public class ConsultasConsolidadasView extends JDialog {
 
         cargarListaSocios();
 
-        for (mdlSocio socio:this.SocioController.getSocios()) {
+        for (SocioModel socio:this.SocioController.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
@@ -68,63 +69,63 @@ public class ConsultasConsolidadasView extends JDialog {
 
     private void cargarListaSocios(){
 
-        var socio = mdlSocio.CrearSocio("Mario","30715645579","Empresa S.A.",tipoEmpresa.Mediana,
+        var socio = SocioModel.CrearSocio("Mario","30715645579","Empresa S.A.", TipoEmpresa.Mediana,
                 "comercialización", "libertadores 123","353535","dasd@sadas.com",
-                new Date("13/10/2014"), tipoSocio.Participe);
+                new Date("13/10/2014"), TipoSocio.Participe);
 
         this.SocioController.AddSocio((socio));
 
-        socio = mdlSocio.CrearSocio("Juan","30801032158","Luz S.A.",tipoEmpresa.Mediana,
+        socio = SocioModel.CrearSocio("Juan","30801032158","Luz S.A.", TipoEmpresa.Mediana,
                 "comercialización", "Chacabuco 123","353535","dasd@sadas.com",
-                new Date("26/09/2016"), tipoSocio.Participe);
+                new Date("26/09/2016"), TipoSocio.Participe);
 
         this.SocioController.AddSocio((socio));
 
-        socio = mdlSocio.CrearSocio("Martha","30715248547","La Risa SRL.",tipoEmpresa.Grande,
+        socio = SocioModel.CrearSocio("Martha","30715248547","La Risa SRL.", TipoEmpresa.Grande,
                 "Cotillon", "Rivadavia 4123","45484542","lalal@sadas.com",
-                new Date("03/04/2008"), tipoSocio.Protector);
+                new Date("03/04/2008"), TipoSocio.Protector);
 
         this.SocioController.AddSocio((socio));
 
-        socio = mdlSocio.CrearSocio("Ledesma","27542547852","Gandoriza SA",tipoEmpresa.Pequena,
+        socio = SocioModel.CrearSocio("Ledesma","27542547852","Gandoriza SA", TipoEmpresa.Pequena,
                 "Turismo", "Larralde 4251","151254215","dasd@sadas.com",
-                new Date("12/10/2012"), tipoSocio.Participe);
+                new Date("12/10/2012"), TipoSocio.Participe);
 
         this.SocioController.AddSocio((socio));
     }
 
-    private mdlCheque cargarCheque(mdlSocio socio){
+    private ChequeModel cargarCheque(SocioModel socio){
         var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(2);
 
-        var comision = mdlComision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+        var comision = mdlComision.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
 
-        var cheque = new mdlCheque();
+        var cheque = new ChequeModel();
 
-        cheque.crearOperacion(tipoOperacion.ChequePropio,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
-        cheque.crearOperacion(tipoOperacion.ChequeTerceros,certificadoGarantia,socio,comision,estadoOperacion.Ingresado,new Date("10/11/2020"));
+        cheque.crearOperacion(TipoOperacion.ChequePropio,certificadoGarantia,socio,comision, EstadoOperacion.Monetizado,new Date("10/11/2020"));
+        cheque.crearOperacion(TipoOperacion.ChequeTerceros,certificadoGarantia,socio,comision, EstadoOperacion.Ingresado,new Date("10/11/2020"));
 
         return  cheque;
     }
 
 
-    private mdlPrestamo cargarPrestamo(mdlSocio socio){
+    private mdlPrestamo cargarPrestamo(SocioModel socio){
         var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(3);
 
-        var comision = mdlComision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+        var comision = mdlComision.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
 
         var prestamo = new mdlPrestamo();
-        prestamo.crearOperacion(tipoOperacion.Prestamo,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
+        prestamo.crearOperacion(TipoOperacion.Prestamo,certificadoGarantia,socio,comision, EstadoOperacion.Monetizado,new Date("10/11/2020"));
 
         return  prestamo;
     }
 
-    private mdlCuentaCorriente cargarCuentaCorriente(mdlSocio socio){
+    private mdlCuentaCorriente cargarCuentaCorriente(SocioModel socio){
         var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(5);
 
-        var comision = mdlComision.crearComision("1",new Date("10/11/2020"),estadoComision.Calculada,"3%", "Mario");
+        var comision = mdlComision.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
 
         var cuentaCorriente = new mdlCuentaCorriente();
-        cuentaCorriente.crearOperacion(tipoOperacion.CCComercial,certificadoGarantia,socio,comision,estadoOperacion.Monetizado,new Date("10/11/2020"));
+        cuentaCorriente.crearOperacion(TipoOperacion.CCComercial,certificadoGarantia,socio,comision, EstadoOperacion.Monetizado,new Date("10/11/2020"));
 
         return  cuentaCorriente;
     }

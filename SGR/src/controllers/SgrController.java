@@ -4,8 +4,8 @@ import Models.*;
 import java.util.ArrayList;
 
 public class SgrController {
-    private ArrayList<mdlSocio> socios;
-    private ArrayList<mdlLineaCredito> lineaCreditos;
+    private ArrayList<SocioModel> socios;
+    private ArrayList<LineaCreditoModel> lineaCreditos;
     private ArrayList<mdlOperacion> operaciones;
     private ArrayList<mdlTipoOperacion> tipoOperaciones;
     
@@ -14,11 +14,11 @@ public class SgrController {
         lineaCreditos = new ArrayList<>();
     }
 
-    public void addSocio(mdlSocio socio){
+    public void addSocio(SocioModel socio){
         socios.add(socio);
     }
 
-    public void addLineaCredio(mdlLineaCredito lineaCredito){
+    public void addLineaCredio(LineaCreditoModel lineaCredito){
         lineaCreditos.add(lineaCredito);
     }
 
@@ -32,17 +32,17 @@ public class SgrController {
 
     public int getConsolidadas(String cuit){
 
-        mdlSocio socio = new mdlSocio();
+        SocioModel socio = new SocioModel();
 
         // Obtengo el socio de la lista de socios
-        for(mdlSocio socioLista: socios){
+        for(SocioModel socioLista: socios){
                 if(socioLista.getCuit() == cuit)
                     socio = socioLista;                
             }
 
         int contadorRiesgoVivo = 0;
 
-        for (mdlLineaCredito lineaCredito: socio.getLineaCreditos()) {
+        for (LineaCreditoModel lineaCredito: socio.getLineaCreditos()) {
             contadorRiesgoVivo += lineaCredito.getTotalOperacion();
         }
 
@@ -51,17 +51,17 @@ public class SgrController {
 
     public int getTotalUtilizado(String cuit){
 
-        mdlSocio socio = new mdlSocio();
+        SocioModel socio = new SocioModel();
 
         // Obtengo el socio de la lista de socios
-        for(mdlSocio socioLista: socios){
+        for(SocioModel socioLista: socios){
             if(socioLista.getCuit() == cuit)
                 socio = socioLista;
         }
 
         int contadorUtilizadoLinea = 0;
 
-        for (mdlLineaCredito lineaCredito: socio.getLineaCreditos()) {
+        for (LineaCreditoModel lineaCredito: socio.getLineaCreditos()) {
             contadorUtilizadoLinea += lineaCredito.getTotalOperacion();
         }
 

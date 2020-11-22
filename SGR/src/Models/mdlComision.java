@@ -1,11 +1,13 @@
 package Models;
 
+import Models.Enums.EstadoComision;
+
 import java.util.Date;
 
 public class mdlComision {
     private String tipo;
     private Date fechaCambio;
-    private estadoComision estadoComision;
+    private EstadoComision estadoComision;
     private String tipoCambioRealizado;
     private String nombreResponsable;
 
@@ -14,7 +16,7 @@ public class mdlComision {
         estadoComision = estadoComision.Calculada;
     }
 
-    public static mdlComision crearComision(String _tipo, Date _fechaCambio,estadoComision _estadoComision, String _tipoCambioRealizado, String _nombreResponsable){
+    public static mdlComision crearComision(String _tipo, Date _fechaCambio, EstadoComision _estadoComision, String _tipoCambioRealizado, String _nombreResponsable){
 
         var comision = new mdlComision();
 
@@ -35,7 +37,7 @@ public class mdlComision {
         return fechaCambio;
     }
 
-    public estadoComision getEstadoComision() {
+    public EstadoComision getEstadoComision() {
         return estadoComision;
     }
 

@@ -5,22 +5,22 @@ import java.util.ArrayList;
 
 public class SocioController {
 
-    private ArrayList<mdlSocio> socios;
+    private ArrayList<SocioModel> socios;
 
     public SocioController(){
         socios = new ArrayList<>();
     }
 
-    public  void AddSocio(mdlSocio socio){
+    public  void AddSocio(SocioModel socio){
         socios.add(socio);
     }
 
-    public ArrayList<mdlSocio> getSocios(){
+    public ArrayList<SocioModel> getSocios(){
         return  socios;
     }
 
-    public mdlSocio getSociosByCuit(String cuit){
-        for (mdlSocio socio:socios) {
+    public SocioModel getSociosByCuit(String cuit){
+        for (SocioModel socio:socios) {
             if(socio.getCuit().matches(cuit)) {
                 return socio;
             }

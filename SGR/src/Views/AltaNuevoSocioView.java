@@ -2,6 +2,7 @@ package Views;
 
 import Controllers.*;
 import Models.*;
+import Models.Enums.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,9 +44,9 @@ public class AltaNuevoSocioView extends JDialog {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                SocioController.AddSocio(mdlSocio.CrearSocio(nombreUsuario,txtCuit.getText(),txtRazonSocial.getText(),
-                tipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString()),txtActividad.getText(),txtDireccion.getText(),
-                txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), tipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString())));
+                SocioController.AddSocio(SocioModel.CrearSocio(nombreUsuario,txtCuit.getText(),txtRazonSocial.getText(),
+                TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString()),txtActividad.getText(),txtDireccion.getText(),
+                txtTelefono.getText(),txtCorreoElectronico.getText(),new Date(txtFiniAct.getText()), TipoSocio.valueOf(cmbTipoSocio.getSelectedItem().toString())));
                 dispose();
 
             }

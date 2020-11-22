@@ -30,7 +30,7 @@ public class OperacionesAvaladasNombreView extends JDialog {
         this.setModal(true);
         this.asociarEventos();
 
-        for (mdlSocio socio: SocioController.getSocios()) {
+        for (SocioModel socio: SocioController.getSocios()) {
             comboBox1.addItem(socio.getCuit());
         };
 
@@ -45,7 +45,7 @@ public class OperacionesAvaladasNombreView extends JDialog {
             model.addColumn("Tipo");
             model.addColumn("Fecha");
 
-            for(mdlSocio socio: SocioController.getSocios()){
+            for(SocioModel socio: SocioController.getSocios()){
 
                 if((new Date(txtDesde.getText()).before(socio.getFechaInicioActividades())) && (new Date(txtHasta.getText()).after(socio.getFechaInicioActividades()))){
                     model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio(),socio.getFechaInicioActividades()});
