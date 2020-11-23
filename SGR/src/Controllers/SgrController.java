@@ -6,8 +6,7 @@ import java.util.ArrayList;
 public class SgrController {
     private static final SgrController INSTANCE = new SgrController();
 
-    private ArrayList<SocioModel> socios;
-    private ArrayList<LineaCreditoModel> lineaCreditos;
+    private final ArrayList<SocioModel> socios;
 
     private ArrayList<LogEstadoSocioModel> logsEstadoSocioModel;
     private ArrayList<LogDocumentoSocioModel> logsDocumentoSocioModels;
@@ -15,7 +14,6 @@ public class SgrController {
 
     private SgrController() {
         socios = new ArrayList<>();
-        lineaCreditos = new ArrayList<>();
 
         logsEstadoSocioModel = new ArrayList<>();
         logsDocumentoSocioModels = new ArrayList<>();
@@ -51,7 +49,7 @@ public class SgrController {
 
         // Obtengo el socio de la lista de socios
         for(SocioModel socioLista: socios){
-            if(socioLista.getCuit() == cuit)
+            if(socioLista.getCuit().equals(cuit))
                 socio = socioLista;
         }
 
