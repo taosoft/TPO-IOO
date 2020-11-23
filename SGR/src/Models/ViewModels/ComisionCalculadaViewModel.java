@@ -1,4 +1,4 @@
-package ViewModels;
+package Models.ViewModels;
 
 public class ComisionCalculadaViewModel {
     private float porcentajeComision;

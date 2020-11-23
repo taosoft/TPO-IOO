@@ -1,18 +1,18 @@
-package Models;
+package Models.ViewModels;
 
-public class promedioTasaDeDescuento {
+public class PromedioTasaDeDescuentoViewModel {
     private String nombreSocio;
     private float tasaDescuento;
     private String totalOperado;
     private int Cantidad;
 
-    public promedioTasaDeDescuento(String nombreSocio, String totalOperado, float tasaDescuento) {
+    public PromedioTasaDeDescuentoViewModel(String nombreSocio, String totalOperado, float tasaDescuento) {
         this.nombreSocio = nombreSocio;
         this.totalOperado = totalOperado;
         this.tasaDescuento = tasaDescuento;
 
     }
-    public promedioTasaDeDescuento(){
+    public PromedioTasaDeDescuentoViewModel(){
 
     }
 

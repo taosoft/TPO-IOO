@@ -6,7 +6,7 @@ import Models.Enums.NumeracionTipoOperacion;
 public class mdlTipoOperacion {
     private TipoOperacion tipoOperacion;
     private NumeracionTipoOperacion numeracionTipoOperacion;
-    private mdlOperacion operacion;
+    private OperacionModel operacion;
 
     public void CrearTipoOperacion(TipoOperacion _tipoOperacion, NumeracionTipoOperacion _numeracionTipoOperacion){
         tipoOperacion = _tipoOperacion;
@@ -17,7 +17,7 @@ public class mdlTipoOperacion {
         return tipoOperacion;
     }
 
-    public mdlOperacion getOperacion(){
+    public OperacionModel getOperacion(){
         return operacion;
     }
 

@@ -7,6 +7,8 @@ import Models.Enums.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class LineasCreditoView extends JDialog {
 
@@ -41,6 +43,7 @@ public class LineasCreditoView extends JDialog {
         lblCliente.setText(cuit);
 
         model = new DefaultTableModel();
+        model.addColumn("ID");
         model.addColumn("Tipo operaciones");
         model.addColumn("Monto");
         model.addColumn("Fecha");
@@ -52,11 +55,11 @@ public class LineasCreditoView extends JDialog {
         for(LineaCreditoModel lineaCredito: socio.getLineaCreditos()){
             StringBuilder tipoOperacionesConcat = new StringBuilder("");
             for(TipoOperacion tipoOperacion: lineaCredito.getTipoOperaciones()){
-                tipoOperacionesConcat.append(tipoOperacion.toString());
+                tipoOperacionesConcat.append(tipoOperacion.toString() + " \n");
             }
             model.addRow(new Object[]{
-                    tipoOperacionesConcat.toString(),lineaCredito.getMonto(),
-                    lineaCredito.getFechaVigencia(), lineaCredito.getId()});
+                    lineaCredito.getId(), tipoOperacionesConcat.toString(),
+                    lineaCredito.getMonto(), lineaCredito.getFechaVigencia()});
         }
         tablaLineaCreditos.setModel(model);
     }
@@ -73,14 +76,26 @@ public class LineasCreditoView extends JDialog {
         cerrarButton.addActionListener(e -> dispose());
 
         operarButton.addActionListener(e -> {
-            //Integer.parseInt(table1.getModel().getValueAt(table1.getSelectedRow(),4).toString()
-            var lineaCredito = socio.getLineaCreditosById(1);
-            OperacionesView frame = new OperacionesView(self, lineaCredito);
-            frame.setVisible(true);
+            try{
+                var idLineaCredito = Integer.parseInt(
+                                tablaLineaCreditos.getModel().getValueAt(tablaLineaCreditos.getSelectedRow(),
+                                        0).toString());
+                OperacionesView frame = new OperacionesView(self, socio.getCuit(), idLineaCredito);
+                frame.setVisible(true);
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
         });
 
         agregarButton.addActionListener(e -> {
-
+            NuevaLineaCreditoView frame = new NuevaLineaCreditoView(self, socio.getCuit());
+            frame.setVisible(true);
+            frame.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    LoadTabla();
+                }
+            });
         });
     }
 }

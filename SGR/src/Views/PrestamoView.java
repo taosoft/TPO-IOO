@@ -17,7 +17,7 @@ public class PrestamoView extends JDialog {
     private JButton cancelarButton;
     private PrestamoView self;
 
-    public PrestamoView(Window owner, ArrayList<mdlPrestamo> prestamos) {
+    public PrestamoView(Window owner, ArrayList<PrestamoModel> prestamos) {
 
         super(owner);
         this.setContentPane(ifrmPrestamo);
@@ -34,7 +34,7 @@ public class PrestamoView extends JDialog {
 
         confirmarButton.addActionListener(e -> {
            // aca agrego los datos
-           mdlPrestamo prestamo = new mdlPrestamo();
+           PrestamoModel prestamo = new PrestamoModel();
            prestamos.add(prestamo);
            dispose();
         });

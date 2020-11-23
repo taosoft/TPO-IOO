@@ -43,6 +43,7 @@ public class ConsultasConsolidadasView extends JDialog {
         buscarButton.addActionListener(e -> {
             var cuit = cmbSocios.getSelectedItem();
 
+            assert cuit != null;
             int totalRiesgoVivo = sgrController.getConsolidadas(cuit.toString());
             int totalUtilizadoLinea = totalRiesgoVivo + sgrController.getTotalUtilizado(cuit.toString());
 
@@ -59,36 +60,37 @@ public class ConsultasConsolidadasView extends JDialog {
     }
 
     private ChequeModel cargarCheque(SocioModel socio){
-        var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(2);
+        var certificadoGarantia = CertificadoGarantiaModel.crearCertificadoGarantia(2);
 
-        var comision = mdlComision.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
+        var comision = ComisionModel.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
 
         var cheque = new ChequeModel();
 
-        cheque.crearOperacion(TipoOperacion.ChequePropio,certificadoGarantia,socio,comision, EstadoOperacion.Monetizado,new Date("10/11/2020"));
-        cheque.crearOperacion(TipoOperacion.ChequeTerceros,certificadoGarantia,socio,comision, EstadoOperacion.Ingresado,new Date("10/11/2020"));
+        OperacionModel.CrearOperacion(TipoOperacion.ChequePropio,certificadoGarantia,comision, new Date());
+        OperacionModel.CrearOperacion(TipoOperacion.ChequeTerceros,certificadoGarantia,comision, new Date());
 
         return  cheque;
     }
 
-    private mdlPrestamo cargarPrestamo(SocioModel socio){
-        var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(3);
+    private PrestamoModel cargarPrestamo(SocioModel socio){
+        var certificadoGarantia = CertificadoGarantiaModel.crearCertificadoGarantia(3);
 
-        var comision = mdlComision.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
+        var comision = ComisionModel.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
 
-        var prestamo = new mdlPrestamo();
-        prestamo.crearOperacion(TipoOperacion.Prestamo,certificadoGarantia,socio,comision, EstadoOperacion.Monetizado,new Date("10/11/2020"));
+        var prestamo = new PrestamoModel();
+        OperacionModel.CrearOperacion(TipoOperacion.Prestamo,certificadoGarantia,comision, new Date());
 
         return  prestamo;
     }
 
-    private mdlCuentaCorriente cargarCuentaCorriente(SocioModel socio){
-        var certificadoGarantia = mdlCertificadoGarantia.crearCertificadoGarantia(5);
+    private CuentaCorrienteModel cargarCuentaCorriente(SocioModel socio){
+        var certificadoGarantia = CertificadoGarantiaModel.crearCertificadoGarantia(5);
 
-        var comision = mdlComision.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
+        var comision = ComisionModel.crearComision("1",new Date("10/11/2020"),
+                EstadoComision.Calculada,"3%", "Mario");
 
-        var cuentaCorriente = new mdlCuentaCorriente();
-        cuentaCorriente.crearOperacion(TipoOperacion.CCComercial,certificadoGarantia,socio,comision, EstadoOperacion.Monetizado,new Date("10/11/2020"));
+        var cuentaCorriente = new CuentaCorrienteModel();
+        cuentaCorriente.CrearOperacion(TipoOperacion.CCComercial,certificadoGarantia,comision, new Date());
 
         return  cuentaCorriente;
     }
