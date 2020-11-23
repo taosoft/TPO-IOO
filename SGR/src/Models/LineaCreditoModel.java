@@ -37,6 +37,33 @@ public class LineaCreditoModel {
         return cheques;
     }
 
+    public ChequeModel getChequeById(int id){
+        for(ChequeModel cheque: cheques){
+            if(cheque.getId() == id){
+                return cheque;
+            }
+        }
+        return null;
+    }
+
+    public CuentaCorrienteModel getCuentaCorrienteById(int id){
+        for(CuentaCorrienteModel corrienteModel: cuentaCorrientes){
+            if(corrienteModel.getId() == id){
+                return corrienteModel;
+            }
+        }
+        return null;
+    }
+
+    public PrestamoModel getPrestamoById(int id){
+        for(PrestamoModel prestamo: prestamos){
+            if(prestamo.getId() == id){
+                return prestamo;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<PrestamoModel> getPrestamos() {
         return prestamos;
     }
@@ -46,14 +73,17 @@ public class LineaCreditoModel {
     }
 
     public void addCheque(ChequeModel cheque){
+        cheque.setId(cheques.size() + 1);
         cheques.add(cheque);
     }
 
     public void addCuentaCorriente(CuentaCorrienteModel cuentaCorriente){
+        cuentaCorriente.setId(cheques.size() + 1);
         cuentaCorrientes.add(cuentaCorriente);
     }
 
     public void addPrestamo(PrestamoModel prestamo){
+        prestamo.setId(cheques.size() + 1);
         prestamos.add(prestamo);
     }
 
