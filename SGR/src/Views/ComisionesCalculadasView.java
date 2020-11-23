@@ -30,6 +30,7 @@ public class ComisionesCalculadasView extends JDialog{
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
+        this.setTitle("Total comisiones calculadas");
 
         socioController = SocioController.getInstance();
 

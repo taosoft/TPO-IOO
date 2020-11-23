@@ -32,6 +32,7 @@ public class DocumentacionView extends JDialog {
         this.setModal(true);
         this.asociarEventos();
         DocumentacionView self = this;
+        this.setTitle("Documentación");
 
         SocioController socioController = SocioController.getInstance();
         sgrController = SgrController.getInstance();

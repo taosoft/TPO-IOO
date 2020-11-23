@@ -29,6 +29,7 @@ public class ChequeView extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        this.setTitle("Cheques");
         asociarEventos();
 
         socioController = SocioController.getInstance();
