@@ -15,6 +15,8 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Empresa:"/>
         </properties>
       </component>
@@ -31,6 +33,8 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Importe Total:"/>
         </properties>
       </component>
@@ -39,6 +43,8 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Fecha de Vencimiento:"/>
         </properties>
       </component>
@@ -64,6 +70,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="cerrar"/>
         </properties>
       </component>
@@ -73,6 +80,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="confirmar"/>
         </properties>
       </component>

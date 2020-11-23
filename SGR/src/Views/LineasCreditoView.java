@@ -34,6 +34,7 @@ public class LineasCreditoView extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.self = this;
+        this.setTitle("Líneas de crédito");
 
         asociarEventos();
 

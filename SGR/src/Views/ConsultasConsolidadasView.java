@@ -32,6 +32,7 @@ public class ConsultasConsolidadasView extends JDialog {
         this.setModal(true);
         this.asociarEventos();
         this.self = this;
+        this.setTitle("Consultas consolidadas");
 
         socioController = SocioController.getInstance();
         sgrController = SgrController.getInstance();

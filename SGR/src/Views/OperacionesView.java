@@ -33,6 +33,7 @@ public class OperacionesView extends JDialog {
         this.setModal(true);
         asociarEventos();
         this.self = this;
+        this.setTitle("Operaciones");
 
         socioController = SocioController.getInstance();
 

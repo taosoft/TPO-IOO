@@ -29,6 +29,7 @@ public class PrestamoView extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         //this.self = this;
+        this.setTitle("Prestamos");
 
         cancelarButton.addActionListener(e -> dispose());
 
