@@ -6,6 +6,8 @@ import Models.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class OperacionesView extends JDialog {
     private JButton chequesButton;
@@ -17,6 +19,7 @@ public class OperacionesView extends JDialog {
     private JPanel pnlOperac;
     private OperacionesView self;
     DefaultTableModel model;
+    private String cuit;
 
     private SocioController socioController;
     private LineaCreditoModel lineaCredito;
@@ -38,6 +41,8 @@ public class OperacionesView extends JDialog {
 
         lineaCredito = socioController.getSociosByCuit(cuit).getLineaCreditosById(idLineaCredito);
 
+        this.cuit = cuit;
+
         model = new DefaultTableModel();
         model.addColumn("Operacion");
         model.addColumn("Importe");
@@ -45,29 +50,44 @@ public class OperacionesView extends JDialog {
         model.addColumn("Fecha Vencimiento");
         model.addColumn("Estado");
 
-        LoadTabla();
+        LoadOperaciones();
     }
 
     private void asociarEventos() {
         cerrarButton.addActionListener(e -> dispose());
 
         chequesButton.addActionListener(e -> {
-            ChequeView frame = new ChequeView(self, new LineaCreditoModel());
+            ChequeView frame = new ChequeView(self, cuit, lineaCredito.getId());
             frame.setVisible(true);
+            frame.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    LoadOperaciones();
+                }
+            });
         });
 
         CCComercialesButton.addActionListener(e -> {
             CuentasCorrienteView frame = new CuentasCorrienteView(self);
-            frame.show();
+            frame.setVisible(true);
+            frame.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    LoadOperaciones();
+                }
+            });
         });
 
         prestamosButton.addActionListener(e -> {
             PrestamoView frame = new PrestamoView(self, lineaCredito.getPrestamos());
             frame.setVisible(true);
+            frame.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    LoadOperaciones();
+                }
+            });
         });
     }
 
-    private void LoadTabla() {
+    private void LoadOperaciones() {
         BorrarRows();
 
         for(PrestamoModel prestamo: lineaCredito.getPrestamos()){
@@ -87,13 +107,6 @@ public class OperacionesView extends JDialog {
                     cuentaCorriente.getTipo(), cuentaCorriente.getImportePagado(), cuentaCorriente.getFecha(),
                     cuentaCorriente.getFechaVencimiento(), cuentaCorriente.getEstadoOperacion()});
         }
-
-        //TODO: Delete
-        model.addRow(new Object[]{"Préstamo","100.000","-","05/04/2020","05/06/2020"});
-        model.addRow(new Object[]{"Cuenta corriente","Inversion","07/05/2020","Ingresado"});
-        model.addRow(new Object[]{"Deposito","Inversion","04/06/2020","Con certificado emitido"});
-        model.addRow(new Object[]{"Deposito","Capitalizacion","25/08/2020","Pendiente"});
-        //
 
         tablaOperaciones.setModel(model);
     }

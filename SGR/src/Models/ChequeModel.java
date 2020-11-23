@@ -1,5 +1,7 @@
 package Models;
 
+import Models.Enums.TipoOperacion;
+
 import java.util.Date;
 
 public class ChequeModel extends OperacionModel {
@@ -10,12 +12,18 @@ public class ChequeModel extends OperacionModel {
     private Date fechaVencimiento;
     private String cuitFirmante;
 
-    public static ChequeModel crearNuevoCheque(String bancoEmisor, String numeroCheque, Date fechaVencimiento, String cuitFirmante){
+    public static ChequeModel crearNuevoCheque(String bancoEmisor, String numeroCheque, Date fechaVencimiento,
+                                               String cuitFirmante, int importePagado){
         var cheque = new ChequeModel();
+
+        cheque.setBancoEmisor(bancoEmisor);
         cheque.setCuitFirmante(cuitFirmante);
         cheque.setNumeroCheque(numeroCheque);
         cheque.setFechaVencimiento(fechaVencimiento);
         cheque.setCuitFirmante(cuitFirmante);
+        cheque.setImportePagado(importePagado);
+
+        cheque.setTipoOperacion(TipoOperacion.ChequePropio);
 
         return cheque;
     }
@@ -28,8 +36,8 @@ public class ChequeModel extends OperacionModel {
         return tasaDeDescuento;
     }
 
-    public void importeAPagar(int _importePagado) {
-        importePagado = _importePagado;
+    public void setImportePagado(int importePagado) {
+        this.importePagado = importePagado;
     }
 
     public int getImportePagado() {
