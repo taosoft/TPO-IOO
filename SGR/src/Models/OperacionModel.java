@@ -12,6 +12,7 @@ public class OperacionModel {
     private Date fecha;
     private Date fechaVencimiento;
     private int importePagado;
+    private int id;
 
     public OperacionModel(){
         estadoOperacion = estadoOperacion.Ingresado;
@@ -55,6 +56,10 @@ public class OperacionModel {
         return  estadoOperacion;
     }
 
+    public void setEstadoOperacion(EstadoOperacion estadoOperacion){
+        this.estadoOperacion = estadoOperacion;
+    }
+
     public Date getFecha() {
         return fecha;
     }
@@ -77,5 +82,13 @@ public class OperacionModel {
 
     public void setTipoOperacion(TipoOperacion tipoOperacion) {
         this.tipoOperacion = tipoOperacion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
