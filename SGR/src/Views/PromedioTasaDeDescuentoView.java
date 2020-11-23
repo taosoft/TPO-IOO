@@ -3,6 +3,7 @@ package Views;
 import Controllers.*;
 import Models.*;
 import Models.Enums.*;
+import Models.ViewModels.PromedioTasaDeDescuentoViewModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -45,7 +46,7 @@ public class PromedioTasaDeDescuentoView extends JDialog{
             Date fechaInicial = new Date(txtFechaInicial.getText());
             Date fechaFinal = new Date(txtFechaFinal.getText());
             ArrayList<SocioModel> socios = socioController.getSocios();
-            var promedioTasaDescuento = new ArrayList<promedioTasaDeDescuento>();
+            var promedioTasaDescuento = new ArrayList<PromedioTasaDeDescuentoViewModel>();
             for(SocioModel socio:socios){
                 if (socio.getTipoEmpresa() == tipoEmpresa){
                     ArrayList<LineaCreditoModel> lineaCreditos = socio.getLineaCreditos();
@@ -53,7 +54,7 @@ public class PromedioTasaDeDescuentoView extends JDialog{
                         ArrayList<ChequeModel> cheques = lineaCredito.getCheques();
                         for(ChequeModel cheque:cheques){
                             if(cheque.getFecha().after(fechaInicial)&& cheque.getFecha().before(fechaFinal)){
-                                var mdlPromeidoTasaDeDescuento = new promedioTasaDeDescuento();
+                                var mdlPromeidoTasaDeDescuento = new PromedioTasaDeDescuentoViewModel();
                                 mdlPromeidoTasaDeDescuento.setNombreSocio(socio.getCuit());
                                 mdlPromeidoTasaDeDescuento.setTotalOperado(mdlPromeidoTasaDeDescuento.getTotalOperado() + cheque.getImportePagado());
                                 mdlPromeidoTasaDeDescuento.setTasaDescuento(mdlPromeidoTasaDeDescuento.getTasaDescuento() + cheque.getTasaDeDescuento());

@@ -2,7 +2,7 @@ package Models;
 
 import java.util.Date;
 
-public class ChequeModel extends mdlOperacion {
+public class ChequeModel extends OperacionModel {
     private int importePagado;
     private int tasaDeDescuento;
     private String bancoEmisor;

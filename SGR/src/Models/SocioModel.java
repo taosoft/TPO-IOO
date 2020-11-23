@@ -22,7 +22,7 @@ public class SocioModel {
     private ArrayList<LogEstadoSocioModel> logs;
     private TipoDocumento tipoDocumento;
     private EstadoDocumento estadoDocumento;
-    private ArrayList<mdlAporte> aportes;
+    private ArrayList<AporteModel> aportes;
     private ArrayList<LineaCreditoModel> lineaCreditos;
     private ArrayList<AccionistaModel> accionistas;
 
@@ -50,21 +50,20 @@ public class SocioModel {
         nuevoSocio.setFechaInicioActividades(_fechaInicioActividades);
         nuevoSocio.setTipoSocio(_tipoSocio);
 
+        //TODO: Chequear implementacion de mock data en controller
         var listaTipoOperaciones = new ArrayList<TipoOperacion>();
         listaTipoOperaciones.add(TipoOperacion.CCComercial);
         listaTipoOperaciones.add(TipoOperacion.Prestamo);
         listaTipoOperaciones.add(TipoOperacion.ChequePropio);
         listaTipoOperaciones.add(TipoOperacion.ChequeTerceros);
 
-
-        var lineaCredito = LineaCreditoModel.crearLineaCredito(new Date(),
+        var lineaCredito = LineaCreditoModel.CrearLineaCredito(new Date(),
                 112,
-                listaTipoOperaciones, 1);
+                listaTipoOperaciones);
         nuevoSocio.addLineaCredito(lineaCredito);
         return nuevoSocio;
     }
 
-    // Gets
     public String getNombreUsuario(){
         return nombreUsuario;
     }
@@ -113,7 +112,7 @@ public class SocioModel {
         return tipoDocumento;
     }
 
-    public ArrayList<mdlAporte> getAportes(){
+    public ArrayList<AporteModel> getAportes(){
         return aportes;
     }
 
@@ -121,11 +120,12 @@ public class SocioModel {
         return cuit;
     }
 
-
     public ArrayList<LineaCreditoModel> getLineaCreditos(){
         return lineaCreditos;
     }
+
     public void addLineaCredito(LineaCreditoModel lineaCredito){
+        lineaCredito.setId(lineaCreditos.size() + 1);
         lineaCreditos.add(lineaCredito);
     }
 
@@ -139,7 +139,6 @@ public class SocioModel {
         return null;
     }
 
-    // Sets
     public void setNombreUsuario(String nombre){
         nombreUsuario = nombre;
     }
@@ -206,5 +205,9 @@ public class SocioModel {
 
     public void setEstadoDocumento(EstadoDocumento estadoDocumento) {
         this.estadoDocumento = estadoDocumento;
+    }
+
+    public void addAporte(AporteModel aporte){
+        aportes.add(aporte);
     }
 }

@@ -24,7 +24,7 @@
             <properties>
               <background color="-5131057"/>
             </properties>
-            <border type="none" title="Operaciones"/>
+            <border type="none" title="Crear nuevas operaciones"/>
             <children>
               <component id="43b03" class="javax.swing.JButton" binding="chequesButton" default-binding="true">
                 <constraints>
@@ -60,9 +60,9 @@
                 <properties>
                   <background color="-5131057"/>
                 </properties>
-                <border type="none"/>
+                <border type="none" title="Operaciones"/>
                 <children>
-                  <component id="d8b0" class="javax.swing.JTable" binding="table1" default-binding="true">
+                  <component id="d8b0" class="javax.swing.JTable" binding="tablaOperaciones">
                     <constraints/>
                     <properties/>
                   </component>
@@ -70,20 +70,11 @@
               </scrollpane>
               <component id="1350d" class="javax.swing.JButton" binding="cerrarButton" default-binding="true">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="1" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-5131057"/>
                   <text value="Cerrar"/>
-                </properties>
-              </component>
-              <component id="6cc3" class="javax.swing.JButton" binding="aceptarButton" default-binding="true">
-                <constraints>
-                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-5131057"/>
-                  <text value="Aceptar"/>
                 </properties>
               </component>
             </children>
