@@ -1,10 +1,10 @@
 package Models;
 
-public class mdlCertificadoGarantia {
+public class CertificadoGarantiaModel {
     private long numero;
 
-    public static mdlCertificadoGarantia crearCertificadoGarantia(long _numero){
-        var certificadoGarantia = new mdlCertificadoGarantia();
+    public static CertificadoGarantiaModel crearCertificadoGarantia(long _numero){
+        var certificadoGarantia = new CertificadoGarantiaModel();
         certificadoGarantia.numero = _numero;
 
         return certificadoGarantia;

@@ -1,6 +1,6 @@
 package Models;
 
-public class mdlPrestamo extends mdlOperacion{
+public class CuentaCorrienteModel extends OperacionModel {
     private int importePagado;
 
     public void importeAPagar(int _importePagado){

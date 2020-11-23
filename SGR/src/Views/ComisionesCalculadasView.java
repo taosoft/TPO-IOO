@@ -2,7 +2,7 @@ package Views;
 
 import Controllers.*;
 import Models.*;
-import ViewModels.ComisionCalculadaViewModel;
+import Models.ViewModels.ComisionCalculadaViewModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
