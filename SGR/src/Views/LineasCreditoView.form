@@ -43,7 +43,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="41dd5" class="javax.swing.JTable" binding="table1" default-binding="true">
+          <component id="41dd5" class="javax.swing.JTable" binding="tablaLineaCreditos">
             <constraints/>
             <properties/>
           </component>

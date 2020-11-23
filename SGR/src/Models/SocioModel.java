@@ -1,6 +1,7 @@
 package Models;
 
 import Models.Enums.*;
+import Views.AporteView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,7 +23,7 @@ public class SocioModel {
     private ArrayList<LogEstadoSocioModel> logs;
     private TipoDocumento tipoDocumento;
     private EstadoDocumento estadoDocumento;
-    private ArrayList<mdlAporte> aportes;
+    private ArrayList<AporteModel> aportes;
     private ArrayList<LineaCreditoModel> lineaCreditos;
     private ArrayList<AccionistaModel> accionistas;
 
@@ -55,7 +56,6 @@ public class SocioModel {
         listaTipoOperaciones.add(TipoOperacion.Prestamo);
         listaTipoOperaciones.add(TipoOperacion.ChequePropio);
         listaTipoOperaciones.add(TipoOperacion.ChequeTerceros);
-
 
         var lineaCredito = LineaCreditoModel.crearLineaCredito(new Date(),
                 112,
@@ -113,7 +113,7 @@ public class SocioModel {
         return tipoDocumento;
     }
 
-    public ArrayList<mdlAporte> getAportes(){
+    public ArrayList<AporteModel> getAportes(){
         return aportes;
     }
 
@@ -206,5 +206,9 @@ public class SocioModel {
 
     public void setEstadoDocumento(EstadoDocumento estadoDocumento) {
         this.estadoDocumento = estadoDocumento;
+    }
+
+    public void addAporte(AporteModel aporte){
+        aportes.add(aporte);
     }
 }
