@@ -5,14 +5,19 @@
     <constraints>
       <xy x="20" y="20" width="572" height="510"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-5131057"/>
+    </properties>
     <border type="none"/>
     <children>
       <grid id="ff668" binding="pnlSocios" layout-manager="GridBagLayout">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <autoscrolls value="true"/>
+          <background color="-5131057"/>
+        </properties>
         <border type="none" title="Socios"/>
         <children>
           <hspacer id="cf01f">
@@ -33,6 +38,7 @@
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
+              <background color="-5131057"/>
               <text value="Socios"/>
             </properties>
           </component>
@@ -43,7 +49,9 @@
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-5131057"/>
+        </properties>
         <border type="none" title="Consultas Generales"/>
         <children>
           <component id="41c11" class="javax.swing.JButton" binding="totalComisionesCalculadasButton" default-binding="true">
@@ -51,6 +59,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-5131057"/>
               <text value="Total comisiones calculadas"/>
             </properties>
           </component>
@@ -59,6 +68,7 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-5131057"/>
               <text value="Valor promedio de tasa de descuento"/>
             </properties>
           </component>
@@ -67,6 +77,7 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-5131057"/>
               <text value="Consulta consolidada"/>
             </properties>
           </component>
@@ -75,17 +86,21 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-5131057"/>
               <text value="Operaciones avaladas a nombre"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="fb01f" binding="pnlLogin" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="fb01f" binding="pnlLogin" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="true"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-5131057"/>
+          <foreground color="-5131057"/>
+        </properties>
         <border type="none" title="Login"/>
         <children>
           <component id="962fe" class="javax.swing.JLabel">
@@ -93,40 +108,43 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <foreground color="-16777216"/>
               <text value="Usuario:"/>
             </properties>
           </component>
-          <component id="a621d" class="javax.swing.JTextField" binding="txtUsuario">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="e41e0" class="javax.swing.JLabel">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <foreground color="-16777216"/>
               <text value="Password:"/>
+            </properties>
+          </component>
+          <component id="b4d2" class="javax.swing.JButton" binding="btnIngresar">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-5131057"/>
+              <text value="Ingresar"/>
             </properties>
           </component>
           <component id="3fda0" class="javax.swing.JTextField" binding="txtPassword">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties/>
           </component>
-          <component id="b4d2" class="javax.swing.JButton" binding="btnIngresar">
+          <component id="a621d" class="javax.swing.JTextField" binding="txtUsuario">
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
             </constraints>
-            <properties>
-              <text value="Ingresar"/>
-            </properties>
+            <properties/>
           </component>
         </children>
       </grid>
@@ -135,6 +153,7 @@
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-5131057"/>
           <text value="Salir"/>
         </properties>
       </component>

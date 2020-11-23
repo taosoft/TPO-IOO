@@ -5,7 +5,9 @@
     <constraints>
       <xy x="20" y="20" width="609" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-5131057"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="7f442" class="javax.swing.JLabel">
@@ -40,7 +42,9 @@
         <constraints>
           <grid row="1" column="1" row-span="2" col-span="11" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-5131057"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="41dd5" class="javax.swing.JTable" binding="tablaLineaCreditos">
