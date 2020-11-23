@@ -1,11 +1,11 @@
-package Models;
+package ViewModels;
 
-public class comisionesCalculadas {
+public class ComisionCalculadaViewModel {
     private float porcentajeComision;
     private String numeroCheque;
     private int importePagado;
 
-    public comisionesCalculadas(float porcentajeComision, String numeroCheque, int importePagado){
+    public ComisionCalculadaViewModel(float porcentajeComision, String numeroCheque, int importePagado){
         this.importePagado = importePagado;
         this.numeroCheque = numeroCheque;
         this.porcentajeComision = porcentajeComision;

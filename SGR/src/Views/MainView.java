@@ -4,14 +4,13 @@ import Controllers.*;
 import Models.*;
 import javax.swing.*;
 
-public class MainView extends JFrame{
+public class MainView extends JFrame {
     private JPanel pnlPrincipal;
     private JButton listarSociosButton;
     private JButton totalComisionesCalculadasButton;
     private JButton operacionesAvaladasANombreButton;
     private JButton valorPromedioDeTasaButton;
     private JButton consultaConsolidadaButton;
-    private JButton porcentajeComisiónAUnButton;
     private JTextField txtUsuario;
     private JTextField txtPassword;
     private JButton btnIngresar;
@@ -75,7 +74,7 @@ public class MainView extends JFrame{
         btnCerrar.addActionListener(e -> dispose());
 
         listarSociosButton.addActionListener(e -> {
-            ListaSociosView frame = new ListaSociosView(self);
+            SociosView frame = new SociosView(self);
             frame.setVisible(true);
         });
 
@@ -87,7 +86,6 @@ public class MainView extends JFrame{
         operacionesAvaladasANombreButton.addActionListener(e -> {
             OperacionesAvaladasNombreView frame = new OperacionesAvaladasNombreView(self);
             frame.setVisible(true);
-
         });
 
         valorPromedioDeTasaButton.addActionListener(e -> {
@@ -96,18 +94,9 @@ public class MainView extends JFrame{
         });
 
         consultaConsolidadaButton.addActionListener(e -> {
-
             ConsultasConsolidadasView frame = new ConsultasConsolidadasView(self);
             frame.setVisible(true);
-
         });
-        /*porcentajeComisiónAUnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                *//*FrmPorcentajeComisionSocio frame = new FrmPorcentajeComisionSocio(self);
-                frame.setVisible(true);*//*
-            }
-        });*/
     }
 
     public static void main(String[] args) {

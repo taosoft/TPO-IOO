@@ -17,6 +17,10 @@ public class UsuarioController {
     private UsuarioController(){
         listaUsuarios = new ArrayList<>();
         listaUsuarios.add(new UsuarioModel("admin", "admin"));
+        listaUsuarios.add(new UsuarioModel("nydia", "nydia"));
+        listaUsuarios.add(new UsuarioModel("fede", "fede"));
+        listaUsuarios.add(new UsuarioModel("lucho", "lucho"));
+        listaUsuarios.add(new UsuarioModel("mati", "mati"));
     }
     
     public boolean esUsuario(UsuarioModel usuario){

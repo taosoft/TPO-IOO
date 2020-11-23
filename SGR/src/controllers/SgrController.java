@@ -8,32 +8,22 @@ public class SgrController {
 
     private ArrayList<SocioModel> socios;
     private ArrayList<LineaCreditoModel> lineaCreditos;
-    private ArrayList<mdlOperacion> operaciones;
-    private ArrayList<mdlTipoOperacion> tipoOperaciones;
-    
+
+    private ArrayList<LogEstadoSocioModel> logsEstadoSocioModel;
+    private ArrayList<LogDocumentoSocioModel> logsDocumentoSocioModels;
+    private ArrayList<LogEstadoDocumentoSocioModel> logsEstadoDocumentoSocioModel;
+
     private SgrController() {
         socios = new ArrayList<>();
         lineaCreditos = new ArrayList<>();
+
+        logsEstadoSocioModel = new ArrayList<>();
+        logsDocumentoSocioModels = new ArrayList<>();
+        logsEstadoDocumentoSocioModel = new ArrayList<>();
     }
 
     public static SgrController getInstance() {
         return INSTANCE;
-    }
-
-    public void addSocio(SocioModel socio){
-        socios.add(socio);
-    }
-
-    public void addLineaCredio(LineaCreditoModel lineaCredito){
-        lineaCreditos.add(lineaCredito);
-    }
-
-    public void addOperacion(mdlOperacion operacion){
-        operaciones.add(operacion);
-    }
-    
-    public void addTipoOperacion(mdlTipoOperacion tipoOperacion){
-        tipoOperaciones.add(tipoOperacion);
     }
 
     public int getConsolidadas(String cuit){
@@ -72,5 +62,41 @@ public class SgrController {
         }
 
         return contadorUtilizadoLinea;
+    }
+
+    public ArrayList<LogEstadoSocioModel> getLogsEstadoSocioModel() {
+        return logsEstadoSocioModel;
+    }
+
+    public void setLogsEstadoSocioModel(ArrayList<LogEstadoSocioModel> logsEstadoSocioModel) {
+        this.logsEstadoSocioModel = logsEstadoSocioModel;
+    }
+
+    public void addLogEstadoSocioModel(LogEstadoSocioModel logEstadoSocioModel){
+        logsEstadoSocioModel.add(logEstadoSocioModel);
+    }
+
+    public ArrayList<LogDocumentoSocioModel> getLogsDocumentoSocioModels() {
+        return logsDocumentoSocioModels;
+    }
+
+    public void setLogsDocumentoSocioModels(ArrayList<LogDocumentoSocioModel> logsDocumentoSocioModels) {
+        this.logsDocumentoSocioModels = logsDocumentoSocioModels;
+    }
+
+    public void addLogDocumentoSocioModel(LogDocumentoSocioModel logDocumentoSocioModel){
+        logsDocumentoSocioModels.add(logDocumentoSocioModel);
+    }
+
+    public ArrayList<LogEstadoDocumentoSocioModel> getLogsEstadoDocumentoSocioModel() {
+        return logsEstadoDocumentoSocioModel;
+    }
+
+    public void setLogsEstadoDocumentoSocioModel(ArrayList<LogEstadoDocumentoSocioModel> logsEstadoDocumentoSocioModel) {
+        this.logsEstadoDocumentoSocioModel = logsEstadoDocumentoSocioModel;
+    }
+
+    public void addLogEstadoDocumentoSocioModel(LogEstadoDocumentoSocioModel logEstadoDocumentoSocioModel){
+        logsEstadoDocumentoSocioModel.add(logEstadoDocumentoSocioModel);
     }
 }

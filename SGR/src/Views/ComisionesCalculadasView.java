@@ -2,6 +2,7 @@ package Views;
 
 import Controllers.*;
 import Models.*;
+import ViewModels.ComisionCalculadaViewModel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -40,7 +41,7 @@ public class ComisionesCalculadasView extends JDialog{
 
         buscarButton.addActionListener(e -> {
             var socios = socioController.getSocios();
-            var comisionesCalculadas = new ArrayList<comisionesCalculadas>();
+            var comisionesCalculadas = new ArrayList<ComisionCalculadaViewModel>();
             for(SocioModel socio: socios){
                 var lineasCredito = socio.getLineaCreditos();
 
@@ -49,7 +50,7 @@ public class ComisionesCalculadasView extends JDialog{
 
                     for (ChequeModel cheque: cheques) {
                         if(cheque.getFecha().compareTo(new Date(txtFecha.getText())) == 0){
-                            comisionesCalculadas.add(new comisionesCalculadas(cheque.getTasaDeDescuento(),
+                            comisionesCalculadas.add(new ComisionCalculadaViewModel(cheque.getTasaDeDescuento(),
                                     cheque.getNumeroCheque(), cheque.getImportePagado()));
                         }
                     }
@@ -60,7 +61,7 @@ public class ComisionesCalculadasView extends JDialog{
             model.addColumn("Porcentaje comision");
             model.addColumn("Total comision");
             model.addColumn("Numero de cheque");
-            for(comisionesCalculadas comisionCalculada: comisionesCalculadas){
+            for(ComisionCalculadaViewModel comisionCalculada: comisionesCalculadas){
                 model.addColumn(comisionCalculada);
             }
             tablaComisiones.setModel(model);
