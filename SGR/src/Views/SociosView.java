@@ -23,6 +23,7 @@ public class SociosView extends JDialog {
     private JComboBox cmbCuitSocio;
     private JButton altaNuevoSocioButton;
     private JButton documentacionButton;
+    private JLabel txtEstadoSocio;
     private final SociosView self;
     private final SocioController socioController;
     private final SgrController sgrController;
@@ -66,6 +67,13 @@ public class SociosView extends JDialog {
     private void asociarEventos() {
         cerrarButton.addActionListener(e -> dispose());
 
+        agregarAporteButton.addActionListener(e -> {
+            AporteView frame = new AporteView(self,
+                    Objects.requireNonNull(cmbCuitSocio.getSelectedItem()).toString());
+
+            frame.setVisible(true);
+        });
+
         documentacionButton.addActionListener(e -> {
             DocumentacionView frame = new DocumentacionView(self,
                     Objects.requireNonNull(cmbCuitSocio.getSelectedItem()).toString());
@@ -98,8 +106,21 @@ public class SociosView extends JDialog {
         cmbCuitSocio.addActionListener(e -> {
             var socio = getSocio();
 
+            if(socio == null){
+                agregarAporteButton.setEnabled(false);
+                documentacionButton.setEnabled(false);
+                verLineaDeCreditoButton.setEnabled(false);
+                riesgoVivoButton.setEnabled(false);
+                convertirEnSocioPlenoButton.setVisible(false);
+                txtEstadoSocio.setText("");
+
+                return;
+            }
+
             convertirEnSocioPlenoButton.setVisible(socio.getEstadoSocio() == EstadoSocio.Postulante &&
                     socio.getEstadoDocumento() == EstadoDocumento.Controlado);
+
+            txtEstadoSocio.setText("Estado Socio: " + socio.getEstadoSocio());
 
             agregarAporteButton.setEnabled(true);
             documentacionButton.setEnabled(true);
@@ -108,15 +129,35 @@ public class SociosView extends JDialog {
         });
 
         convertirEnSocioPlenoButton.addActionListener(e -> {
-            sgrController.addLogEstadoSocioModel(LogEstadoSocioModel.CrearNuevoLogEstadoSocioModel(new Date(),
-                    getSocio().getEstadoSocio(), EstadoSocio.Pleno,
-                    usuarioController.GetUsuarioLoggueado().getNombre()));
+            try{
+                var socio = getSocio();
 
-            getSocio().setEstadoSocio(EstadoSocio.Pleno);
+                if(socio == null)
+                    return;
+
+                sgrController.addLogEstadoSocioModel(LogEstadoSocioModel.CrearNuevoLogEstadoSocioModel(new Date(),
+                        socio.getEstadoSocio(), EstadoSocio.Pleno,
+                        usuarioController.GetUsuarioLoggueado().getNombre()));
+
+                socio.setEstadoSocio(EstadoSocio.Pleno);
+
+                JOptionPane.showMessageDialog(null,"Socio " + socio.getCuit() +
+                        " convertido a socio pleno");
+
+                txtEstadoSocio.setText("Estado Socio: " + socio.getEstadoSocio());
+
+                convertirEnSocioPlenoButton.setVisible(false);
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
         });
     }
 
     private SocioModel getSocio(){
-        return socioController.getSociosByCuit(Objects.requireNonNull(cmbCuitSocio.getSelectedItem()).toString());
+        if(cmbCuitSocio.getSelectedItem() == null){
+            return null;
+        }
+        return socioController.getSociosByCuit(Objects.requireNonNull(cmbCuitSocio.getSelectedItem().toString()));
     }
 }
