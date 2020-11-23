@@ -40,7 +40,7 @@ public class ChequeView extends JDialog {
 
         confirmarButton.addActionListener(e -> {
             try{
-                lineaCredito.addCheque(ChequeModel.crearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
+                lineaCredito.addCheque(ChequeModel.CrearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
                         new Date(txtFechaVencimiento.getText()), txtCuitFirmante.getText(),
                         Integer.parseInt(txtImporte.getText())));
 

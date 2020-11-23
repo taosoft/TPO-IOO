@@ -67,7 +67,7 @@ public class OperacionesView extends JDialog {
         });
 
         CCComercialesButton.addActionListener(e -> {
-            CuentasCorrienteView frame = new CuentasCorrienteView(self);
+            CuentasCorrienteView frame = new CuentasCorrienteView(self, cuit, lineaCredito.getId());
             frame.setVisible(true);
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosed(WindowEvent e) {
@@ -77,7 +77,7 @@ public class OperacionesView extends JDialog {
         });
 
         prestamosButton.addActionListener(e -> {
-            PrestamoView frame = new PrestamoView(self, lineaCredito.getPrestamos());
+            PrestamoView frame = new PrestamoView(self, cuit, lineaCredito.getId());
             frame.setVisible(true);
             frame.addWindowListener(new WindowAdapter() {
                 public void windowClosed(WindowEvent e) {

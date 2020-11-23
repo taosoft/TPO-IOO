@@ -35,7 +35,7 @@ public class SocioController {
                 listaTipoOperaciones);
         socio.addLineaCredito(lineaCredito);
 
-        socio.getLineaCreditosById(1).getCheques().add(ChequeModel.crearNuevoCheque("Banco Nacion",
+        socio.getLineaCreditosById(1).getCheques().add(ChequeModel.CrearNuevoCheque("Banco Nacion",
                 "12345", new Date(), "301234239201", 11));
 
         socios.add(socio);
