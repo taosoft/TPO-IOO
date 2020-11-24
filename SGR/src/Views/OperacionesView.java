@@ -7,7 +7,6 @@ import Models.Enums.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -57,9 +56,9 @@ public class OperacionesView extends JDialog {
         model.addColumn("Fecha Vencimiento");
         model.addColumn("Estado");
 
+        emitirCertificadoButton.setVisible(false);
+
         LoadOperaciones();
-        tablaOperaciones.addComponentListener(new ComponentAdapter() {
-        });
     }
 
     private void asociarEventos() {
@@ -136,6 +135,47 @@ public class OperacionesView extends JDialog {
             }
             catch(Exception ex){
                 JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
+        });
+
+        tablaOperaciones.getSelectionModel().addListSelectionListener(e -> {
+            try{
+                var idOperacion = Integer.parseInt(
+                        tablaOperaciones.getModel().getValueAt(tablaOperaciones.getSelectedRow(),
+                                0).toString());
+
+                var tipoOperacion = TipoOperacion.valueOf(
+                        tablaOperaciones.getModel().getValueAt(tablaOperaciones.getSelectedRow(),
+                                1).toString());
+
+                switch (tipoOperacion) {
+                    case ChequePropio -> {
+                        OperacionModel operacion = lineaCredito.getChequeById(idOperacion);
+                        if(operacion.getEstadoOperacion() != EstadoOperacion.Ingresado){
+                            emitirCertificadoButton.setVisible(false);
+                            return;
+                        }
+                    }
+                    case CCComercial -> {
+                        OperacionModel operacion = lineaCredito.getCuentaCorrienteById(idOperacion);
+                        if(operacion.getEstadoOperacion() != EstadoOperacion.Ingresado){
+                            emitirCertificadoButton.setVisible(false);
+                            return;
+                        }
+                    }
+                    case Prestamo -> {
+                        OperacionModel operacion = lineaCredito.getPrestamoById(idOperacion);
+                        if(operacion.getEstadoOperacion() != EstadoOperacion.Ingresado){
+                            emitirCertificadoButton.setVisible(false);
+                            return;
+                        }
+                    }
+                }
+
+                emitirCertificadoButton.setVisible(true);
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Select changed: " + ex.getMessage());
             }
         });
     }
