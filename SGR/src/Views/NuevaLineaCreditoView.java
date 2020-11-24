@@ -36,6 +36,7 @@ public class NuevaLineaCreditoView extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        this.setTitle("Nueva línea crédito");
 
         asociarEventos();
 

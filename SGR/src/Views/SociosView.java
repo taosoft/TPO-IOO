@@ -42,6 +42,7 @@ public class SociosView extends JDialog {
         this.setModal(true);
         this.asociarEventos();
         this.self = this;
+        this.setTitle("Socios");
 
         socioController = SocioController.getInstance();
         sgrController = SgrController.getInstance();

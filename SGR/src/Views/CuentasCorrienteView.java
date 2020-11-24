@@ -27,6 +27,8 @@ public class CuentasCorrienteView extends JDialog{
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        //this.self = this;
+        this.setTitle("Cuentas corrientes");
         asociarEventos();
 
         socioController = SocioController.getInstance();
