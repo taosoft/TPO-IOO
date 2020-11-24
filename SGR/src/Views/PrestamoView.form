@@ -12,9 +12,12 @@
     <children>
       <component id="b0f88" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Banco:"/>
         </properties>
       </component>
@@ -28,9 +31,12 @@
       </component>
       <component id="8032c" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Importe Total:"/>
         </properties>
       </component>
@@ -44,9 +50,12 @@
       </component>
       <component id="bc826" class="javax.swing.JLabel">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Tasa:"/>
         </properties>
       </component>
@@ -60,9 +69,12 @@
       </component>
       <component id="e81a8" class="javax.swing.JLabel">
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Fecha Acreditacion:"/>
         </properties>
       </component>
@@ -76,17 +88,23 @@
       </component>
       <component id="711e9" class="javax.swing.JLabel">
         <constraints>
-          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Cantidad de Cuotas:"/>
         </properties>
       </component>
       <component id="e3665" class="javax.swing.JLabel">
         <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-16777216"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
+          <foreground color="-16777216"/>
           <text value="Tipo Sistema:"/>
         </properties>
       </component>
@@ -104,6 +122,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Guardar nuevo prestamo"/>
         </properties>
       </component>
@@ -113,14 +132,16 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Cancelar"/>
         </properties>
       </component>
       <component id="af742" class="javax.swing.JComboBox" binding="cmbTipoSistema">
         <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <model>
             <item value="Frances"/>
             <item value="Aleman"/>
