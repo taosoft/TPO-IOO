@@ -15,6 +15,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Banco Emisor:"/>
         </properties>
       </component>
@@ -31,6 +32,7 @@
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Numero de Cheque:"/>
         </properties>
       </component>
@@ -39,6 +41,7 @@
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Fecha de Vencimiento:"/>
         </properties>
       </component>
@@ -47,6 +50,7 @@
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Cuit Firmante:"/>
         </properties>
       </component>
@@ -80,6 +84,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Cerrar"/>
         </properties>
       </component>
@@ -89,6 +94,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Agregar nuevo cheque"/>
         </properties>
       </component>
@@ -97,6 +103,7 @@
           <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Importe"/>
         </properties>
       </component>

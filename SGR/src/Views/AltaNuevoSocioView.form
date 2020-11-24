@@ -17,6 +17,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
         </properties>
         <border type="none" title="Alta nuevo socio"/>
         <children>
@@ -25,6 +26,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Seleccione tipo de socio"/>
             </properties>
           </component>
@@ -33,6 +35,7 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <model>
                 <item value="Participe"/>
                 <item value="Protector"/>
@@ -44,6 +47,7 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="CUIT"/>
             </properties>
           </component>
@@ -60,6 +64,7 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Razón Social"/>
             </properties>
           </component>
@@ -76,6 +81,7 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Fecha inicio actividades"/>
             </properties>
           </component>
@@ -92,6 +98,7 @@
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Tipo de empresa"/>
             </properties>
           </component>
@@ -100,6 +107,7 @@
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Actividad principal"/>
             </properties>
           </component>
@@ -108,6 +116,7 @@
               <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Dirección"/>
             </properties>
           </component>
@@ -124,6 +133,7 @@
               <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Teléfono"/>
             </properties>
           </component>
@@ -140,6 +150,7 @@
               <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Correo electrónico"/>
             </properties>
           </component>
@@ -156,6 +167,7 @@
               <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <model>
                 <item value="Pequena"/>
                 <item value="Mediana"/>
@@ -178,6 +190,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Crear Nuevo Socio"/>
         </properties>
       </component>
@@ -187,6 +200,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Cancelar"/>
         </properties>
       </component>
@@ -230,6 +244,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Cuit"/>
             </properties>
           </component>
@@ -238,6 +253,7 @@
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Porcentaje"/>
             </properties>
           </component>
@@ -246,6 +262,7 @@
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Razon social"/>
             </properties>
           </component>
@@ -281,6 +298,7 @@
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Agregar Accionista"/>
         </properties>
       </component>
