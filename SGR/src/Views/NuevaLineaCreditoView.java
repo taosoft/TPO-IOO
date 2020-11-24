@@ -79,7 +79,7 @@ public class NuevaLineaCreditoView extends JDialog {
                 dispose();
             }
             catch (Exception ex){
-                JOptionPane.showMessageDialog(null,ex.getMessage());
+                JOptionPane.showMessageDialog(null,"Datos incorrectos/faltantes");
             }
         });
 

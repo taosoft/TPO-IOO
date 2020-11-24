@@ -80,7 +80,7 @@ public class AltaNuevoSocioView extends JDialog {
                 txtPorcentajeAccionista.setText("");
             }
             catch(Exception ex) {
-                JOptionPane.showMessageDialog(null, "Datos de accionista inválidos/faltantes");
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
 
@@ -100,7 +100,7 @@ public class AltaNuevoSocioView extends JDialog {
                 dispose();
             }
             catch(Exception ex){
-                JOptionPane.showMessageDialog(null, "Datos de socio inválidos/faltantes");
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
     }

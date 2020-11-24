@@ -41,6 +41,7 @@ public class ComisionesCalculadasView extends JDialog{
         tablaComisiones.setModel(model);
 
         buscarButton.addActionListener(e -> {
+            try{
             var socios = socioController.getSocios();
             var comisionesCalculadas = new ArrayList<ComisionCalculadaViewModel>();
             for(SocioModel socio: socios){
@@ -65,7 +66,10 @@ public class ComisionesCalculadasView extends JDialog{
             for(ComisionCalculadaViewModel comisionCalculada: comisionesCalculadas){
                 model.addColumn(comisionCalculada);
             }
-            tablaComisiones.setModel(model);
+            tablaComisiones.setModel(model);}
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
         });
     }
 
