@@ -43,36 +43,42 @@ public class PromedioTasaDeDescuentoView extends JDialog{
         salirButton.addActionListener(e -> dispose());
 
         buscarButton.addActionListener(e -> {
-            var tipoEmpresa = TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
-            Date fechaInicial = new Date(txtFechaInicial.getText());
-            Date fechaFinal = new Date(txtFechaFinal.getText());
-            ArrayList<SocioModel> socios = socioController.getSocios();
-            var promedioTasaDescuento = new ArrayList<PromedioTasaDeDescuentoViewModel>();
-            for(SocioModel socio:socios){
-                if (socio.getTipoEmpresa() == tipoEmpresa){
-                    ArrayList<LineaCreditoModel> lineaCreditos = socio.getLineaCreditos();
-                    for(LineaCreditoModel lineaCredito:lineaCreditos){
-                        ArrayList<ChequeModel> cheques = lineaCredito.getCheques();
-                        for(ChequeModel cheque:cheques){
-                            if(cheque.getFecha().after(fechaInicial)&& cheque.getFecha().before(fechaFinal)){
-                                var mdlPromeidoTasaDeDescuento = new PromedioTasaDeDescuentoViewModel();
-                                mdlPromeidoTasaDeDescuento.setNombreSocio(socio.getCuit());
-                                mdlPromeidoTasaDeDescuento.setTotalOperado(mdlPromeidoTasaDeDescuento.getTotalOperado() + cheque.getImportePagado());
-                                mdlPromeidoTasaDeDescuento.setTasaDescuento(mdlPromeidoTasaDeDescuento.getTasaDescuento() + cheque.getTasaDeDescuento());
-                                mdlPromeidoTasaDeDescuento.setCantidad(mdlPromeidoTasaDeDescuento.getCantidad() + 1);
-                                promedioTasaDescuento.add(mdlPromeidoTasaDeDescuento);
+            try {
+                var tipoEmpresa = TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
+                Date fechaInicial = new Date(txtFechaInicial.getText());
+                Date fechaFinal = new Date(txtFechaFinal.getText());
+                ArrayList<SocioModel> socios = socioController.getSocios();
+                var promedioTasaDescuento = new ArrayList<PromedioTasaDeDescuentoViewModel>();
+                for (SocioModel socio : socios) {
+                    if (socio.getTipoEmpresa() == tipoEmpresa) {
+                        ArrayList<LineaCreditoModel> lineaCreditos = socio.getLineaCreditos();
+                        for (LineaCreditoModel lineaCredito : lineaCreditos) {
+                            ArrayList<ChequeModel> cheques = lineaCredito.getCheques();
+                            for (ChequeModel cheque : cheques) {
+                                if (cheque.getFecha().after(fechaInicial) && cheque.getFecha().before(fechaFinal)) {
+                                    var mdlPromeidoTasaDeDescuento = new PromedioTasaDeDescuentoViewModel();
+                                    mdlPromeidoTasaDeDescuento.setNombreSocio(socio.getCuit());
+                                    mdlPromeidoTasaDeDescuento.setTotalOperado(mdlPromeidoTasaDeDescuento.getTotalOperado() + cheque.getImportePagado());
+                                    mdlPromeidoTasaDeDescuento.setTasaDescuento(mdlPromeidoTasaDeDescuento.getTasaDescuento() + cheque.getTasaDeDescuento());
+                                    mdlPromeidoTasaDeDescuento.setCantidad(mdlPromeidoTasaDeDescuento.getCantidad() + 1);
+                                    promedioTasaDescuento.add(mdlPromeidoTasaDeDescuento);
+                                }
                             }
                         }
                     }
                 }
-            }
-            DefaultTableModel tablaModelo = new DefaultTableModel();
-            tablaModelo.addColumn("tasa de descuento");
-            tablaModelo.addColumn("total operado de cheques");
-            tablaModelo.addColumn("total operado de pagares");
+                DefaultTableModel tablaModelo = new DefaultTableModel();
+                tablaModelo.addColumn("tasa de descuento");
+                tablaModelo.addColumn("total operado de cheques");
+                tablaModelo.addColumn("total operado de pagares");
 
-            tablaModelo.addRow(new Object[]{"1","Computadora","$ 5000"});
-            table1.setModel(tablaModelo);
+                tablaModelo.addRow(new Object[]{"1", "Computadora", "$ 5000"});
+                table1.setModel(tablaModelo);
+            }
+            catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
+
         });
     }
 }

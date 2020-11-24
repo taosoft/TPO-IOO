@@ -41,23 +41,26 @@ public class OperacionesAvaladasNombreView extends JDialog {
         cerrarButton.addActionListener(e -> dispose());
 
         buscarButton.addActionListener(e -> {
+            try {
+                DefaultTableModel model = new DefaultTableModel();
 
-            DefaultTableModel model = new DefaultTableModel();
+                model.addColumn("Cuit Socio");
+                model.addColumn("Razon Social");
+                model.addColumn("Tipo");
+                model.addColumn("Fecha");
 
-            model.addColumn("Cuit Socio");
-            model.addColumn("Razon Social");
-            model.addColumn("Tipo");
-            model.addColumn("Fecha");
+                for (SocioModel socio : socioController.getSocios()) {
 
-            for(SocioModel socio: socioController.getSocios()){
-
-                if((new Date(txtDesde.getText()).before(socio.getFechaInicioActividades())) && (new Date(txtHasta.getText()).after(socio.getFechaInicioActividades()))){
-                    model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio(),socio.getFechaInicioActividades()});
-                }else{
-                    model.addRow(new Object[]{socio.getCuit(),socio.getRazonSocial(),socio.getTipoSocio(),new Date(socio.getFechaInicioActividades().getDate())});
+                    if ((new Date(txtDesde.getText()).before(socio.getFechaInicioActividades())) && (new Date(txtHasta.getText()).after(socio.getFechaInicioActividades()))) {
+                        model.addRow(new Object[]{socio.getCuit(), socio.getRazonSocial(), socio.getTipoSocio(), socio.getFechaInicioActividades()});
+                    } else {
+                        model.addRow(new Object[]{socio.getCuit(), socio.getRazonSocial(), socio.getTipoSocio(), new Date(socio.getFechaInicioActividades().getDate())});
+                    }
                 }
+                table1.setModel(model);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null,ex.getMessage());
             }
-            table1.setModel(model);
         });
     }
 
