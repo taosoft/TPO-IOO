@@ -50,17 +50,6 @@ public class SocioModel {
         nuevoSocio.setFechaInicioActividades(_fechaInicioActividades);
         nuevoSocio.setTipoSocio(_tipoSocio);
 
-        //TODO: Chequear implementacion de mock data en controller
-        var listaTipoOperaciones = new ArrayList<TipoOperacion>();
-        listaTipoOperaciones.add(TipoOperacion.CCComercial);
-        listaTipoOperaciones.add(TipoOperacion.Prestamo);
-        listaTipoOperaciones.add(TipoOperacion.ChequePropio);
-        listaTipoOperaciones.add(TipoOperacion.ChequeTerceros);
-
-        var lineaCredito = LineaCreditoModel.CrearLineaCredito(new Date(),
-                112,
-                listaTipoOperaciones);
-        nuevoSocio.addLineaCredito(lineaCredito);
         return nuevoSocio;
     }
 

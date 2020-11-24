@@ -6,20 +6,20 @@ import java.util.ArrayList;
 public class SgrController {
     private static final SgrController INSTANCE = new SgrController();
 
-    private ArrayList<SocioModel> socios;
-    private ArrayList<LineaCreditoModel> lineaCreditos;
+    private final ArrayList<SocioModel> socios;
 
     private ArrayList<LogEstadoSocioModel> logsEstadoSocioModel;
-    private ArrayList<LogDocumentoSocioModel> logsDocumentoSocioModels;
+    private ArrayList<LogDocumentoSocioModel> logsDocumentoSocioModel;
     private ArrayList<LogEstadoDocumentoSocioModel> logsEstadoDocumentoSocioModel;
+    private ArrayList<LogOperacionModel> logsOperacionModel;
 
     private SgrController() {
         socios = new ArrayList<>();
-        lineaCreditos = new ArrayList<>();
 
         logsEstadoSocioModel = new ArrayList<>();
-        logsDocumentoSocioModels = new ArrayList<>();
+        logsDocumentoSocioModel = new ArrayList<>();
         logsEstadoDocumentoSocioModel = new ArrayList<>();
+        logsOperacionModel = new ArrayList<>();
     }
 
     public static SgrController getInstance() {
@@ -51,7 +51,7 @@ public class SgrController {
 
         // Obtengo el socio de la lista de socios
         for(SocioModel socioLista: socios){
-            if(socioLista.getCuit() == cuit)
+            if(socioLista.getCuit().equals(cuit))
                 socio = socioLista;
         }
 
@@ -77,15 +77,15 @@ public class SgrController {
     }
 
     public ArrayList<LogDocumentoSocioModel> getLogsDocumentoSocioModels() {
-        return logsDocumentoSocioModels;
+        return logsDocumentoSocioModel;
     }
 
     public void setLogsDocumentoSocioModels(ArrayList<LogDocumentoSocioModel> logsDocumentoSocioModels) {
-        this.logsDocumentoSocioModels = logsDocumentoSocioModels;
+        this.logsDocumentoSocioModel = logsDocumentoSocioModels;
     }
 
     public void addLogDocumentoSocioModel(LogDocumentoSocioModel logDocumentoSocioModel){
-        logsDocumentoSocioModels.add(logDocumentoSocioModel);
+        logsDocumentoSocioModel.add(logDocumentoSocioModel);
     }
 
     public ArrayList<LogEstadoDocumentoSocioModel> getLogsEstadoDocumentoSocioModel() {
@@ -98,5 +98,17 @@ public class SgrController {
 
     public void addLogEstadoDocumentoSocioModel(LogEstadoDocumentoSocioModel logEstadoDocumentoSocioModel){
         logsEstadoDocumentoSocioModel.add(logEstadoDocumentoSocioModel);
+    }
+
+    public ArrayList<LogOperacionModel> getLogsOperacionModel() {
+        return logsOperacionModel;
+    }
+
+    public void setLogsOperacionModel(ArrayList<LogOperacionModel> logsOperacionModel) {
+        this.logsOperacionModel = logsOperacionModel;
+    }
+
+    public void addLogOperacionModel(LogOperacionModel logOperacionModel){
+        logsOperacionModel.add(logOperacionModel);
     }
 }

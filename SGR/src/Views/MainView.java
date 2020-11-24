@@ -3,6 +3,7 @@ package Views;
 import Controllers.*;
 import Models.*;
 import javax.swing.*;
+import java.net.URL;
 
 public class MainView extends JFrame {
     private JPanel pnlPrincipal;
@@ -48,6 +49,8 @@ public class MainView extends JFrame {
         this.setLocationRelativeTo(null);
         this.asociarEventos();
         this.self = this;
+        String ruta = "SGR/img/credito.png";
+        this.setIconImage(new ImageIcon(ruta).getImage());
     }
 
     private void asociarEventos(){

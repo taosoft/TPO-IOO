@@ -32,6 +32,7 @@ public class ConsultasConsolidadasView extends JDialog {
         this.setModal(true);
         this.asociarEventos();
         this.self = this;
+        this.setTitle("Consultas consolidadas");
 
         socioController = SocioController.getInstance();
         sgrController = SgrController.getInstance();
@@ -60,7 +61,7 @@ public class ConsultasConsolidadasView extends JDialog {
     }
 
     private ChequeModel cargarCheque(SocioModel socio){
-        var certificadoGarantia = CertificadoGarantiaModel.crearCertificadoGarantia(2);
+        var certificadoGarantia = CertificadoGarantiaModel.CrearCertificadoGarantia(2);
 
         var comision = ComisionModel.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
 
@@ -73,7 +74,7 @@ public class ConsultasConsolidadasView extends JDialog {
     }
 
     private PrestamoModel cargarPrestamo(SocioModel socio){
-        var certificadoGarantia = CertificadoGarantiaModel.crearCertificadoGarantia(3);
+        var certificadoGarantia = CertificadoGarantiaModel.CrearCertificadoGarantia(3);
 
         var comision = ComisionModel.crearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
 
@@ -84,7 +85,7 @@ public class ConsultasConsolidadasView extends JDialog {
     }
 
     private CuentaCorrienteModel cargarCuentaCorriente(SocioModel socio){
-        var certificadoGarantia = CertificadoGarantiaModel.crearCertificadoGarantia(5);
+        var certificadoGarantia = CertificadoGarantiaModel.CrearCertificadoGarantia(5);
 
         var comision = ComisionModel.crearComision("1",new Date("10/11/2020"),
                 EstadoComision.Calculada,"3%", "Mario");

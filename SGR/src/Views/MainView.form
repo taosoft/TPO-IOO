@@ -20,25 +20,15 @@
         </properties>
         <border type="none" title="Socios"/>
         <children>
-          <hspacer id="cf01f">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-          </hspacer>
-          <vspacer id="43bcf">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-          </vspacer>
           <component id="16e95" class="javax.swing.JButton" binding="listarSociosButton" default-binding="true">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
               <background color="-5131057"/>
+              <font name="Lucida Sans Typewriter" size="12"/>
+              <hideActionText value="false"/>
               <text value="Socios"/>
             </properties>
           </component>
@@ -60,6 +50,7 @@
             </constraints>
             <properties>
               <background color="-5131057"/>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Total comisiones calculadas"/>
             </properties>
           </component>
@@ -69,6 +60,7 @@
             </constraints>
             <properties>
               <background color="-5131057"/>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Valor promedio de tasa de descuento"/>
             </properties>
           </component>
@@ -78,6 +70,7 @@
             </constraints>
             <properties>
               <background color="-5131057"/>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Consulta consolidada"/>
             </properties>
           </component>
@@ -87,43 +80,50 @@
             </constraints>
             <properties>
               <background color="-5131057"/>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <text value="Operaciones avaladas a nombre"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="fb01f" binding="pnlLogin" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="fb01f" binding="pnlLogin" layout-manager="GridLayoutManager" row-count="3" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="true"/>
         </constraints>
         <properties>
-          <background color="-5131057"/>
-          <foreground color="-5131057"/>
+          <background color="-4473925"/>
+          <font name="Lucida Sans Typewriter"/>
+          <foreground color="-16777216"/>
         </properties>
-        <border type="none" title="Login"/>
+        <border type="none" title="Login">
+          <font name="Lucida Sans Typewriter"/>
+          <title-color color="-16777216"/>
+        </border>
         <children>
           <component id="962fe" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <foreground color="-16777216"/>
               <text value="Usuario:"/>
             </properties>
           </component>
           <component id="e41e0" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <font name="Lucida Sans Typewriter" size="12"/>
               <foreground color="-16777216"/>
               <text value="Password:"/>
             </properties>
           </component>
           <component id="b4d2" class="javax.swing.JButton" binding="btnIngresar">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-5131057"/>
@@ -132,15 +132,25 @@
           </component>
           <component id="3fda0" class="javax.swing.JTextField" binding="txtPassword">
             <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties/>
           </component>
+          <hspacer id="d7de2">
+            <constraints>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <hspacer id="f9def">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
           <component id="a621d" class="javax.swing.JTextField" binding="txtUsuario">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="7" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
@@ -150,10 +160,11 @@
       </grid>
       <component id="fec8c" class="javax.swing.JButton" binding="btnCerrar">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-5131057"/>
+          <font name="Lucida Sans Typewriter" size="12"/>
           <text value="Salir"/>
         </properties>
       </component>

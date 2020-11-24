@@ -45,6 +45,7 @@ public class AltaNuevoSocioView extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         this.asociarEventos();
+        this.setTitle("Alta de nuevo socio");
 
         socioController = SocioController.getInstance();
         usuarioController = UsuarioController.getInstance();

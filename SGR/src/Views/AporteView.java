@@ -28,6 +28,7 @@ public class AporteView extends JDialog {
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
         asociarEventos();
+        this.setTitle("Nuevo aporte");
 
         socioController = SocioController.getInstance();
 

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
 
+import Controllers.*;
 import Models.*;
 
 public class ChequeView extends JDialog {
@@ -14,9 +15,11 @@ public class ChequeView extends JDialog {
     private JButton cerrarButton;
     private JButton confirmarButton;
     private JPanel pnlCheque;
+    private JTextField txtImporte;
+    private SocioController socioController;
+    private LineaCreditoModel lineaCredito;
 
-    public ChequeView(Window owner, LineaCreditoModel LineaCreditoModel) {
-
+    public ChequeView(Window owner, String cuit, int idLineaCredito) {
         super(owner);
         this.setContentPane(pnlCheque);
         this.setSize(500, 400);
@@ -26,18 +29,27 @@ public class ChequeView extends JDialog {
         this.setLocationRelativeTo(null);
         //No permite volver a la pantalla anterior hasta cerrar esta.
         this.setModal(true);
+        this.setTitle("Cheques");
+        asociarEventos();
 
+        socioController = SocioController.getInstance();
+        lineaCredito = socioController.getSociosByCuit(cuit).getLineaCreditosById(idLineaCredito);
+    }
+
+    private void asociarEventos() {
         cerrarButton.addActionListener(e -> dispose());
 
         confirmarButton.addActionListener(e -> {
-            LineaCreditoModel.addCheque(ChequeModel.crearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
-                    new Date(txtFechaVencimiento.getText()), txtCuitFirmante.getText()));
+            try{
+                lineaCredito.addCheque(ChequeModel.CrearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
+                        new Date(txtFechaVencimiento.getText()), txtCuitFirmante.getText(),
+                        Integer.parseInt(txtImporte.getText())));
 
-            dispose();
+                dispose();
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null,ex.getMessage());
+            }
         });
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
