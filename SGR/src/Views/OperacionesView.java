@@ -57,8 +57,6 @@ public class OperacionesView extends JDialog {
         model.addColumn("Fecha Vencimiento");
         model.addColumn("Estado");
 
-        emitirCertificadoButton.setVisible(false);
-
         LoadOperaciones();
     }
 
@@ -132,6 +130,8 @@ public class OperacionesView extends JDialog {
                     }
                 }
 
+                JOptionPane.showMessageDialog(null, "Certificado de garantía emitido!");
+
                 LoadOperaciones();
             }
             catch(Exception ex){
@@ -141,9 +141,13 @@ public class OperacionesView extends JDialog {
 
         tablaOperaciones.getSelectionModel().addListSelectionListener(e -> {
             try{
-                var idOperacion = Integer.parseInt(
-                        tablaOperaciones.getModel().getValueAt(tablaOperaciones.getSelectedRow(),
-                                0).toString());
+                if(tablaOperaciones.getSelectedRow() == -1){
+                    return;
+                }
+
+                var idOperacion = Integer.parseInt(tablaOperaciones.getModel()
+                        .getValueAt(tablaOperaciones.getSelectedRow(),
+                        0).toString());
 
                 var tipoOperacion = TipoOperacion.valueOf(
                         tablaOperaciones.getModel().getValueAt(tablaOperaciones.getSelectedRow(),
@@ -182,6 +186,7 @@ public class OperacionesView extends JDialog {
     }
 
     private void LoadOperaciones() {
+        emitirCertificadoButton.setVisible(false);
         BorrarRows();
 
         for(PrestamoModel prestamo: lineaCredito.getPrestamos()){
