@@ -19,6 +19,7 @@ public class OperacionesView extends JDialog {
     private JPanel pnlOperaciones;
     private JPanel pnlOperac;
     private JButton emitirCertificadoButton;
+    private JButton recepcionDeDineroDeButton;
     private final OperacionesView self;
     DefaultTableModel model;
     private final String cuit;
@@ -104,30 +105,9 @@ public class OperacionesView extends JDialog {
                                 1).toString());
 
                 switch (tipoOperacion) {
-                    case ChequePropio -> {
-                        var chequePropio = lineaCredito.getChequeById(idOperacion);
-                        sgrController.addLogOperacionModel(new LogOperacionModel(chequePropio.getEstadoOperacion(),
-                                EstadoOperacion.ConCertificadoEmitido, chequePropio.getId(),
-                                usuarioController.GetUsuarioLoggueado().getNombre()));
-                        chequePropio.setEstadoOperacion(EstadoOperacion.ConCertificadoEmitido);
-                        chequePropio.setCertificadoGarantia(new CertificadoGarantiaModel());
-                    }
-                    case CCComercial -> {
-                        var cuentaCorriente = lineaCredito.getCuentaCorrienteById(idOperacion);
-                        sgrController.addLogOperacionModel(new LogOperacionModel(cuentaCorriente.getEstadoOperacion(),
-                                EstadoOperacion.ConCertificadoEmitido, cuentaCorriente.getId(),
-                                usuarioController.GetUsuarioLoggueado().getNombre()));
-                        cuentaCorriente.setEstadoOperacion(EstadoOperacion.ConCertificadoEmitido);
-                        cuentaCorriente.setCertificadoGarantia(new CertificadoGarantiaModel());
-                    }
-                    case Prestamo -> {
-                        var prestamo = lineaCredito.getPrestamoById(idOperacion);
-                        sgrController.addLogOperacionModel(new LogOperacionModel(prestamo.getEstadoOperacion(),
-                                EstadoOperacion.ConCertificadoEmitido, prestamo.getId(),
-                                usuarioController.GetUsuarioLoggueado().getNombre()));
-                        prestamo.setEstadoOperacion(EstadoOperacion.ConCertificadoEmitido);
-                        prestamo.setCertificadoGarantia(new CertificadoGarantiaModel());
-                    }
+                    case ChequePropio -> administrarCambioEstadoOperacion(lineaCredito.getChequeById(idOperacion));
+                    case CCComercial -> administrarCambioEstadoOperacion(lineaCredito.getCuentaCorrienteById(idOperacion));
+                    case Prestamo -> administrarCambioEstadoOperacion(lineaCredito.getPrestamoById(idOperacion));
                 }
 
                 JOptionPane.showMessageDialog(null, "Certificado de garantía emitido!");
@@ -156,37 +136,44 @@ public class OperacionesView extends JDialog {
                 switch (tipoOperacion) {
                     case ChequePropio -> {
                         OperacionModel operacion = lineaCredito.getChequeById(idOperacion);
-                        if(operacion.getEstadoOperacion() != EstadoOperacion.Ingresado){
-                            emitirCertificadoButton.setVisible(false);
-                            return;
-                        }
+                        recepcionDeDineroDeButton.setVisible(operacion.getEstadoOperacion() == EstadoOperacion.ConCertificadoEmitido);
+                        adminsitrarVisibilidadBotonCertificadoGarantia(operacion);
                     }
                     case CCComercial -> {
                         OperacionModel operacion = lineaCredito.getCuentaCorrienteById(idOperacion);
-                        if(operacion.getEstadoOperacion() != EstadoOperacion.Ingresado){
-                            emitirCertificadoButton.setVisible(false);
-                            return;
-                        }
+                        adminsitrarVisibilidadBotonCertificadoGarantia(operacion);
                     }
                     case Prestamo -> {
                         OperacionModel operacion = lineaCredito.getPrestamoById(idOperacion);
-                        if(operacion.getEstadoOperacion() != EstadoOperacion.Ingresado){
-                            emitirCertificadoButton.setVisible(false);
-                            return;
-                        }
+                        adminsitrarVisibilidadBotonCertificadoGarantia(operacion);
                     }
                 }
-
-                emitirCertificadoButton.setVisible(true);
             }
             catch(Exception ex){
                 JOptionPane.showMessageDialog(null, "Select changed: " + ex.getMessage());
             }
         });
+
+        recepcionDeDineroDeButton.addActionListener(e -> {
+            
+        });
+    }
+
+    private void administrarCambioEstadoOperacion(OperacionModel operacion) {
+        sgrController.addLogOperacionModel(new LogOperacionModel(operacion.getEstadoOperacion(),
+                EstadoOperacion.ConCertificadoEmitido, operacion.getId(),
+                usuarioController.GetUsuarioLoggueado().getNombre()));
+        operacion.setEstadoOperacion(EstadoOperacion.ConCertificadoEmitido);
+        operacion.setCertificadoGarantia(new CertificadoGarantiaModel());
+    }
+
+    private void adminsitrarVisibilidadBotonCertificadoGarantia(OperacionModel operacion){
+        emitirCertificadoButton.setVisible(operacion.getEstadoOperacion() == EstadoOperacion.Ingresado);
     }
 
     private void LoadOperaciones() {
         emitirCertificadoButton.setVisible(false);
+        recepcionDeDineroDeButton.setVisible(false);
         BorrarRows();
 
         for(PrestamoModel prestamo: lineaCredito.getPrestamos()){
