@@ -1,27 +1,28 @@
 package Models;
 
-import Models.Enums.EstadoComision;
+import Models.Enums.*;
 
 import java.util.Date;
 
 public class ComisionModel {
     private String tipo;
-    private Date fechaCambio;
+    private Date fecha;
     private EstadoComision estadoComision;
     private String tipoCambioRealizado;
     private String nombreResponsable;
 
     public ComisionModel(){
-        fechaCambio = new Date();
+        fecha = new Date();
         estadoComision = estadoComision.Calculada;
     }
 
-    public static ComisionModel crearComision(String _tipo, Date _fechaCambio, EstadoComision _estadoComision, String _tipoCambioRealizado, String _nombreResponsable){
+    public static ComisionModel CrearComision(String _tipo, Date _fechaCambio, EstadoComision _estadoComision,
+                                              String _tipoCambioRealizado, String _nombreResponsable) {
 
         var comision = new ComisionModel();
 
         comision.tipo = _tipo;
-        comision.fechaCambio = _fechaCambio;
+        comision.fecha = _fechaCambio;
         comision.estadoComision = _estadoComision;
         comision.tipoCambioRealizado = _tipoCambioRealizado;
         comision.nombreResponsable = _nombreResponsable;
@@ -33,8 +34,8 @@ public class ComisionModel {
         return  tipo;
     }
 
-    public Date getFechaCambio(){
-        return fechaCambio;
+    public Date getFecha(){
+        return fecha;
     }
 
     public EstadoComision getEstadoComision() {

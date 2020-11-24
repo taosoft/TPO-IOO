@@ -134,7 +134,7 @@ public class OperacionesView extends JDialog {
                                 1).toString());
 
                 switch (tipoOperacion) {
-                    case ChequePropio -> {
+                    case ChequePropio, ChequeTerceros -> {
                         OperacionModel operacion = lineaCredito.getChequeById(idOperacion);
                         recepcionDeDineroDeButton.setVisible(operacion.getEstadoOperacion() == EstadoOperacion.ConCertificadoEmitido);
                         adminsitrarVisibilidadBotonCertificadoGarantia(operacion);
@@ -155,7 +155,34 @@ public class OperacionesView extends JDialog {
         });
 
         recepcionDeDineroDeButton.addActionListener(e -> {
-            
+            try{
+                var idOperacion = Integer.parseInt(
+                        tablaOperaciones.getModel().getValueAt(tablaOperaciones.getSelectedRow(),
+                                0).toString());
+
+                var tipoOperacion = TipoOperacion.valueOf(
+                        tablaOperaciones.getModel().getValueAt(tablaOperaciones.getSelectedRow(),
+                                1).toString());
+
+                switch (tipoOperacion) {
+                    case ChequePropio, ChequeTerceros -> {
+                        OperacionModel operacion = lineaCredito.getChequeById(idOperacion);
+                        sgrController.addLogOperacionModel(new LogOperacionModel(operacion.getEstadoOperacion(),
+                                EstadoOperacion.Monetizado, operacion.getId(),
+                                usuarioController.GetUsuarioLoggueado().getNombre()));
+                        operacion.setEstadoOperacion(EstadoOperacion.Monetizado);
+                        operacion.setCertificadoGarantia(new CertificadoGarantiaModel());
+                    }
+                }
+
+                JOptionPane.showMessageDialog(null, "Dinero de operacion recibido!");
+
+                LoadOperaciones();
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog(null,
+                        "Recepcion de dinero de operacion" + ex.getMessage());
+            }
         });
     }
 
