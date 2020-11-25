@@ -2,11 +2,13 @@ package Views;
 
 import Controllers.*;
 import Models.*;
+import Models.Enums.EstadoOperacion;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class OperacionesAvaladasNombreView extends JDialog {
     private JPanel pnlPrincipal;
@@ -14,9 +16,10 @@ public class OperacionesAvaladasNombreView extends JDialog {
     private JTable table1;
     private JTextField txtDesde;
     private JTextField txtHasta;
-    private JComboBox comboBox1;
+    private JComboBox cmbSocios;
     private JButton buscarButton;
-    private SocioController socioController;
+    private final SocioController socioController;
+    private final DefaultTableModel model;
 
     public OperacionesAvaladasNombreView(Window owner) {
         super(owner);
@@ -35,36 +38,59 @@ public class OperacionesAvaladasNombreView extends JDialog {
         socioController = SocioController.getInstance();
 
         for (SocioModel socio: socioController.getSocios()) {
-            comboBox1.addItem(socio.getCuit());
+            cmbSocios.addItem(socio.getCuit());
         };
 
+        model = new DefaultTableModel();
+        model.addColumn("Tipo Operacion");
+        model.addColumn("Fecha");
+        model.addColumn("Importe");
+        table1.setModel(model);
+    }
+
+    private void BorrarRows(){
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+    }
+
+    private void asociarEventos() {
         cerrarButton.addActionListener(e -> dispose());
 
         buscarButton.addActionListener(e -> {
             try {
-                DefaultTableModel model = new DefaultTableModel();
-
-                model.addColumn("Cuit Socio");
-                model.addColumn("Razon Social");
-                model.addColumn("Tipo");
-                model.addColumn("Fecha");
-
-                for (SocioModel socio : socioController.getSocios()) {
-
-                    if ((new Date(txtDesde.getText()).before(socio.getFechaInicioActividades())) && (new Date(txtHasta.getText()).after(socio.getFechaInicioActividades()))) {
-                        model.addRow(new Object[]{socio.getCuit(), socio.getRazonSocial(), socio.getTipoSocio(), socio.getFechaInicioActividades()});
-                    } else {
-                        model.addRow(new Object[]{socio.getCuit(), socio.getRazonSocial(), socio.getTipoSocio(), new Date(socio.getFechaInicioActividades().getDate())});
+                BorrarRows();
+                var socio = socioController.getSociosByCuit(Objects.requireNonNull(cmbSocios.getSelectedItem()).toString());
+                for(LineaCreditoModel lineaCredito: socio.getLineaCreditos()){
+                    for(OperacionModel operacion : lineaCredito.getCheques()){
+                        if ((new SimpleDateFormat("dd/MM/yyyy").parse(txtDesde.getText())).before(operacion.getFecha()) &&
+                                (new SimpleDateFormat("dd/MM/yyyy").parse(txtHasta.getText())).after(operacion.getFecha())
+                                && operacion.getEstadoOperacion() == EstadoOperacion.Monetizado) {
+                            model.addRow(new Object[]{operacion.getTipoOperacion(), operacion.getFecha(), operacion.getImportePagado()});
+                        }
+                    }
+                    for(OperacionModel operacion : lineaCredito.getCuentaCorrientes()){
+                        if ((new SimpleDateFormat("dd/MM/yyyy").parse(txtDesde.getText())).before(operacion.getFecha()) &&
+                                (new SimpleDateFormat("dd/MM/yyyy").parse(txtHasta.getText())).after(operacion.getFecha())
+                                && operacion.getEstadoOperacion() == EstadoOperacion.Monetizado) {
+                            model.addRow(new Object[]{operacion.getTipoOperacion(), operacion.getFecha(), operacion.getImportePagado()});
+                        }
+                    }
+                    for(OperacionModel operacion : lineaCredito.getPrestamos()){
+                        if ((new SimpleDateFormat("dd/MM/yyyy").parse(txtDesde.getText())).before(operacion.getFecha()) &&
+                                (new SimpleDateFormat("dd/MM/yyyy").parse(txtHasta.getText())).after(operacion.getFecha())
+                                && operacion.getEstadoOperacion() == EstadoOperacion.Monetizado) {
+                            model.addRow(new Object[]{operacion.getTipoOperacion(), operacion.getFecha(), operacion.getImportePagado()});
+                        }
                     }
                 }
+
                 table1.setModel(model);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,ex.getMessage());
             }
         });
-    }
-
-    private void asociarEventos() {
-        cerrarButton.addActionListener(e -> dispose());
     }
 }

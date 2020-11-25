@@ -17,7 +17,6 @@ public class SociosView extends JDialog {
     private JButton convertirEnSocioPlenoButton;
     private JButton agregarAporteButton;
     private JButton verLineaDeCreditoButton;
-    private JButton riesgoVivoButton;
     private JButton cerrarButton;
     private JPanel pnlListarSocios;
     private JComboBox cmbCuitSocio;
@@ -58,7 +57,6 @@ public class SociosView extends JDialog {
         agregarAporteButton.setEnabled(false);
         documentacionButton.setEnabled(false);
         verLineaDeCreditoButton.setEnabled(false);
-        riesgoVivoButton.setEnabled(false);
 
         for (SocioModel socio: socioController.getSocios()) {
             cmbCuitSocio.addItem(socio.getCuit());
@@ -111,7 +109,6 @@ public class SociosView extends JDialog {
                 agregarAporteButton.setEnabled(false);
                 documentacionButton.setEnabled(false);
                 verLineaDeCreditoButton.setEnabled(false);
-                riesgoVivoButton.setEnabled(false);
                 convertirEnSocioPlenoButton.setVisible(false);
                 txtEstadoSocio.setText("");
 
@@ -126,7 +123,6 @@ public class SociosView extends JDialog {
             agregarAporteButton.setEnabled(true);
             documentacionButton.setEnabled(true);
             verLineaDeCreditoButton.setEnabled(true);
-            riesgoVivoButton.setEnabled(true);
         });
 
         convertirEnSocioPlenoButton.addActionListener(e -> {

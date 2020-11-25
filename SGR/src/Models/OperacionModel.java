@@ -1,6 +1,7 @@
 package Models;
 
 import Models.Enums.*;
+import Models.Mappers.Mappers;
 
 import java.util.Date;
 
@@ -15,7 +16,7 @@ public class OperacionModel {
     private int id;
 
     public OperacionModel(){
-        estadoOperacion = estadoOperacion.Ingresado;
+        estadoOperacion = EstadoOperacion.Ingresado;
         fecha = new Date();
     }
 
@@ -32,7 +33,14 @@ public class OperacionModel {
         return operacion;
     }
 
-    public TipoOperacion getTipo(){
+    public double getPorcentajeComision(){
+        var mapperTipoOperacion = Mappers.GetMapEnumTipoOperacionOperacion();
+        var numeroTipoOperacion = mapperTipoOperacion.get(tipoOperacion);
+        var mapper = Mappers.GetMapEnumOperacionComision();
+        return mapper.get(numeroTipoOperacion);
+    }
+
+    public TipoOperacion getTipoOperacion(){
         return tipoOperacion;
     }
 

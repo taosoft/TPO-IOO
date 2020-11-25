@@ -212,21 +212,21 @@ public class OperacionesView extends JDialog {
         for(PrestamoModel prestamo: lineaCredito.getPrestamos()){
             model.addRow(new Object[]{
                     prestamo.getId(),
-                    prestamo.getTipo(), prestamo.getImportePagado(), prestamo.getFecha(),
+                    prestamo.getTipoOperacion(), prestamo.getImportePagado(), prestamo.getFecha(),
                     prestamo.getFechaVencimiento(), prestamo.getEstadoOperacion()});
         }
 
         for(ChequeModel cheque: lineaCredito.getCheques()){
             model.addRow(new Object[]{
                     cheque.getId(),
-                    cheque.getTipo(), cheque.getImportePagado(), cheque.getFecha(),
+                    cheque.getTipoOperacion(), cheque.getImportePagado(), cheque.getFecha(),
                     cheque.getFechaVencimiento(), cheque.getEstadoOperacion()});
         }
 
         for(CuentaCorrienteModel cuentaCorriente: lineaCredito.getCuentaCorrientes()){
             model.addRow(new Object[]{
                     cuentaCorriente.getId(),
-                    cuentaCorriente.getTipo(), cuentaCorriente.getImportePagado(), cuentaCorriente.getFecha(),
+                    cuentaCorriente.getTipoOperacion(), cuentaCorriente.getImportePagado(), cuentaCorriente.getFecha(),
                     cuentaCorriente.getFechaVencimiento(), cuentaCorriente.getEstadoOperacion()});
         }
 

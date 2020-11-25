@@ -33,8 +33,12 @@ public class SocioController {
                 listaTipoOperaciones);
         socio.addLineaCredito(lineaCredito);
 
-        socio.getLineaCreditosById(1).getCheques().add(ChequeModel.CrearNuevoCheque("Banco Nacion",
-                "12345", new Date(), "301234239201", 11));
+        var cheque = ChequeModel.CrearNuevoCheque("Banco Nacion",
+                "12345", new Date(), "301234239201", 11);
+        cheque.setEstadoOperacion(EstadoOperacion.Monetizado);
+        cheque.setComision(new ComisionModel());
+
+        socio.getLineaCreditosById(1).getCheques().add(cheque);
 
         socios.add(socio);
 

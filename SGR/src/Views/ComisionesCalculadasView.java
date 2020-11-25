@@ -2,11 +2,13 @@ package Views;
 
 import Controllers.*;
 import Models.*;
+import Models.Enums.EstadoOperacion;
 import Models.ViewModels.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -64,8 +66,10 @@ public class ComisionesCalculadasView extends JDialog{
                         var cheques = lineaCredito.getCheques();
 
                         for (ChequeModel cheque: cheques) {
-                            if(cheque.getFecha().compareTo(new Date(txtFecha.getText())) == 0){
-                                comisionesCalculadas.add(new ComisionCalculadaViewModel(cheque.getTasaDeDescuento(),
+                            if(isSameDate(cheque.getFecha(), new SimpleDateFormat("dd/MM/yyyy")
+                                    .parse(txtFecha.getText())) && cheque.getEstadoOperacion() == EstadoOperacion.Monetizado){
+
+                                comisionesCalculadas.add(new ComisionCalculadaViewModel(cheque.getPorcentajeComision(),
                                         cheque.getNumeroCheque(), cheque.getImportePagado()));
                             }
                         }
@@ -74,7 +78,9 @@ public class ComisionesCalculadasView extends JDialog{
 
                 BorrarRows();
                 for(ComisionCalculadaViewModel comisionCalculada: comisionesCalculadas){
-                    model.addColumn(comisionCalculada);
+                    model.addRow(new Object[]{
+                            comisionCalculada.getPorcentajeComision(),
+                            comisionCalculada.totalComision(), comisionCalculada.getNumeroCheque()});
                 }
                 tablaComisiones.setModel(model);
             }
@@ -82,5 +88,10 @@ public class ComisionesCalculadasView extends JDialog{
                 JOptionPane.showMessageDialog (null, ex.getMessage() + "No se encontraron resultados para su busqueda");
             }
         });
+    }
+
+    private boolean isSameDate(Date a, Date b){
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+        return fmt.format(a).equals(fmt.format(b));
     }
 }
