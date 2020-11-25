@@ -85,7 +85,7 @@ public class PromedioTasaDeDescuentoView extends JDialog{
                 table1.setModel(model);
             }
             catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,ex.getMessage());
+                JOptionPane.showMessageDialog(null,ex.getMessage() + " - No se encontraron resultados para su busqueda");
             }
         });
     }
