@@ -52,7 +52,7 @@ public class ChequeView extends JDialog {
                 dispose();
             }
             catch(Exception ex){
-                JOptionPane.showMessageDialog(null,ex.getMessage());
+                JOptionPane.showMessageDialog(null,ex.getMessage() + "Datos incorrectos/faltantes");
             }
         });
     }

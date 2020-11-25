@@ -85,7 +85,7 @@ public class LineasCreditoView extends JDialog {
                 frame.setVisible(true);
             }
             catch(Exception ex){
-                JOptionPane.showMessageDialog(null,ex.getMessage());
+                JOptionPane.showMessageDialog(null,ex.getMessage() + " - Debe seleccionar la línea de credito con la cual desea operar.");
             }
         });
 

@@ -80,7 +80,7 @@ public class AltaNuevoSocioView extends JDialog {
                 txtPorcentajeAccionista.setText("");
             }
             catch(Exception ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                JOptionPane.showMessageDialog(null, ex.getMessage() + " - Debe completar todos los datos de Accionista");
             }
         });
 
@@ -100,7 +100,7 @@ public class AltaNuevoSocioView extends JDialog {
                 dispose();
             }
             catch(Exception ex){
-                JOptionPane.showMessageDialog(null, ex.getMessage());
+                JOptionPane.showMessageDialog(null, ex.getMessage() + " - Debe completar todos los datos de Socio");
             }
         });
     }

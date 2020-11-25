@@ -45,7 +45,7 @@ public class AporteView extends JDialog {
                 dispose();
             }
             catch(Exception ex){
-                JOptionPane.showMessageDialog(null,ex.getMessage());
+                JOptionPane.showMessageDialog(null,ex.getMessage() + "Debe ingresar un monto");
             }
         });
 
