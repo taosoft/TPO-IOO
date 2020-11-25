@@ -3,9 +3,11 @@ package Views;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
+import java.util.Objects;
 
 import Controllers.*;
 import Models.*;
+import Models.Enums.MercadoArgentinoDeValores;
 
 public class ChequeView extends JDialog {
     private JTextField txtBancoEmisor;
@@ -16,8 +18,9 @@ public class ChequeView extends JDialog {
     private JButton confirmarButton;
     private JPanel pnlCheque;
     private JTextField txtImporte;
-    private SocioController socioController;
-    private LineaCreditoModel lineaCredito;
+    private JComboBox cmbMercadoArgValores;
+    private JTextField txtTasaDescuento;
+    private final LineaCreditoModel lineaCredito;
 
     public ChequeView(Window owner, String cuit, int idLineaCredito) {
         super(owner);
@@ -32,7 +35,7 @@ public class ChequeView extends JDialog {
         this.setTitle("Cheques");
         asociarEventos();
 
-        socioController = SocioController.getInstance();
+        SocioController socioController = SocioController.getInstance();
         lineaCredito = socioController.getSociosByCuit(cuit).getLineaCreditosById(idLineaCredito);
     }
 
@@ -43,7 +46,8 @@ public class ChequeView extends JDialog {
             try{
                 lineaCredito.addCheque(ChequeModel.CrearNuevoCheque(txtBancoEmisor.getText(), txtNumeroCheque.getText(),
                         new Date(txtFechaVencimiento.getText()), txtCuitFirmante.getText(),
-                        Integer.parseInt(txtImporte.getText())));
+                        Integer.parseInt(txtImporte.getText()), MercadoArgentinoDeValores.valueOf(Objects.requireNonNull(cmbMercadoArgValores.getSelectedItem()).toString()),
+                        Integer.parseInt(txtTasaDescuento.getText())));
 
                 dispose();
             }

@@ -10,7 +10,7 @@ public class ComisionModel {
 
     public ComisionModel(){
         fecha = new Date();
-        estadoComision = estadoComision.Calculada;
+        estadoComision = EstadoComision.Calculada;
     }
 
     public Date getFecha(){

@@ -3,7 +3,6 @@ package Controllers;
 import Models.*;
 import Models.Enums.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,7 +33,7 @@ public class SocioController {
         socio.addLineaCredito(lineaCredito);
 
         var cheque = ChequeModel.CrearNuevoCheque("Banco Nacion",
-                "12345", new Date(), "301234239201", 11);
+                "12345", new Date(), "301234239201", 11, MercadoArgentinoDeValores.Presentado, 3);
         cheque.setEstadoOperacion(EstadoOperacion.Monetizado);
         cheque.setComision(new ComisionModel());
 

@@ -99,4 +99,8 @@ public class OperacionModel {
     public void setId(int id) {
         this.id = id;
     }
+
+    public double getComision(float importe){
+        return importe/getPorcentajeComision();
+    }
 }

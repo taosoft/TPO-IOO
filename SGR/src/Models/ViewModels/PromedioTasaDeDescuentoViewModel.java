@@ -2,52 +2,64 @@ package Models.ViewModels;
 
 public class PromedioTasaDeDescuentoViewModel {
     private String nombreSocio;
-    private float tasaDescuento;
-    private String totalOperado;
-    private int Cantidad;
+    private float tasaDescuentoCheques;
+    private float tasaDescuentoPagares;
+    private double totalOperadoCheques;
+    private double totalOperadoPagares;
+    private int cantidad;
 
-    public PromedioTasaDeDescuentoViewModel(String nombreSocio, String totalOperado, float tasaDescuento) {
+    public PromedioTasaDeDescuentoViewModel(String nombreSocio, double totalOperadoCheques,
+                                            double totalOperadoPagares, float tasaDescuentoCheques, float tasaDescuentoPagares) {
         this.nombreSocio = nombreSocio;
-        this.totalOperado = totalOperado;
-        this.tasaDescuento = tasaDescuento;
-
+        this.totalOperadoCheques = totalOperadoCheques;
+        this.totalOperadoPagares = totalOperadoPagares;
+        this.tasaDescuentoCheques = tasaDescuentoCheques;
+        this.tasaDescuentoPagares = tasaDescuentoPagares;
     }
     public PromedioTasaDeDescuentoViewModel(){
 
     }
 
-    public float getPromedio(){
-        return tasaDescuento/Cantidad;
+    public float getPromedioCheques(){
+        return tasaDescuentoCheques/cantidad;
     }
-    public void setNombreSocio(String nombreSocio) {
-        this.nombreSocio = nombreSocio;
-    }
-
-    public void setTotalOperado(String totalOperado) {
-        this.totalOperado = totalOperado;
+    public float getPromedioPagares(){
+        return tasaDescuentoPagares/cantidad;
     }
 
-    public void setTasaDescuento(float tasaDescuento) {
-        this.tasaDescuento = tasaDescuento;
-    }
-
-    public String getTotalOperado() {
-        return totalOperado;
-    }
-
-    public float getTasaDescuento() {
-        return tasaDescuento;
+    public void setTasaDescuentoCheques(float tasaDescuentoCheques) {
+        this.tasaDescuentoCheques = tasaDescuentoCheques;
     }
 
     public String getNombreSocio() {
         return nombreSocio;
     }
 
-    public void setCantidad(int cantidad) {
-        Cantidad = cantidad;
+    public void setNombreSocio(String nombreSocio) {
+        this.nombreSocio = nombreSocio;
     }
 
-    public int getCantidad() {
-        return Cantidad;
+    public void setTasaDescuentoPagares(float tasaDescuentoPagares) {
+        this.tasaDescuentoPagares = tasaDescuentoPagares;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public double getTotalOperadoCheques() {
+        return totalOperadoCheques;
+    }
+
+    public void setTotalOperadoCheques(double totalOperadoCheques) {
+        this.totalOperadoCheques = totalOperadoCheques;
+    }
+
+    public double getTotalOperadoPagares() {
+        return totalOperadoPagares;
+    }
+
+    public void setTotalOperadoPagares(double totalOperadoPagares) {
+        this.totalOperadoPagares = totalOperadoPagares;
     }
 }

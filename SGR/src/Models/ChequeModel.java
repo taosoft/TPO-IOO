@@ -1,5 +1,6 @@
 package Models;
 
+import Models.Enums.MercadoArgentinoDeValores;
 import Models.Enums.TipoOperacion;
 
 import java.util.Date;
@@ -9,9 +10,11 @@ public class ChequeModel extends OperacionModel {
     private String bancoEmisor;
     private String numeroCheque;
     private String cuitFirmante;
+    private MercadoArgentinoDeValores mercadoArgentinoDeValores;
 
     public static ChequeModel CrearNuevoCheque(String bancoEmisor, String numeroCheque, Date fechaVencimiento,
-                                               String cuitFirmante, int importePagado){
+                                               String cuitFirmante, int importePagado,
+                                               MercadoArgentinoDeValores mercadoArgentinoDeValores, int tasaDeDescuento){
         var cheque = new ChequeModel();
 
         cheque.setBancoEmisor(bancoEmisor);
@@ -19,6 +22,7 @@ public class ChequeModel extends OperacionModel {
         cheque.setNumeroCheque(numeroCheque);
         cheque.setFechaVencimiento(fechaVencimiento);
         cheque.setImportePagado(importePagado);
+        cheque.setMercadoArgentinoDeValores(mercadoArgentinoDeValores);
 
         cheque.setTipoOperacion(TipoOperacion.ChequePropio);
 
@@ -55,5 +59,13 @@ public class ChequeModel extends OperacionModel {
 
     public void setBancoEmisor(String bancoEmisor) {
         this.bancoEmisor = bancoEmisor;
+    }
+
+    public MercadoArgentinoDeValores getMercadoArgentinoDeValores() {
+        return mercadoArgentinoDeValores;
+    }
+
+    public void setMercadoArgentinoDeValores(MercadoArgentinoDeValores mercadoArgentinoDeValores) {
+        this.mercadoArgentinoDeValores = mercadoArgentinoDeValores;
     }
 }

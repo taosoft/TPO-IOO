@@ -3,13 +3,14 @@ package Views;
 import Controllers.*;
 import Models.*;
 import Models.Enums.*;
-import Models.ViewModels.PromedioTasaDeDescuentoViewModel;
+import Models.ViewModels.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class PromedioTasaDeDescuentoView extends JDialog{
     private JComboBox cmbTipoEmpresa;
@@ -21,6 +22,7 @@ public class PromedioTasaDeDescuentoView extends JDialog{
     private JButton buscarButton;
     private JPanel pnlTabla;
     private SocioController socioController;
+    private DefaultTableModel model;
 
     public PromedioTasaDeDescuentoView(Window owner) {
         super(owner);
@@ -37,6 +39,13 @@ public class PromedioTasaDeDescuentoView extends JDialog{
         this.setTitle("Valor promedio de tasa de descuento");
 
         this.socioController =  Controllers.SocioController.getInstance();
+
+        model = new DefaultTableModel();
+        model.addColumn("Cuit Socio");
+        model.addColumn("Promedio tasa de descuento");
+        model.addColumn("Total operado en cheques");
+        model.addColumn("Total operado en pagarés");
+        table1.setModel(model);
     }
 
     private void asociarEventos(){
@@ -44,12 +53,12 @@ public class PromedioTasaDeDescuentoView extends JDialog{
 
         buscarButton.addActionListener(e -> {
             try {
-                var tipoEmpresa = TipoEmpresa.valueOf(cmbTipoEmpresa.getSelectedItem().toString());
+                var tipoEmpresa = TipoEmpresa.valueOf(Objects.requireNonNull(cmbTipoEmpresa.getSelectedItem()).toString());
                 Date fechaInicial = new Date(txtFechaInicial.getText());
                 Date fechaFinal = new Date(txtFechaFinal.getText());
                 ArrayList<SocioModel> socios = socioController.getSocios();
                 var promedioTasaDescuento = new ArrayList<PromedioTasaDeDescuentoViewModel>();
-                for (SocioModel socio : socios) {
+                /*for (SocioModel socio : socios) {
                     if (socio.getTipoEmpresa() == tipoEmpresa) {
                         ArrayList<LineaCreditoModel> lineaCreditos = socio.getLineaCreditos();
                         for (LineaCreditoModel lineaCredito : lineaCreditos) {
@@ -67,18 +76,17 @@ public class PromedioTasaDeDescuentoView extends JDialog{
                         }
                     }
                 }
-                DefaultTableModel tablaModelo = new DefaultTableModel();
-                tablaModelo.addColumn("tasa de descuento");
-                tablaModelo.addColumn("total operado de cheques");
-                tablaModelo.addColumn("total operado de pagares");
 
-                tablaModelo.addRow(new Object[]{"1", "Computadora", "$ 5000"});
-                table1.setModel(tablaModelo);
+                for(var promedio : promedioTasaDescuento){
+                    model.addRow(new Object[]{promedio.getNombreSocio(), promedio.getPromedio(),
+                            promedio.getTotalOperado(), promedio.getTotalOperado()});
+                }*/
+
+                table1.setModel(model);
             }
             catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,ex.getMessage());
             }
-
         });
     }
 }

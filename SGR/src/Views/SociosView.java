@@ -5,6 +5,7 @@ import Models.Enums.*;
 import Models.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,16 +24,18 @@ public class SociosView extends JDialog {
     private JButton altaNuevoSocioButton;
     private JButton documentacionButton;
     private JLabel txtEstadoSocio;
+    private JTable tablaAportes;
     private final SociosView self;
     private final SocioController socioController;
     private final SgrController sgrController;
     private final UsuarioController usuarioController;
+    private DefaultTableModel model;
 
     public SociosView(Window owner) {
         super(owner);
         //De esa forma le digo que el pnlPrincipal es el primero que se va a iniciar y le va a dar el contenido a mi pantalla.
         this.setContentPane(pnlListarSocios);
-        this.setSize(500, 400);
+        this.setSize(700, 400);
         //Establezco el comportamiento a la hora de cerrarse
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Que la pantalla inicie CENTRADA
@@ -48,6 +51,29 @@ public class SociosView extends JDialog {
         usuarioController = UsuarioController.getInstance();
 
         LoadSocios();
+
+        model = new DefaultTableModel();
+        model.addColumn("Fecha");
+        model.addColumn("Importe");
+        tablaAportes.setModel(model);
+        LoadTabla();
+    }
+
+    private void LoadTabla() {
+        BorrarRows();
+        try{
+            var socio = socioController.getSociosByCuit(cmbCuitSocio.getSelectedItem().toString());
+
+            for(AporteModel aporte : socio.getAportes()){
+                model.addRow(new Object[]{
+                        aporte.getFecha(), aporte.getDinero()});
+            }
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null,ex.getMessage());
+        }
+
+        tablaAportes.setModel(model);
     }
 
     private void LoadSocios() {
@@ -63,6 +89,14 @@ public class SociosView extends JDialog {
         };
     }
 
+    private void BorrarRows(){
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+    }
+
     private void asociarEventos() {
         cerrarButton.addActionListener(e -> dispose());
 
@@ -71,6 +105,11 @@ public class SociosView extends JDialog {
                     Objects.requireNonNull(cmbCuitSocio.getSelectedItem()).toString());
 
             frame.setVisible(true);
+            frame.addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    LoadTabla();
+                }
+            });
         });
 
         documentacionButton.addActionListener(e -> {

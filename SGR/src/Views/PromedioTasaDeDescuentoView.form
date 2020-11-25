@@ -19,7 +19,6 @@
           <model>
             <item value="Pequena"/>
             <item value="Mediana"/>
-            <item value="Grande"/>
           </model>
         </properties>
       </component>
