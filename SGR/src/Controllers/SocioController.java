@@ -1,10 +1,9 @@
 package Controllers;
 
 import Models.*;
-import Models.Enums.TipoEmpresa;
-import Models.Enums.TipoOperacion;
-import Models.Enums.TipoSocio;
+import Models.Enums.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -72,5 +71,25 @@ public class SocioController {
         };
 
         return null;
+    }
+
+    public void facturarComision(TipoOperacion tipoOperacion, Integer idOperacion, Integer idLineaCredito, String cuit){
+        switch (tipoOperacion) {
+            case ChequePropio, ChequeTerceros -> {
+                OperacionModel operacion = getSociosByCuit(cuit)
+                        .getLineaCreditosById(idLineaCredito).getChequeById(idOperacion);
+                operacion.getComision().setEstadoComision(EstadoComision.Facturada);
+            }
+        }
+    }
+
+    public ArrayList<SocioModel> getSocioParticipes(){
+        ArrayList<SocioModel> sociosParticipes = new ArrayList<>();
+        for (SocioModel socio:socios) {
+            if(socio.getTipoSocio() == TipoSocio.Participe) {
+                sociosParticipes.add(socio);
+            }
+        };
+        return sociosParticipes;
     }
 }

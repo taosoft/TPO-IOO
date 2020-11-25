@@ -110,8 +110,6 @@ public class OperacionesView extends JDialog {
                     case Prestamo -> administrarCambioEstadoOperacion(lineaCredito.getPrestamoById(idOperacion));
                 }
 
-                JOptionPane.showMessageDialog(null, "Certificado de garantía emitido!");
-
                 LoadOperaciones();
             }
             catch(Exception ex){
@@ -172,10 +170,11 @@ public class OperacionesView extends JDialog {
                                 usuarioController.GetUsuarioLoggueado().getNombre()));
                         operacion.setEstadoOperacion(EstadoOperacion.Monetizado);
                         operacion.setCertificadoGarantia(new CertificadoGarantiaModel());
+                        operacion.setComision(new ComisionModel());
+
+                        JOptionPane.showMessageDialog(null, "Dinero de operacion recibido!");
                     }
                 }
-
-                JOptionPane.showMessageDialog(null, "Dinero de operacion recibido!");
 
                 LoadOperaciones();
             }
@@ -187,11 +186,18 @@ public class OperacionesView extends JDialog {
     }
 
     private void administrarCambioEstadoOperacion(OperacionModel operacion) {
-        sgrController.addLogOperacionModel(new LogOperacionModel(operacion.getEstadoOperacion(),
-                EstadoOperacion.ConCertificadoEmitido, operacion.getId(),
-                usuarioController.GetUsuarioLoggueado().getNombre()));
-        operacion.setEstadoOperacion(EstadoOperacion.ConCertificadoEmitido);
-        operacion.setCertificadoGarantia(new CertificadoGarantiaModel());
+        if(lineaCredito.superaLinea(operacion.getImportePagado())){
+            JOptionPane.showMessageDialog(null, "Supera el límite de la linea de crédito");
+        }
+        else{
+            sgrController.addLogOperacionModel(new LogOperacionModel(operacion.getEstadoOperacion(),
+                    EstadoOperacion.ConCertificadoEmitido, operacion.getId(),
+                    usuarioController.GetUsuarioLoggueado().getNombre()));
+            operacion.setEstadoOperacion(EstadoOperacion.ConCertificadoEmitido);
+            operacion.setCertificadoGarantia(new CertificadoGarantiaModel());
+
+            JOptionPane.showMessageDialog(null, "Certificado de garantía emitido!");
+        }
     }
 
     private void adminsitrarVisibilidadBotonCertificadoGarantia(OperacionModel operacion){

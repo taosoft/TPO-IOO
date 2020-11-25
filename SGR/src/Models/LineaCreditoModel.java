@@ -33,6 +33,60 @@ public class LineaCreditoModel {
         return lineaCredito;
     }
 
+    public double getRiesgoVivo() {
+        double riesgoVivo = 0;
+        for (ChequeModel cheque : cheques) {
+            if(cheque.getEstadoOperacion().equals(EstadoOperacion.Monetizado)) {
+                riesgoVivo += cheque.getImportePagado();
+            }
+        }
+        for (PrestamoModel prestamo : prestamos) {
+            if(prestamo.getEstadoOperacion().equals(EstadoOperacion.Monetizado)) {
+                riesgoVivo += prestamo.getImportePagado();
+            }
+        }
+        return riesgoVivo;
+    }
+
+    public double getUtilizadoLinea() {
+        double utilizado = 0;
+        for (ChequeModel cheque : cheques) {
+            if(cheque.getEstadoOperacion().equals(EstadoOperacion.ConCertificadoEmitido))
+                utilizado += cheque.getImportePagado();
+        }
+        for (PrestamoModel prestamo : prestamos) {
+            if(prestamo.getEstadoOperacion().equals(EstadoOperacion.ConCertificadoEmitido))
+                utilizado += prestamo.getImportePagado();
+        }
+        return utilizado + getRiesgoVivo();
+    }
+
+    public double getTotalOperado(Date fechaInicio, Date fechaFin) {
+        double operado = 0;
+        for (ChequeModel cheque : cheques) {
+            if(cheque.getFecha().compareTo(fechaInicio) > 0 &&
+                    cheque.getFecha().compareTo(fechaFin) < 0)
+                operado += cheque.getImportePagado();
+        }
+        return operado;
+    }
+
+    public boolean superaLinea(double monto) {
+        double total = 0;
+        for (ChequeModel cheque : cheques) {
+            if ((cheque.getEstadoOperacion().equals(EstadoOperacion.Ingresado))) {
+                total += cheque.getImportePagado();
+            }
+        }
+        //Prestamo
+        for (PrestamoModel prestamo : prestamos) {
+            if ((prestamo.getEstadoOperacion().equals(EstadoOperacion.Ingresado))) {
+                total += prestamo.getImportePagado();
+            }
+        }
+        return !(total + monto <= this.monto);
+    }
+
     public ArrayList<ChequeModel> getCheques() {
         return cheques;
     }

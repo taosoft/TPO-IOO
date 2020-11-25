@@ -2,7 +2,7 @@ package Views;
 
 import Controllers.*;
 import Models.*;
-import Models.ViewModels.ComisionCalculadaViewModel;
+import Models.ViewModels.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +17,7 @@ public class ComisionesCalculadasView extends JDialog{
     private JPanel pnlPrincipal;
     private JButton buscarButton;
     private SocioController socioController;
+    private DefaultTableModel model;
 
     public ComisionesCalculadasView(Window owner) {
         super(owner);
@@ -34,46 +35,52 @@ public class ComisionesCalculadasView extends JDialog{
 
         socioController = SocioController.getInstance();
 
-        DefaultTableModel model = new DefaultTableModel();
+        model = new DefaultTableModel();
         model.addColumn("Porcentaje comision");
         model.addColumn("Total comision");
         model.addColumn("Numero de cheque");
         tablaComisiones.setModel(model);
+    }
 
-        buscarButton.addActionListener(e -> {
-            try{
-            var socios = socioController.getSocios();
-            var comisionesCalculadas = new ArrayList<ComisionCalculadaViewModel>();
-            for(SocioModel socio: socios){
-                var lineasCredito = socio.getLineaCreditos();
-
-                for(LineaCreditoModel lineaCredito:lineasCredito){
-                    var cheques = lineaCredito.getCheques();
-
-                    for (ChequeModel cheque: cheques) {
-                        if(cheque.getFecha().compareTo(new Date(txtFecha.getText())) == 0){
-                            comisionesCalculadas.add(new ComisionCalculadaViewModel(cheque.getTasaDeDescuento(),
-                                    cheque.getNumeroCheque(), cheque.getImportePagado()));
-                        }
-                    }
-                }
+    private void BorrarRows(){
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
             }
-
-            tablaComisiones.removeAll();
-            model.addColumn("Porcentaje comision");
-            model.addColumn("Total comision");
-            model.addColumn("Numero de cheque");
-            for(ComisionCalculadaViewModel comisionCalculada: comisionesCalculadas){
-                model.addColumn(comisionCalculada);
-            }
-            tablaComisiones.setModel(model);}
-            catch(Exception ex){
-                JOptionPane.showMessageDialog (null, ex.getMessage() + "No se encontraron resultados para su busqueda");
-            }
-        });
+        }
     }
 
     private void asociarEventos(){
         salirButton.addActionListener(e -> dispose());
+
+        buscarButton.addActionListener(e -> {
+            try{
+                var socios = socioController.getSocios();
+                var comisionesCalculadas = new ArrayList<ComisionCalculadaViewModel>();
+                for(SocioModel socio: socios){
+                    var lineasCredito = socio.getLineaCreditos();
+
+                    for(LineaCreditoModel lineaCredito:lineasCredito){
+                        var cheques = lineaCredito.getCheques();
+
+                        for (ChequeModel cheque: cheques) {
+                            if(cheque.getFecha().compareTo(new Date(txtFecha.getText())) == 0){
+                                comisionesCalculadas.add(new ComisionCalculadaViewModel(cheque.getTasaDeDescuento(),
+                                        cheque.getNumeroCheque(), cheque.getImportePagado()));
+                            }
+                        }
+                    }
+                }
+
+                BorrarRows();
+                for(ComisionCalculadaViewModel comisionCalculada: comisionesCalculadas){
+                    model.addColumn(comisionCalculada);
+                }
+                tablaComisiones.setModel(model);
+            }
+            catch(Exception ex){
+                JOptionPane.showMessageDialog (null, ex.getMessage() + "No se encontraron resultados para su busqueda");
+            }
+        });
     }
 }

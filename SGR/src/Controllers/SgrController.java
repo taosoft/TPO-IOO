@@ -12,6 +12,7 @@ public class SgrController {
     private ArrayList<LogDocumentoSocioModel> logsDocumentoSocioModel;
     private ArrayList<LogEstadoDocumentoSocioModel> logsEstadoDocumentoSocioModel;
     private ArrayList<LogOperacionModel> logsOperacionModel;
+    private ArrayList<LogComisionModel> logsComisionModel;
 
     private SgrController() {
         socios = new ArrayList<>();
@@ -20,6 +21,7 @@ public class SgrController {
         logsDocumentoSocioModel = new ArrayList<>();
         logsEstadoDocumentoSocioModel = new ArrayList<>();
         logsOperacionModel = new ArrayList<>();
+        logsComisionModel = new ArrayList<>();
     }
 
     public static SgrController getInstance() {
@@ -110,5 +112,17 @@ public class SgrController {
 
     public void addLogOperacionModel(LogOperacionModel logOperacionModel){
         logsOperacionModel.add(logOperacionModel);
+    }
+
+    public ArrayList<LogComisionModel> getLogsComisionModel() {
+        return logsComisionModel;
+    }
+
+    public void setLogsComisionModel(ArrayList<LogComisionModel> logsComisionModel) {
+        this.logsComisionModel = logsComisionModel;
+    }
+
+    public void addLogComisionModel(LogComisionModel logComisionModel) {
+        logsComisionModel.add(logComisionModel);
     }
 }
