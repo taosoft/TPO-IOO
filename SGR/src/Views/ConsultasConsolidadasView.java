@@ -2,12 +2,10 @@ package Views;
 
 import Controllers.*;
 import Models.*;
-import Models.Enums.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.Date;
 
 public class ConsultasConsolidadasView extends JDialog {
     private JPanel pnlPrincipal;
@@ -40,6 +38,10 @@ public class ConsultasConsolidadasView extends JDialog {
         for (SocioModel socio:socioController.getSocios()) {
             cmbSocios.addItem(socio.getCuit());
         };
+    }
+
+    private void asociarEventos(){
+        salirButton.addActionListener(e -> dispose());
 
         buscarButton.addActionListener(e -> {
             var cuit = cmbSocios.getSelectedItem();
@@ -58,45 +60,5 @@ public class ConsultasConsolidadasView extends JDialog {
 
             table1.setModel(model);
         });
-    }
-
-    private ChequeModel cargarCheque(SocioModel socio){
-        var certificadoGarantia = CertificadoGarantiaModel.CrearCertificadoGarantia(2);
-
-        var comision = new ComisionModel();//.CrearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
-
-        var cheque = new ChequeModel();
-
-        OperacionModel.CrearOperacion(TipoOperacion.ChequePropio,certificadoGarantia,comision, new Date());
-        OperacionModel.CrearOperacion(TipoOperacion.ChequeTerceros,certificadoGarantia,comision, new Date());
-
-        return  cheque;
-    }
-
-    private PrestamoModel cargarPrestamo(SocioModel socio){
-        var certificadoGarantia = CertificadoGarantiaModel.CrearCertificadoGarantia(3);
-
-        var comision = new ComisionModel();//.CrearComision("1",new Date("10/11/2020"), EstadoComision.Calculada,"3%", "Mario");
-
-        var prestamo = new PrestamoModel();
-        OperacionModel.CrearOperacion(TipoOperacion.Prestamo,certificadoGarantia,comision, new Date());
-
-        return  prestamo;
-    }
-
-    private CuentaCorrienteModel cargarCuentaCorriente(SocioModel socio){
-        var certificadoGarantia = CertificadoGarantiaModel.CrearCertificadoGarantia(5);
-
-        var comision = new ComisionModel();//.CrearComision("1",new Date("10/11/2020"),
-                //EstadoComision.Calculada,"3%", "Mario");
-
-        var cuentaCorriente = new CuentaCorrienteModel();
-        cuentaCorriente.CrearOperacion(TipoOperacion.CCComercial,certificadoGarantia,comision, new Date());
-
-        return  cuentaCorriente;
-    }
-
-    private void asociarEventos(){
-        salirButton.addActionListener(e -> dispose());
     }
 }

@@ -15,7 +15,7 @@ public class SgrController {
     private ArrayList<LogComisionModel> logsComisionModel;
 
     private SgrController() {
-        socios = new ArrayList<>();
+        socios = SocioController.getInstance().getSocios();
 
         logsEstadoSocioModel = new ArrayList<>();
         logsDocumentoSocioModel = new ArrayList<>();
@@ -34,9 +34,9 @@ public class SgrController {
 
         // Obtengo el socio de la lista de socios
         for(SocioModel socioLista: socios){
-                if(socioLista.getCuit() == cuit)
-                    socio = socioLista;                
-            }
+            if(socioLista.getCuit() == cuit)
+                socio = socioLista;
+        }
 
         int contadorRiesgoVivo = 0;
 
@@ -60,7 +60,7 @@ public class SgrController {
         int contadorUtilizadoLinea = 0;
 
         for (LineaCreditoModel lineaCredito: socio.getLineaCreditos()) {
-            contadorUtilizadoLinea += lineaCredito.getTotalOperacion();
+            contadorUtilizadoLinea += 0;
         }
 
         return contadorUtilizadoLinea;
